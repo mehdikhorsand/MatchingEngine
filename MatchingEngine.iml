@@ -2,8 +2,13 @@
 <module version="4">
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$" dumb="true">
-      <sourceFolder url="file://$MODULE_DIR$/random_method" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/tester" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main/order" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main/testcase" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main/tools" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/methods/ART_ISP" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/methods/RT" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/methods/RT_prim" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
     </content>
   </component>

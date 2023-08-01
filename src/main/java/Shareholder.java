@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+// total branches : 23
+// never covered with valid orders : 1
 
 public class Shareholder {
     static ArrayList<Shareholder> list = new ArrayList<>();

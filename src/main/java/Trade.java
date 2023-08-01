@@ -1,3 +1,6 @@
+// total branches : 5
+// never covered with valid orders : 0
+
 public class Trade {
     Order buy_order_id;
     Order sell_order_id;
@@ -26,10 +29,7 @@ public class Trade {
     }
 
     public int get_price() {
-        if(buy_order_id.is_in_queue)
-            return buy_order_id.price;
-        else
-            return sell_order_id.price;
+        return (buy_order_id.is_in_queue)? buy_order_id.price:sell_order_id.price;
     }
 
     public void rollback_trade() {

@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+// total branches : 21
+// never covered with valid orders : 1
 
 public class Broker {
     static ArrayList<Broker> list = new ArrayList<>();

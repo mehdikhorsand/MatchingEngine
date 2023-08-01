@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Objects;
-
+// total branches : 44
+// never covered with valid orders : 5
 
 public class MatchingEngine {
     Environment environment;
@@ -35,7 +36,10 @@ public class MatchingEngine {
     public void replace_order_request(int old_order_id, Order new_order) {
         new_request("Replace", new_order);
         Order old_order = order_book.get_order(old_order_id);
-        if (old_order != null && old_order.broker_id.id == new_order.broker_id.id && old_order.shareholder_id.id == new_order.shareholder_id.id && old_order.is_buy == new_order.is_buy && new_order.min_qty == 0) {
+        if (old_order != null &&
+            old_order.broker_id.id == new_order.broker_id.id &&
+            old_order.shareholder_id.id == new_order.shareholder_id.id &&
+            old_order.is_buy == new_order.is_buy && new_order.min_qty == 0) {
             int old_order_index = order_book.get_order_index(old_order);
             order_book.remove_order(old_order);
             String new_order_response = add_order(new_order);
