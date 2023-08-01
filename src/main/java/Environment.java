@@ -1,3 +1,6 @@
+// total branches : 17
+// never covered with valid orders : 0
+
 public class Environment {
     float ownership_upper_limit;
     int total_shares;

@@ -5,9 +5,8 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-
-// total branch number : 178
-// branches that they never cover with valid orders : 13
+// total branch in matching engine source code : 178
+// branches that they never cover with valid orders : 12
 
 public class TCRunner {
     static String destination_file_path = null;

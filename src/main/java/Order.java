@@ -1,4 +1,6 @@
 import java.util.concurrent.atomic.AtomicInteger;
+// total branches : 27
+// never covered with valid orders : 4
 
 
 public class Order {
@@ -18,7 +20,6 @@ public class Order {
 
     public Order(int broker_id, int shareholder_id, int price, int  quantity, boolean is_buy, int min_qty, boolean fill_and_kill, int peak_size) {
         this.id = counter.incrementAndGet();
-//        System.out.println("-----------------order_id:" + id + "-----------------");
         this.broker_id = Broker.get_broker_by_id(broker_id);
         this.shareholder_id = Shareholder.get_shareholder_by_id(shareholder_id);
         this.price = price;
@@ -63,16 +64,13 @@ public class Order {
     }
 
     public boolean has_valid_attrs() {
-        if(fill_and_kill && (peak_size > 0 || min_qty > 0))
-            return false;
-        return peak_size <= quantity && min_qty <= quantity;
+        boolean fak_validated = !fill_and_kill || (peak_size == 0 && min_qty == 0);
+        boolean quantity_validated = peak_size <= quantity && min_qty <= quantity;
+        return fak_validated && quantity_validated;
     }
 
     public int get_maximum_quantity_to_trade() {
-        if(peak_size == 0)
-            return quantity;
-        else
-            return disclosed_quantity;
+        return (peak_size == 0)? quantity:disclosed_quantity;
     }
 
     public void update_order_quantities(Trade trade) {

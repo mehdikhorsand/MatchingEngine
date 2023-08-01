@@ -11,14 +11,14 @@ import java.util.Scanner;
 
 public class TestCaseRunner{
     @Test
-    public void tester () {
+    public void tester () throws Exception {
         for(int i=0; i<Settings.testcase_number; i++) {
             new TCRunner(Settings.get_target_testcase_path(i), Settings.get_target_output_path(i));
             evaluation(Settings.get_target_output_path(i), Settings.get_target_oracle_path(i));
         }
     }
 
-    public static void evaluation(String output_location, String oracle_location) {
+    public static void evaluation(String output_location, String oracle_location) throws Exception {
         String output = read_file(output_location);
         String oracle = read_file(oracle_location);
         String error_msg = "";
@@ -34,7 +34,7 @@ public class TestCaseRunner{
         error_msg += evaluate(output, oracle, "Credit");
 
         if (!error_msg.equals(""))
-            throw new IllegalArgumentException("\nerror_messages:\n" + error_msg);
+            throw new Exception("\nerror_messages:\n" + error_msg);
     }
 
     public static String read_file(String file_address) {

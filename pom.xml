@@ -88,7 +88,6 @@
                         <exclude>**/TCRunner.*</exclude>
                         <exclude>**/TestCase.*</exclude>
                         <exclude>**/AverageFile.*</exclude>
-                        <exclude>**/TestCaseDimensions.*</exclude>
                     </excludes>
 <!--                    <includes>-->
 <!--                        <include>**/MatchingEngine.*</include>-->
