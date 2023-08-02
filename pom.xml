@@ -88,6 +88,9 @@
                         <exclude>**/TCRunner.*</exclude>
                         <exclude>**/TestCase.*</exclude>
                         <exclude>**/AverageFile.*</exclude>
+                        <exclude>**/SelectionMethod.*</exclude>
+                        <exclude>**/ART_ISP.*</exclude>
+                        <exclude>**/RT.*</exclude>
                     </excludes>
 <!--                    <includes>-->
 <!--                        <include>**/MatchingEngine.*</include>-->
