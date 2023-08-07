@@ -10,12 +10,14 @@ public class MatchingEngine {
     String last_request_type;
 
     public MatchingEngine(Environment environment){
+        TCRunner.method_called(new Throwable());
         this.environment = environment;
         order_book = new OrderBook();
         trades = new ArrayList<>();
     }
 
     public void new_request(String req_type, Order order) {
+        TCRunner.method_called(new Throwable());
         trades.clear();
         last_request_type = req_type;
         String order_info = (order != null)? order.toString().replace("\tOrder\t", ""):"";
@@ -23,6 +25,7 @@ public class MatchingEngine {
     }
 
     public void cancel_order_request(int order_id, boolean is_buy_order) {
+        TCRunner.method_called(new Throwable());
         new_request("Cancel", null);
         Order order = order_book.get_order(order_id);
         if(order != null && order.is_buy == is_buy_order){
@@ -34,6 +37,7 @@ public class MatchingEngine {
     }
 
     public void replace_order_request(int old_order_id, Order new_order) {
+        TCRunner.method_called(new Throwable());
         new_request("Replace", new_order);
         Order old_order = order_book.get_order(old_order_id);
         if (old_order != null &&
@@ -51,12 +55,14 @@ public class MatchingEngine {
     }
 
     public void new_order_request(Order order){
+        TCRunner.method_called(new Throwable());
         new_request("New", order);
         String response = add_order(order);
         TCRunner.print_output("NewOrderRs\t" + response);
     }
 
     public int get_total_traded_qty() {
+        TCRunner.method_called(new Throwable());
         int output = 0;
         for(Trade trade : trades)
             output += trade.quantity;
@@ -64,6 +70,7 @@ public class MatchingEngine {
     }
 
     public String add_order(Order order){
+        TCRunner.method_called(new Throwable());
         if(order.has_valid_attrs() && environment.validate_order_price_limit(order)
                 && environment.validate_order_quantity_limit(order)
                 && order.shareholder_id.ownership_validation(order)){
@@ -89,6 +96,7 @@ public class MatchingEngine {
     }
 
     public void match(Order new_order) {
+        TCRunner.method_called(new Throwable());
         Order buy_order = (new_order.is_buy)? new_order:order_book.get_first_buy_order();
         Order sell_order = (!new_order.is_buy)? new_order:order_book.get_first_sell_order();
         Order old_order = (buy_order != new_order)? buy_order:sell_order;
@@ -109,6 +117,7 @@ public class MatchingEngine {
     }
 
     public void rollback_by_trades() {
+        TCRunner.method_called(new Throwable());
         while(trades.size() > 0) {
             Trade last_trade = trades.get(trades.size()-1);
             last_trade.rollback_trade();
@@ -119,6 +128,7 @@ public class MatchingEngine {
 
     @Override
     public String toString() {
+        TCRunner.method_called(new Throwable());
         String output = (Objects.equals(last_request_type, "Cancel"))? "":print_trades();
         output += "\n" + order_book.toString();
         output += Broker.print_credits();
@@ -128,6 +138,7 @@ public class MatchingEngine {
     }
 
     public String print_trades() {
+        TCRunner.method_called(new Throwable());
         StringBuilder output = new StringBuilder("\n\tTrades\t" + trades.size());
         for(Trade trade : trades)
             output.append(trade);

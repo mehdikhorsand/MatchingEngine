@@ -88,16 +88,10 @@
                         <exclude>**/TCRunner.*</exclude>
                         <exclude>**/TestCase.*</exclude>
                         <exclude>**/AverageFile.*</exclude>
+                        <exclude>**/SelectionMethod.*</exclude>
+                        <exclude>**/ART_ISP.*</exclude>
+                        <exclude>**/RT.*</exclude>
                     </excludes>
-<!--                    <includes>-->
-<!--                        <include>**/MatchingEngine.*</include>-->
-<!--                        <include>**/OrderBook.*</include>-->
-<!--                        <include>**/Order.*</include>-->
-<!--                        <include>**/Broker.*</include>-->
-<!--                        <include>**/Shareholder.*</include>-->
-<!--                        <include>**/Trade.*</include>-->
-<!--                        <include>**/Environment.*</include>-->
-<!--                    </includes>-->
                 </configuration>
             </plugin>
         </plugins>

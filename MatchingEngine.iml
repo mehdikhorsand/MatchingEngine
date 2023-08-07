@@ -9,6 +9,9 @@
       <sourceFolder url="file://$MODULE_DIR$/methods/ART_ISP" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/methods/RT" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/methods/RT_prim" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/methods/ART_FT" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/methods/ART_WT" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/methods/ART_TFC" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
     </content>
   </component>

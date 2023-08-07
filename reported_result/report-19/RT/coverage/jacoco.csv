@@ -1,0 +1,15 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+MatchingEngine,default,Order,39,242,9,23,9,52,10,19,1,12
+MatchingEngine,default,Broker,24,196,7,11,6,42,7,14,1,11
+MatchingEngine,default,OrderBook,127,222,16,14,29,51,16,18,5,14
+MatchingEngine,default,Shareholder,62,199,9,13,11,44,9,14,1,11
+MatchingEngine,default,WaveletTransform,87,0,2,0,13,0,3,0,2,0
+MatchingEngine,default,TrisectionFrequencyConversion,117,0,6,0,15,0,5,0,2,0
+MatchingEngine,default,MatchingEngine,76,346,22,44,12,81,16,28,0,11
+MatchingEngine,default,ART_WT,99,0,10,0,23,0,10,0,5,0
+MatchingEngine,default,Trade,20,89,1,1,2,23,2,3,1,3
+MatchingEngine,default,Environment,0,170,0,12,0,39,0,17,0,11
+MatchingEngine,default,FrequencyTransform,108,0,8,0,24,0,8,0,4,0
+MatchingEngine,default,ART_TFC,99,0,10,0,23,0,10,0,5,0
+MatchingEngine,default,ART_FT,99,0,10,0,23,0,10,0,5,0
+MatchingEngine,default,Distance,34,0,2,0,5,0,3,0,2,0

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class RT  extends SelectionMethod{
     @Override
     public TestCase best_candidate(TestCase[] candidate_set) {

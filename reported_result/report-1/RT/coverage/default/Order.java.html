@@ -18,82 +18,95 @@ public class Order {
     int disclosed_quantity;
     int traded_qty_after_insertion;
 
-<span class="fc" id="L21">    public Order(int broker_id, int shareholder_id, int price, int  quantity, boolean is_buy, int min_qty, boolean fill_and_kill, int peak_size) {</span>
-<span class="fc" id="L22">        this.id = counter.incrementAndGet();</span>
-<span class="fc" id="L23">        this.broker_id = Broker.get_broker_by_id(broker_id);</span>
-<span class="fc" id="L24">        this.shareholder_id = Shareholder.get_shareholder_by_id(shareholder_id);</span>
-<span class="fc" id="L25">        this.price = price;</span>
-<span class="fc" id="L26">        this.quantity = quantity;</span>
-<span class="fc" id="L27">        this.is_buy = is_buy;</span>
-<span class="fc" id="L28">        this.min_qty = min_qty;</span>
-<span class="fc" id="L29">        this.fill_and_kill = fill_and_kill;</span>
-<span class="fc" id="L30">        this.peak_size = peak_size;</span>
-<span class="fc" id="L31">        this.is_in_queue = false;</span>
-<span class="fc" id="L32">        this.disclosed_quantity = 0;</span>
-<span class="fc" id="L33">        this.traded_qty_after_insertion = 0;</span>
-<span class="fc" id="L34">    }</span>
+    public Order(int broker_id, int shareholder_id, int price, int  quantity, boolean is_buy, int min_qty,
+<span class="fc" id="L22">                 boolean fill_and_kill, int peak_size) {</span>
+<span class="fc" id="L23">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L24">        this.id = counter.incrementAndGet();</span>
+<span class="fc" id="L25">        this.broker_id = Broker.get_broker_by_id(broker_id);</span>
+<span class="fc" id="L26">        this.shareholder_id = Shareholder.get_shareholder_by_id(shareholder_id);</span>
+<span class="fc" id="L27">        this.price = price;</span>
+<span class="fc" id="L28">        this.quantity = quantity;</span>
+<span class="fc" id="L29">        this.is_buy = is_buy;</span>
+<span class="fc" id="L30">        this.min_qty = min_qty;</span>
+<span class="fc" id="L31">        this.fill_and_kill = fill_and_kill;</span>
+<span class="fc" id="L32">        this.peak_size = peak_size;</span>
+<span class="fc" id="L33">        this.is_in_queue = false;</span>
+<span class="fc" id="L34">        this.disclosed_quantity = 0;</span>
+<span class="fc" id="L35">        this.traded_qty_after_insertion = 0;</span>
+<span class="fc" id="L36">    }</span>
 
     public static void reset_order_counter() {
-<span class="fc" id="L37">        Order.counter = new AtomicInteger(0);</span>
-<span class="fc" id="L38">    }</span>
+<span class="fc" id="L39">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L40">        Order.counter = new AtomicInteger(0);</span>
+<span class="fc" id="L41">    }</span>
 
     public static void new_cancel_order() {
-<span class="fc" id="L41">        counter.incrementAndGet();</span>
-<span class="fc" id="L42">    }</span>
+<span class="fc" id="L44">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L45">        counter.incrementAndGet();</span>
+<span class="fc" id="L46">    }</span>
 
     public int value() {
-<span class="nc" id="L45">        return price * quantity;</span>
+<span class="fc" id="L49">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L50">        return price * quantity;</span>
     }
 
     public void order_added_to_queue() {
-<span class="fc" id="L49">        set_disclosed_quantity();</span>
-<span class="fc" id="L50">        broker_id.added_new_order(this);</span>
-<span class="fc" id="L51">        shareholder_id.added_new_order(this);</span>
-<span class="fc" id="L52">        is_in_queue = true;</span>
-<span class="fc" id="L53">    }</span>
-
-    public void order_removed_from_queue() {
-<span class="fc" id="L56">        broker_id.deleted_old_order(this);</span>
-<span class="fc" id="L57">        shareholder_id.deleted_old_order(this);</span>
-<span class="fc" id="L58">        is_in_queue = false;</span>
+<span class="fc" id="L54">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L55">        set_disclosed_quantity();</span>
+<span class="fc" id="L56">        broker_id.added_new_order(this);</span>
+<span class="fc" id="L57">        shareholder_id.added_new_order(this);</span>
+<span class="fc" id="L58">        is_in_queue = true;</span>
 <span class="fc" id="L59">    }</span>
 
+    public void order_removed_from_queue() {
+<span class="fc" id="L62">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L63">        broker_id.deleted_old_order(this);</span>
+<span class="fc" id="L64">        shareholder_id.deleted_old_order(this);</span>
+<span class="fc" id="L65">        is_in_queue = false;</span>
+<span class="fc" id="L66">    }</span>
+
     private void set_disclosed_quantity() {
-<span class="fc bfc" id="L62" title="All 2 branches covered.">        if(peak_size &gt; 0)</span>
-<span class="fc" id="L63">            disclosed_quantity = Math.min(quantity, peak_size - (traded_qty_after_insertion % peak_size));</span>
-<span class="fc" id="L64">    }</span>
+<span class="fc" id="L69">        TCRunner.method_called(new Throwable());</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if(peak_size &gt; 0)</span>
+<span class="fc" id="L71">            disclosed_quantity = Math.min(quantity, peak_size - (traded_qty_after_insertion % peak_size));</span>
+<span class="fc" id="L72">    }</span>
 
     public boolean has_valid_attrs() {
-<span class="pc bpc" id="L67" title="2 of 6 branches missed.">        boolean fak_validated = !fill_and_kill || (peak_size == 0 &amp;&amp; min_qty == 0);</span>
-<span class="pc bpc" id="L68" title="2 of 4 branches missed.">        boolean quantity_validated = peak_size &lt;= quantity &amp;&amp; min_qty &lt;= quantity;</span>
-<span class="pc bpc" id="L69" title="2 of 4 branches missed.">        return fak_validated &amp;&amp; quantity_validated;</span>
+<span class="fc" id="L75">        TCRunner.method_called(new Throwable());</span>
+<span class="pc bpc" id="L76" title="2 of 6 branches missed.">        boolean fak_validated = !fill_and_kill || (peak_size == 0 &amp;&amp; min_qty == 0);</span>
+<span class="pc bpc" id="L77" title="2 of 4 branches missed.">        boolean quantity_validated = peak_size &lt;= quantity &amp;&amp; min_qty &lt;= quantity;</span>
+<span class="pc bpc" id="L78" title="2 of 4 branches missed.">        return fak_validated &amp;&amp; quantity_validated;</span>
     }
 
     public int get_maximum_quantity_to_trade() {
-<span class="nc bnc" id="L73" title="All 2 branches missed.">        return (peak_size == 0)? quantity:disclosed_quantity;</span>
+<span class="fc" id="L82">        TCRunner.method_called(new Throwable());</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        return (peak_size == 0)? quantity:disclosed_quantity;</span>
     }
 
     public void update_order_quantities(Trade trade) {
-<span class="nc" id="L77">        quantity -= trade.quantity;</span>
-<span class="nc bnc" id="L78" title="All 4 branches missed.">        if(is_in_queue &amp;&amp; peak_size &gt; 0) {</span>
-<span class="nc" id="L79">            traded_qty_after_insertion += trade.quantity;</span>
-<span class="nc" id="L80">            set_disclosed_quantity();</span>
+<span class="fc" id="L87">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L88">        quantity -= trade.quantity;</span>
+<span class="fc bfc" id="L89" title="All 4 branches covered.">        if(is_in_queue &amp;&amp; peak_size &gt; 0) {</span>
+<span class="fc" id="L90">            traded_qty_after_insertion += trade.quantity;</span>
+<span class="fc" id="L91">            set_disclosed_quantity();</span>
         }
-<span class="nc" id="L82">    }</span>
+<span class="fc" id="L93">    }</span>
 
     public void rollback_update_order_quantities(Trade trade) {
-<span class="nc" id="L85">        quantity += trade.quantity;</span>
-<span class="nc bnc" id="L86" title="All 4 branches missed.">        if(is_in_queue &amp;&amp; peak_size &gt; 0) {</span>
-<span class="nc" id="L87">            traded_qty_after_insertion -= trade.quantity;</span>
-<span class="nc" id="L88">            set_disclosed_quantity();</span>
+<span class="nc" id="L96">        TCRunner.method_called(new Throwable());</span>
+<span class="nc" id="L97">        quantity += trade.quantity;</span>
+<span class="nc bnc" id="L98" title="All 4 branches missed.">        if(is_in_queue &amp;&amp; peak_size &gt; 0) {</span>
+<span class="nc" id="L99">            traded_qty_after_insertion -= trade.quantity;</span>
+<span class="nc" id="L100">            set_disclosed_quantity();</span>
         }
-<span class="nc" id="L90">    }</span>
+<span class="nc" id="L102">    }</span>
 
     @Override
     public String toString() {
-<span class="fc bfc" id="L94" title="All 2 branches covered.">        return &quot;\n\tOrder\t&quot; + ((peak_size == 0)? &quot;Limit&quot;:&quot;Iceberg&quot;) + &quot;\t&quot; + id + &quot;\t&quot; + broker_id.id +</span>
-<span class="fc bfc" id="L95" title="All 2 branches covered.">                &quot;\t&quot; + shareholder_id.id + &quot;\t&quot; + price + &quot;\t&quot; + quantity + &quot;\t&quot; + ((is_buy)? &quot;BUY &quot;:&quot;SELL&quot;) +</span>
-<span class="fc bfc" id="L96" title="All 2 branches covered.">                &quot;\t&quot; + min_qty + &quot;\t&quot; + ((fill_and_kill)? &quot;FAK&quot;:&quot;---&quot;) + &quot;\t&quot; + disclosed_quantity;</span>
+<span class="fc" id="L106">        TCRunner.method_called(new Throwable());</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">        return &quot;\n\tOrder\t&quot; + ((peak_size == 0)? &quot;Limit&quot;:&quot;Iceberg&quot;) + &quot;\t&quot; + id + &quot;\t&quot; + broker_id.id +</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">                &quot;\t&quot; + shareholder_id.id + &quot;\t&quot; + price + &quot;\t&quot; + quantity + &quot;\t&quot; + ((is_buy)? &quot;BUY &quot;:&quot;SELL&quot;) +</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">                &quot;\t&quot; + min_qty + &quot;\t&quot; + ((fill_and_kill)? &quot;FAK&quot;:&quot;---&quot;) + &quot;\t&quot; + disclosed_quantity;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
