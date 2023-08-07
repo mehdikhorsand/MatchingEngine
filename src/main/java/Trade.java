@@ -25,14 +25,17 @@ public class Trade {
 
     @Override
     public String toString() {
+        TCRunner.method_called(new Throwable());
         return "\n\tTrade\t" + price + "\t" + quantity + "\t" + buy_order_id.id + "\t" + sell_order_id.id;
     }
 
     public int get_price() {
+        TCRunner.method_called(new Throwable());
         return (buy_order_id.is_in_queue)? buy_order_id.price:sell_order_id.price;
     }
 
     public void rollback_trade() {
+        TCRunner.method_called(new Throwable());
         buy_order_id.rollback_update_order_quantities(this);
         sell_order_id.rollback_update_order_quantities(this);
         buy_order_id.broker_id.rollback_decrease_credit(this);

@@ -18,7 +18,9 @@ public class Order {
     int disclosed_quantity;
     int traded_qty_after_insertion;
 
-    public Order(int broker_id, int shareholder_id, int price, int  quantity, boolean is_buy, int min_qty, boolean fill_and_kill, int peak_size) {
+    public Order(int broker_id, int shareholder_id, int price, int  quantity, boolean is_buy, int min_qty,
+                 boolean fill_and_kill, int peak_size) {
+        TCRunner.method_called(new Throwable());
         this.id = counter.incrementAndGet();
         this.broker_id = Broker.get_broker_by_id(broker_id);
         this.shareholder_id = Shareholder.get_shareholder_by_id(shareholder_id);
@@ -34,18 +36,22 @@ public class Order {
     }
 
     public static void reset_order_counter() {
+        TCRunner.method_called(new Throwable());
         Order.counter = new AtomicInteger(0);
     }
 
     public static void new_cancel_order() {
+        TCRunner.method_called(new Throwable());
         counter.incrementAndGet();
     }
 
     public int value() {
+        TCRunner.method_called(new Throwable());
         return price * quantity;
     }
 
     public void order_added_to_queue() {
+        TCRunner.method_called(new Throwable());
         set_disclosed_quantity();
         broker_id.added_new_order(this);
         shareholder_id.added_new_order(this);
@@ -53,27 +59,32 @@ public class Order {
     }
 
     public void order_removed_from_queue() {
+        TCRunner.method_called(new Throwable());
         broker_id.deleted_old_order(this);
         shareholder_id.deleted_old_order(this);
         is_in_queue = false;
     }
 
     private void set_disclosed_quantity() {
+        TCRunner.method_called(new Throwable());
         if(peak_size > 0)
             disclosed_quantity = Math.min(quantity, peak_size - (traded_qty_after_insertion % peak_size));
     }
 
     public boolean has_valid_attrs() {
+        TCRunner.method_called(new Throwable());
         boolean fak_validated = !fill_and_kill || (peak_size == 0 && min_qty == 0);
         boolean quantity_validated = peak_size <= quantity && min_qty <= quantity;
         return fak_validated && quantity_validated;
     }
 
     public int get_maximum_quantity_to_trade() {
+        TCRunner.method_called(new Throwable());
         return (peak_size == 0)? quantity:disclosed_quantity;
     }
 
     public void update_order_quantities(Trade trade) {
+        TCRunner.method_called(new Throwable());
         quantity -= trade.quantity;
         if(is_in_queue && peak_size > 0) {
             traded_qty_after_insertion += trade.quantity;
@@ -82,6 +93,7 @@ public class Order {
     }
 
     public void rollback_update_order_quantities(Trade trade) {
+        TCRunner.method_called(new Throwable());
         quantity += trade.quantity;
         if(is_in_queue && peak_size > 0) {
             traded_qty_after_insertion -= trade.quantity;
@@ -91,6 +103,7 @@ public class Order {
 
     @Override
     public String toString() {
+        TCRunner.method_called(new Throwable());
         return "\n\tOrder\t" + ((peak_size == 0)? "Limit":"Iceberg") + "\t" + id + "\t" + broker_id.id +
                 "\t" + shareholder_id.id + "\t" + price + "\t" + quantity + "\t" + ((is_buy)? "BUY ":"SELL") +
                 "\t" + min_qty + "\t" + ((fill_and_kill)? "FAK":"---") + "\t" + disclosed_quantity;

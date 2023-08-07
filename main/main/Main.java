@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 
 public class Main {
     public static void main(String[] args) {
@@ -26,14 +24,11 @@ public class Main {
     private static void open_coverage_report_files() {
         StringBuilder file_paths = new StringBuilder();
         String coverage_file = "/index.html ";
-        for(int i=0; i<Settings.repetition_number; i++) {
-            for(String method : Settings.get_methods()) {
+        for(int i=0; i<Settings.repetition_number; i++)
+            for(String method : Settings.get_methods())
                 file_paths.append(get_destination_location(i, method)).append(Settings.coverage).append(coverage_file);
-            }
-        }
-        for(String method : Settings.get_methods()) {
+        for(String method : Settings.get_methods())
             file_paths.append(Settings.result_location).append(Settings.average_coverage).append(method).append(coverage_file);
-        }
         Terminal.browse(String.valueOf(file_paths));
     }
 
@@ -55,8 +50,7 @@ public class Main {
     }
 
     private static void clear_system() {
-//        TCCreator.executed_set = new ArrayList<>();
-        ISPCoverage.isp_partitions_situation = new ArrayList<>();
+        SelectionMethod.reset_selection_methods();
         Terminal.rm("target/maven-status target/site target/surefire-reports target/jacoco.exec");
     }
 

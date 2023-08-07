@@ -1,4 +1,5 @@
 import java.io.File;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -6,15 +7,17 @@ import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
 // total branch in matching engine source code : 178
-// branches that they never cover with valid orders : 12
+// branches not covered by valid orders : 12
 
 public class TCRunner {
     static String destination_file_path = null;
     Environment environment;
     MatchingEngine matching_engine;
     static FileWriter writer;
+    static ArrayList<String> method_invocation_sequence;
 
     public TCRunner(String input_file_path, String output_file_path) {
+        method_invocation_sequence = new ArrayList<>();
         TCRunner.destination_file_path = output_file_path;
         try {
             Scanner scanner = new Scanner(new File(input_file_path));
@@ -119,5 +122,38 @@ public class TCRunner {
                 Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]),
                 Integer.parseInt(args[3]), get_boolean(args[4]), Integer.parseInt(args[5]),
                 get_boolean(args[6]), Integer.parseInt(args[7]));
+    }
+
+//    public static ArrayList<String> get_method_invocation_sequence() {
+//        return new ArrayList<>();
+//    }
+
+    public static void method_called(Throwable stack) {
+        String class_name = stack.getStackTrace()[0].getClassName();
+        String method_name = stack.getStackTrace()[0].getMethodName();
+        method_invocation_sequence.add(class_name + "." + method_name);
+    }
+
+    public static ArrayList<String> get_src_methods_name() {
+        ArrayList<String> output = new ArrayList<>();
+        for(Class src_class : get_src_classes()) {
+            Method[] methods = src_class.getDeclaredMethods();
+            for(Method method : methods) {
+                output.add(src_class.getName() + "." + method.getName());
+            }
+        }
+        return output;
+    }
+
+    public static ArrayList<Class> get_src_classes() {
+        ArrayList<Class> src_classes = new ArrayList<>();
+        src_classes.add(Broker.class);
+        src_classes.add(Shareholder.class);
+        src_classes.add(Order.class);
+        src_classes.add(Trade.class);
+        src_classes.add(OrderBook.class);
+        src_classes.add(MatchingEngine.class);
+        src_classes.add(Environment.class);
+        return src_classes;
     }
 }

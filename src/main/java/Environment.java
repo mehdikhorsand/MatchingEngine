@@ -12,6 +12,7 @@ public class Environment {
 
     @Override
     public String toString() {
+        TCRunner.method_called(new Throwable());
         return "\tReferencePrice\t" + reference_price +
                 "\n\tStaticPriceBandLowerLimit\t" + static_price_band_lower_limit +
                 "\n\tStaticPriceBandUpperLimit\t" + static_price_band_upper_limit +
@@ -22,34 +23,42 @@ public class Environment {
     }
 
     public void set_tick_size_rq(int tick_size) {
+        TCRunner.method_called(new Throwable());
         this.tick_size = tick_size;
     }
 
     public void set_lot_size_rq(int lot_size) {
+        TCRunner.method_called(new Throwable());
         this.lot_size = lot_size;
     }
 
     public void set_reference_price_rq(int reference_price) {
+        TCRunner.method_called(new Throwable());
         this.reference_price = reference_price;
     }
 
     public void set_static_price_band_lower_limit_rq(float static_price_band_lower_limit) {
+        TCRunner.method_called(new Throwable());
         this.static_price_band_lower_limit = static_price_band_lower_limit;
     }
 
     public void set_static_price_band_upper_limit_rq(float static_price_band_upper_limit) {
+        TCRunner.method_called(new Throwable());
         this.static_price_band_upper_limit = static_price_band_upper_limit;
     }
 
     public void set_total_shares_rq(int total_shares) {
+        TCRunner.method_called(new Throwable());
         this.total_shares = total_shares;
     }
 
     public void set_ownership_upper_limit_rq(float ownership_upper_limit) {
+        TCRunner.method_called(new Throwable());
         this.ownership_upper_limit = ownership_upper_limit;
     }
 
     public boolean validate_order_price_limit(Order order) {
+        TCRunner.method_called(new Throwable());
         if(order.price % tick_size == 0) {
             int lower_price_limit = reference_price - (int)(reference_price * static_price_band_lower_limit);
             int upper_price_limit = reference_price + (int)(reference_price * static_price_band_upper_limit);
@@ -60,6 +69,7 @@ public class Environment {
     }
 
     public boolean validate_order_quantity_limit(Order order) {
+        TCRunner.method_called(new Throwable());
         if(order.quantity % lot_size == 0) {
             if (order.is_buy) {
                 int owned_qty = order.shareholder_id.ownership;

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class ART_ISP extends SelectionMethod{
     @Override
     public TestCase best_candidate(TestCase[] candidate_set) {
@@ -12,5 +14,10 @@ public class ART_ISP extends SelectionMethod{
         }
         ISPCoverage.select_testcase(furthest_candidate);
         return furthest_candidate;
+    }
+
+    @Override
+    public void reset() {
+        ISPCoverage.isp_partitions_situation = new ArrayList<>();
     }
 }

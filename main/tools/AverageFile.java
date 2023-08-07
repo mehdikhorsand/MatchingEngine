@@ -36,6 +36,8 @@ public class AverageFile {
         index = new String[Settings.repetition_number];
         for (int i=0; i<Settings.repetition_number; i++) {
             index[i] = Terminal.cat(Settings.report_location + i + file_loc_in_report_i);
+            if(file_loc_in_coverage.endsWith(".html"))
+                index[i] = index[i].replace(",", "");
         }
     }
 

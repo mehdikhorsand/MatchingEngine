@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Shareholder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MatchingEngine</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Shareholder.java</span></div><h1>Shareholder.java</h1><pre class="source lang-java linenums">import java.util.ArrayList;
+// total branches : 23
+// never covered with valid orders : 1
+
+public class Shareholder {
+<span class="fc" id="L6">    static ArrayList&lt;Shareholder&gt; list = new ArrayList&lt;&gt;();</span>
+    int id;
+    int ownership;
+    int free_ownership;
+    int booked_buy_orders_qty;
+
+<span class="fc" id="L12">    public Shareholder(int shareholder_id, int ownership) {</span>
+<span class="fc" id="L13">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L14">        this.id = shareholder_id;</span>
+<span class="fc" id="L15">        this.ownership = ownership;</span>
+<span class="fc" id="L16">        this.free_ownership = ownership;</span>
+<span class="fc" id="L17">        this.booked_buy_orders_qty = 0;</span>
+<span class="fc" id="L18">        list.add(this);</span>
+<span class="fc" id="L19">    }</span>
+
+    @Override
+    public String toString() {
+<span class="fc" id="L23">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L24">        return &quot;\tOwnership\t&quot; + id + &quot;\t&quot; + ownership;</span>
+    }
+
+    public static Shareholder get_shareholder_by_id(int shareholder_id) {
+<span class="fc" id="L28">        TCRunner.method_called(new Throwable());</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        for (Shareholder shareholder : list)</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">            if (shareholder.id == shareholder_id)</span>
+<span class="fc" id="L31">                return shareholder;</span>
+<span class="nc" id="L32">        return null;</span>
+    }
+
+    public static String print_ownerships() {
+<span class="fc" id="L36">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L37">        StringBuilder result = new StringBuilder(&quot;\n\tOwnerships\t&quot; + list.size());</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        for(Shareholder shareholder : list)</span>
+<span class="fc" id="L39">            result.append(&quot;\n&quot;).append(shareholder.toString());</span>
+<span class="fc" id="L40">        return result.toString();</span>
+    }
+
+    public void added_new_order(Order order) {
+<span class="fc" id="L44">        TCRunner.method_called(new Throwable());</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        if (order.is_buy)</span>
+<span class="nc" id="L46">            booked_buy_orders_qty += order.quantity;</span>
+        else
+<span class="fc" id="L48">            free_ownership -= order.quantity;</span>
+<span class="fc" id="L49">    }</span>
+
+    public void deleted_old_order(Order order) {
+<span class="fc" id="L52">        TCRunner.method_called(new Throwable());</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if (order.is_buy)</span>
+<span class="nc" id="L54">            booked_buy_orders_qty -= order.quantity;</span>
+        else
+<span class="fc" id="L56">            free_ownership += order.quantity;</span>
+<span class="fc" id="L57">    }</span>
+
+    public void increase_ownership(Trade trade) {
+<span class="nc" id="L60">        TCRunner.method_called(new Throwable());</span>
+<span class="nc" id="L61">        ownership += trade.quantity;</span>
+<span class="nc" id="L62">        free_ownership += trade.quantity;</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (trade.buy_order_id.is_in_queue)</span>
+<span class="nc" id="L64">            booked_buy_orders_qty -= trade.quantity;</span>
+<span class="nc" id="L65">    }</span>
+
+    public void decrease_ownership(Trade trade) {
+<span class="nc" id="L68">        TCRunner.method_called(new Throwable());</span>
+<span class="nc" id="L69">        ownership -= trade.quantity;</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (!trade.sell_order_id.is_in_queue)</span>
+<span class="nc" id="L71">            free_ownership -= trade.quantity;</span>
+<span class="nc" id="L72">    }</span>
+
+    public boolean ownership_validation(Order order) {
+<span class="fc" id="L75">        TCRunner.method_called(new Throwable());</span>
+<span class="fc bfc" id="L76" title="All 4 branches covered.">        return order.is_buy || free_ownership &gt;= order.quantity;</span>
+    }
+
+    public void rollback_increase_ownership(Trade trade) {
+<span class="nc" id="L80">        TCRunner.method_called(new Throwable());</span>
+<span class="nc" id="L81">        ownership -= trade.quantity;</span>
+<span class="nc" id="L82">        free_ownership -= trade.quantity;</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        if (trade.buy_order_id.is_in_queue)</span>
+<span class="nc" id="L84">            booked_buy_orders_qty += trade.quantity;</span>
+<span class="nc" id="L85">    }</span>
+
+    public void rollback_decrease_ownership(Trade trade){
+<span class="nc" id="L88">        TCRunner.method_called(new Throwable());</span>
+<span class="nc" id="L89">        ownership +=trade.quantity;</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        if(!trade.sell_order_id.is_in_queue)</span>
+<span class="nc" id="L91">            free_ownership +=trade.quantity;</span>
+<span class="nc" id="L92">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
