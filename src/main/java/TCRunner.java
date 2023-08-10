@@ -15,9 +15,11 @@ public class TCRunner {
     MatchingEngine matching_engine;
     static FileWriter writer;
     static ArrayList<String> method_invocation_sequence;
+    static ArrayList<ArrayList<String>> method_invocation_path;
 
     public TCRunner(String input_file_path, String output_file_path) {
         method_invocation_sequence = new ArrayList<>();
+        method_invocation_path = new ArrayList<>();
         TCRunner.destination_file_path = output_file_path;
         try {
             Scanner scanner = new Scanner(new File(input_file_path));
@@ -124,14 +126,32 @@ public class TCRunner {
                 get_boolean(args[6]), Integer.parseInt(args[7]));
     }
 
-//    public static ArrayList<String> get_method_invocation_sequence() {
-//        return new ArrayList<>();
-//    }
-
     public static void method_called(Throwable stack) {
+        set_method_invocation_sequence(stack);
+        set_method_invocation_path(stack);
+    }
+
+    public static void set_method_invocation_sequence(Throwable stack) {
         String class_name = stack.getStackTrace()[0].getClassName();
         String method_name = stack.getStackTrace()[0].getMethodName();
         method_invocation_sequence.add(class_name + "." + method_name);
+    }
+
+    public static void set_method_invocation_path(Throwable stack) {
+        int path_length = Math.min(Settings.method_invocation_path_length, stack.getStackTrace().length);
+        ArrayList<String> new_method_path = new ArrayList<>();
+        for(int i=0; i<path_length; i++) {
+            String class_name = stack.getStackTrace()[i].getClassName();
+            for(Class src_class : get_src_classes()) {
+                if(src_class.getName().equals(class_name)) {
+                    String method_name = stack.getStackTrace()[i].getMethodName();
+                    new_method_path.add(0, class_name + "." + method_name);
+                    break;
+                }
+            }
+        }
+//        System.out.println(new_method_path);
+        method_invocation_path.add(new_method_path);
     }
 
     public static ArrayList<String> get_src_methods_name() {

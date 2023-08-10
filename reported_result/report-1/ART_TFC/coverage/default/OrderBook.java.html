@@ -86,8 +86,8 @@ import java.util.Comparator;
 <span class="fc" id="L86">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L87">        int i = 0;</span>
 <span class="fc bfc" id="L88" title="All 2 branches covered.">        while(i &lt; orders.size()) {</span>
-<span class="pc bpc" id="L89" title="1 of 2 branches missed.">            if(orders.get(i).quantity == 0)</span>
-<span class="nc" id="L90">                remove_order(orders.get(i));</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">            if(orders.get(i).quantity == 0)</span>
+<span class="fc" id="L90">                remove_order(orders.get(i));</span>
             else
 <span class="fc" id="L92">                i++;</span>
         }
@@ -129,12 +129,12 @@ import java.util.Comparator;
     }
 
     public void insert_order(Order order, int index) {
-<span class="nc" id="L132">        TCRunner.method_called(new Throwable());</span>
-<span class="nc bnc" id="L133" title="All 2 branches missed.">        if(order.is_buy)</span>
+<span class="fc" id="L132">        TCRunner.method_called(new Throwable());</span>
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">        if(order.is_buy)</span>
 <span class="nc" id="L134">            buy_order_ids.add(index, order);</span>
         else
-<span class="nc" id="L136">            sell_order_ids.add(index, order);</span>
-<span class="nc" id="L137">        order.order_added_to_queue();</span>
-<span class="nc" id="L138">    }</span>
+<span class="fc" id="L136">            sell_order_ids.add(index, order);</span>
+<span class="fc" id="L137">        order.order_added_to_queue();</span>
+<span class="fc" id="L138">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

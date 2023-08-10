@@ -47,8 +47,8 @@ public class MatchingEngine {
 <span class="fc" id="L47">            int old_order_index = order_book.get_order_index(old_order);</span>
 <span class="fc" id="L48">            order_book.remove_order(old_order);</span>
 <span class="fc" id="L49">            String new_order_response = add_order(new_order);</span>
-<span class="fc bfc" id="L50" title="All 2 branches covered.">            if (Objects.equals(new_order_response, &quot;Rejected&quot;))</span>
-<span class="fc" id="L51">                order_book.insert_order(old_order, old_order_index);</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            if (Objects.equals(new_order_response, &quot;Rejected&quot;))</span>
+<span class="nc" id="L51">                order_book.insert_order(old_order, old_order_index);</span>
 <span class="fc" id="L52">            TCRunner.print_output(&quot;ReplaceOrderRs\t&quot; + new_order_response);</span>
 <span class="fc" id="L53">        } else</span>
 <span class="fc" id="L54">            TCRunner.print_output(&quot;ReplaceOrderRs\tRejected&quot;);</span>
@@ -64,8 +64,8 @@ public class MatchingEngine {
     public int get_total_traded_qty() {
 <span class="fc" id="L65">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L66">        int output = 0;</span>
-<span class="fc bfc" id="L67" title="All 2 branches covered.">        for(Trade trade : trades)</span>
-<span class="fc" id="L68">            output += trade.quantity;</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        for(Trade trade : trades)</span>
+<span class="nc" id="L68">            output += trade.quantity;</span>
 <span class="fc" id="L69">        return output;</span>
     }
 
@@ -73,7 +73,7 @@ public class MatchingEngine {
 <span class="fc" id="L73">        TCRunner.method_called(new Throwable());</span>
 <span class="pc bpc" id="L74" title="1 of 4 branches missed.">        if(order.has_valid_attrs() &amp;&amp; environment.validate_order_price_limit(order)</span>
 <span class="fc bfc" id="L75" title="All 2 branches covered.">                &amp;&amp; environment.validate_order_quantity_limit(order)</span>
-<span class="fc bfc" id="L76" title="All 2 branches covered.">                &amp;&amp; order.shareholder_id.ownership_validation(order)){</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">                &amp;&amp; order.shareholder_id.ownership_validation(order)) {</span>
             // trade order
 <span class="fc" id="L78">            match(order);</span>
 <span class="fc" id="L79">            int total_traded_qty = get_total_traded_qty();</span>
@@ -84,7 +84,7 @@ public class MatchingEngine {
             }
 <span class="pc bpc" id="L85" title="3 of 6 branches missed.">            else if(order.broker_id.credit_validation(order)||(order.fill_and_kill &amp;&amp; order.broker_id.free_credit &gt;= 0)) {</span>
                 // accept order
-<span class="pc bpc" id="L87" title="1 of 4 branches missed.">                if (order.quantity &gt; 0 &amp;&amp; !order.fill_and_kill)</span>
+<span class="pc bpc" id="L87" title="2 of 4 branches missed.">                if (order.quantity &gt; 0 &amp;&amp; !order.fill_and_kill)</span>
 <span class="fc" id="L88">                    order_book.add_order(order);</span>
 <span class="fc" id="L89">                order_book.remove_empty_orders();</span>
 <span class="fc" id="L90">                return &quot;Accepted&quot;;</span>
@@ -102,15 +102,15 @@ public class MatchingEngine {
 <span class="fc bfc" id="L102" title="All 2 branches covered.">        Order old_order = (buy_order != new_order)? buy_order:sell_order;</span>
 <span class="fc bfc" id="L103" title="All 4 branches covered.">        if(sell_order != null &amp;&amp; buy_order != null) {</span>
 <span class="pc bpc" id="L104" title="1 of 2 branches missed.">            if (sell_order.price &lt;= buy_order.price) {</span>
-<span class="fc" id="L105">                int trade_qty = Math.min(new_order.quantity, old_order.get_maximum_quantity_to_trade());</span>
-<span class="fc bfc" id="L106" title="All 2 branches covered.">                if(trade_qty &gt; 0) {</span>
-<span class="pc bpc" id="L107" title="1 of 2 branches missed.">                    if(old_order.disclosed_quantity == trade_qty) {</span>
+<span class="nc" id="L105">                int trade_qty = Math.min(new_order.quantity, old_order.get_maximum_quantity_to_trade());</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">                if(trade_qty &gt; 0) {</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">                    if(old_order.disclosed_quantity == trade_qty) {</span>
                         // iceberg order finished disclosed quantity.
 <span class="nc" id="L109">                        order_book.remove_order(old_order);</span>
 <span class="nc" id="L110">                        order_book.add_order(old_order);</span>
                     }
-<span class="fc" id="L112">                    trades.add(new Trade(trade_qty, buy_order, sell_order));</span>
-<span class="fc" id="L113">                    match(new_order);</span>
+<span class="nc" id="L112">                    trades.add(new Trade(trade_qty, buy_order, sell_order));</span>
+<span class="nc" id="L113">                    match(new_order);</span>
                 }
             }
         }
@@ -118,12 +118,12 @@ public class MatchingEngine {
 
     public void rollback_by_trades() {
 <span class="fc" id="L120">        TCRunner.method_called(new Throwable());</span>
-<span class="fc bfc" id="L121" title="All 2 branches covered.">        while(trades.size() &gt; 0) {</span>
-<span class="fc" id="L122">            Trade last_trade = trades.get(trades.size()-1);</span>
-<span class="fc" id="L123">            last_trade.rollback_trade();</span>
-<span class="fc" id="L124">            order_book.rollback_order_book(last_trade);</span>
-<span class="fc" id="L125">            trades.remove(last_trade);</span>
-<span class="fc" id="L126">        }</span>
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        while(trades.size() &gt; 0) {</span>
+<span class="nc" id="L122">            Trade last_trade = trades.get(trades.size()-1);</span>
+<span class="nc" id="L123">            last_trade.rollback_trade();</span>
+<span class="nc" id="L124">            order_book.rollback_order_book(last_trade);</span>
+<span class="nc" id="L125">            trades.remove(last_trade);</span>
+<span class="nc" id="L126">        }</span>
 <span class="fc" id="L127">    }</span>
 
     @Override
@@ -140,8 +140,8 @@ public class MatchingEngine {
     public String print_trades() {
 <span class="fc" id="L141">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L142">        StringBuilder output = new StringBuilder(&quot;\n\tTrades\t&quot; + trades.size());</span>
-<span class="fc bfc" id="L143" title="All 2 branches covered.">        for(Trade trade : trades)</span>
-<span class="fc" id="L144">            output.append(trade);</span>
+<span class="pc bpc" id="L143" title="1 of 2 branches missed.">        for(Trade trade : trades)</span>
+<span class="nc" id="L144">            output.append(trade);</span>
 <span class="fc" id="L145">        return output.toString();</span>
     }
 }

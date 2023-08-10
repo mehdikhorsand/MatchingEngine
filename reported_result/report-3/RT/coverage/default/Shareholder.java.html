@@ -42,34 +42,34 @@ public class Shareholder {
 
     public void added_new_order(Order order) {
 <span class="fc" id="L44">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        if (order.is_buy)</span>
-<span class="nc" id="L46">            booked_buy_orders_qty += order.quantity;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (order.is_buy)</span>
+<span class="fc" id="L46">            booked_buy_orders_qty += order.quantity;</span>
         else
 <span class="fc" id="L48">            free_ownership -= order.quantity;</span>
 <span class="fc" id="L49">    }</span>
 
     public void deleted_old_order(Order order) {
 <span class="fc" id="L52">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if (order.is_buy)</span>
-<span class="nc" id="L54">            booked_buy_orders_qty -= order.quantity;</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (order.is_buy)</span>
+<span class="fc" id="L54">            booked_buy_orders_qty -= order.quantity;</span>
         else
 <span class="fc" id="L56">            free_ownership += order.quantity;</span>
 <span class="fc" id="L57">    }</span>
 
     public void increase_ownership(Trade trade) {
-<span class="nc" id="L60">        TCRunner.method_called(new Throwable());</span>
-<span class="nc" id="L61">        ownership += trade.quantity;</span>
-<span class="nc" id="L62">        free_ownership += trade.quantity;</span>
-<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (trade.buy_order_id.is_in_queue)</span>
+<span class="fc" id="L60">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L61">        ownership += trade.quantity;</span>
+<span class="fc" id="L62">        free_ownership += trade.quantity;</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">        if (trade.buy_order_id.is_in_queue)</span>
 <span class="nc" id="L64">            booked_buy_orders_qty -= trade.quantity;</span>
-<span class="nc" id="L65">    }</span>
+<span class="fc" id="L65">    }</span>
 
     public void decrease_ownership(Trade trade) {
-<span class="nc" id="L68">        TCRunner.method_called(new Throwable());</span>
-<span class="nc" id="L69">        ownership -= trade.quantity;</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">        if (!trade.sell_order_id.is_in_queue)</span>
+<span class="fc" id="L68">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L69">        ownership -= trade.quantity;</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if (!trade.sell_order_id.is_in_queue)</span>
 <span class="nc" id="L71">            free_ownership -= trade.quantity;</span>
-<span class="nc" id="L72">    }</span>
+<span class="fc" id="L72">    }</span>
 
     public boolean ownership_validation(Order order) {
 <span class="fc" id="L75">        TCRunner.method_called(new Throwable());</span>

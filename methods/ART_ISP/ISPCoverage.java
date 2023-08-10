@@ -26,17 +26,17 @@ public class ISPCoverage {
                     score += get_score(0, tc_isp_res.get(i).get(j));
             }
         }
-        System.out.println("**************************************");
-        System.out.println("isp: " + isp_partitions_situation);
-        System.out.println("tc: " + tc_isp_res);
-        System.out.println("score: " + score);
+//        System.out.println("**************************************");
+//        System.out.println("isp: " + isp_partitions_situation);
+//        System.out.println("tc: " + tc_isp_res);
+//        System.out.println("score: " + score);
         return score;
     }
 
     private static float get_score(int partition_covered_quantity, int tc_partition_covered_number) {
         float score = 0;
         int max_covering_partition = 3; // 3 first one is important
-        int base = 5;                   // one 0->1 is better than five 1->2
+        int base = 10;                   // one 0->1 is better than ten 1->2
         for (int i=1; i<=tc_partition_covered_number; i++)
             score += Math.pow(base, max_covering_partition - (partition_covered_quantity + i));
         return score;
@@ -56,21 +56,6 @@ public class ISPCoverage {
         ArrayList<ArrayList<Integer>> tc_isp_res = Characteristic.get_testcase_isp_result(tc);
         isp_partitions_situation = add_to_isp_partitions_situations(tc_isp_res);
     }
-
-//    public static void validate_computed_isp_coverage(ArrayList<Integer> isp_coverage){
-//        boolean has_true = false;
-//        for(Integer b : isp_coverage)
-//            if(b.equals(Integer.T)){
-//                conditional_error(has_true, "non disjoint output for characteristic.");
-//                has_true = true;
-//            }
-//        conditional_error(!has_true, "non complete output for characteristic.");
-//    }
-//
-//    public static void conditional_error(boolean condition, String error_msg) {
-//        if(condition)
-//            throw new AssertionError(error_msg);
-//    }
 
     public static String get_isp_partitions_in_string() {
         String res = "";

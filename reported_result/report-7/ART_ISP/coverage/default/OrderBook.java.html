@@ -94,16 +94,16 @@ import java.util.Comparator;
 <span class="fc" id="L94">    }</span>
 
     public void rollback_order_book(Trade trade) {
-<span class="fc" id="L97">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L98" title="1 of 2 branches missed.">        if(trade.buy_order_id.is_in_queue){</span>
+<span class="nc" id="L97">        TCRunner.method_called(new Throwable());</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">        if(trade.buy_order_id.is_in_queue){</span>
 <span class="nc" id="L99">            buy_order_ids.remove(trade.buy_order_id);</span>
 <span class="nc" id="L100">            buy_order_ids.add(0, trade.buy_order_id);</span>
         }
         else{
-<span class="fc" id="L103">            sell_order_ids.remove(trade.sell_order_id);</span>
-<span class="fc" id="L104">            sell_order_ids.add(0, trade.sell_order_id);</span>
+<span class="nc" id="L103">            sell_order_ids.remove(trade.sell_order_id);</span>
+<span class="nc" id="L104">            sell_order_ids.add(0, trade.sell_order_id);</span>
         }
-<span class="fc" id="L106">    }</span>
+<span class="nc" id="L106">    }</span>
 
     public Order get_order(ArrayList&lt;Order&gt; orders, int order_id) {
 <span class="fc" id="L109">        TCRunner.method_called(new Throwable());</span>
@@ -116,7 +116,7 @@ import java.util.Comparator;
     public Order get_order(int order_id) {
 <span class="fc" id="L117">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L118">        Order buy_order = get_order(buy_order_ids, order_id);</span>
-<span class="fc bfc" id="L119" title="All 2 branches covered.">        return (buy_order != null)? buy_order : get_order(sell_order_ids, order_id);</span>
+<span class="pc bpc" id="L119" title="1 of 2 branches missed.">        return (buy_order != null)? buy_order : get_order(sell_order_ids, order_id);</span>
     }
 
     public int get_order_index(Order order) {

@@ -8,14 +8,16 @@ public class Settings {
     static final int broker_number = 7;
     static final int max_order_price = 10;
     static final int max_order_quantity = 8;
-    static final int repetition_number = 20;
+    static final int repetition_number = 10;
+    static final int method_invocation_path_length = 2;
     public static ArrayList<String> get_methods() {
         ArrayList<String> methods = new ArrayList<>();
         methods.add("RT");
-        methods.add("ART_FT");
-        methods.add("ART_WT");
+//        methods.add("ART_FT");
+//        methods.add("ART_WT");
         methods.add("ART_TFC");
         methods.add("ART_ISP");
+        methods.add("ART_AutoISP");
         return methods;
     }
 
