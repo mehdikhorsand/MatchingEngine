@@ -91,6 +91,19 @@
                         <exclude>**/SelectionMethod.*</exclude>
                         <exclude>**/ART_ISP.*</exclude>
                         <exclude>**/RT.*</exclude>
+                        <exclude>**/AutoISPCoverage.*</exclude>
+                        <exclude>**/TrisectionFrequencyConversion.*</exclude>
+                        <exclude>**/FrequencyTransform.*</exclude>
+                        <exclude>**/MethodEdgePairCoverage.*</exclude>
+                        <exclude>**/ART_WT.*</exclude>
+                        <exclude>**/ART_TFC.*</exclude>
+                        <exclude>**/ART_FT.*</exclude>
+                        <exclude>**/AutoCharacteristic.*</exclude>
+                        <exclude>**/WaveletTransform.*</exclude>
+                        <exclude>**/ART_AutoISP.*</exclude>
+                        <exclude>**/AutoPartitions.*</exclude>
+                        <exclude>**/Distance.*</exclude>
+                        <exclude>**/Node.*</exclude>
                     </excludes>
                 </configuration>
             </plugin>

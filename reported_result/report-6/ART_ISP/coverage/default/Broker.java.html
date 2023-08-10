@@ -64,7 +64,7 @@ public class Broker {
 
     public boolean credit_validation(Order order) {
 <span class="fc" id="L66">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L67" title="1 of 4 branches missed.">        return !order.is_buy || free_credit &gt;= order.value();</span>
+<span class="fc bfc" id="L67" title="All 4 branches covered.">        return !order.is_buy || free_credit &gt;= order.value();</span>
     }
 
     public void rollback_increase_credit(Trade trade) {
@@ -77,7 +77,7 @@ public class Broker {
 <span class="fc" id="L77">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L78">        credit += trade.value;</span>
 <span class="pc bpc" id="L79" title="1 of 2 branches missed.">        if(!trade.buy_order_id.is_in_queue)</span>
-<span class="nc" id="L80">            free_credit += trade.value;</span>
+<span class="fc" id="L80">            free_credit += trade.value;</span>
 <span class="fc" id="L81">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -73,7 +73,7 @@ public class MatchingEngine {
         TCRunner.method_called(new Throwable());
         if(order.has_valid_attrs() && environment.validate_order_price_limit(order)
                 && environment.validate_order_quantity_limit(order)
-                && order.shareholder_id.ownership_validation(order)){
+                && order.shareholder_id.ownership_validation(order)) {
             // trade order
             match(order);
             int total_traded_qty = get_total_traded_qty();

@@ -14,6 +14,8 @@ public class SelectionMethod {
         sub_classes.add(new ART_FT());
         sub_classes.add(new ART_WT());
         sub_classes.add(new ART_TFC());
+        sub_classes.add(new ART_AutoISP());
+//        sub_classes.add(new ART_G());
         for(String method : Settings.get_methods())
             for(SelectionMethod sub_class : sub_classes)
                 if(sub_class.getClass().getName().equals(method))

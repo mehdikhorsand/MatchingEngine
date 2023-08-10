@@ -5,37 +5,37 @@ SetStaticPriceBandLowerLimitRq	0.6
 SetStaticPriceBandUpperLimitRq	0.8
 SetTotalSharesRq	100
 SetOwnershipUpperLimitRq	0.2
-SetCreditRq	1	6
-SetCreditRq	2	4
-SetCreditRq	3	5
-SetCreditRq	4	10
-SetCreditRq	5	1
-SetCreditRq	6	5
-SetCreditRq	7	3
-SetOwnershipRq	1	35
-SetOwnershipRq	2	47
-SetOwnershipRq	3	39
-SetOwnershipRq	4	45
-SetOwnershipRq	5	57
-SetOwnershipRq	6	24
-SetOwnershipRq	7	53
-NewOrderRq	5	4	8	4	False	1	False	3
-NewOrderRq	7	4	4	8	False	0	False	6
-NewOrderRq	3	2	3	6	True	0	False	0
-NewOrderRq	2	1	8	8	False	0	False	1
+SetCreditRq	1	15
+SetCreditRq	2	12
+SetCreditRq	3	8
+SetCreditRq	4	19
+SetCreditRq	5	7
+SetCreditRq	6	18
+SetCreditRq	7	5
+SetOwnershipRq	1	74
+SetOwnershipRq	2	34
+SetOwnershipRq	3	58
+SetOwnershipRq	4	54
+SetOwnershipRq	5	92
+SetOwnershipRq	6	9
+SetOwnershipRq	7	21
+NewOrderRq	6	7	4	2	False	0	False	0
+NewOrderRq	5	5	1	4	False	2	False	2
+NewOrderRq	5	1	4	8	True	0	True	0
+NewOrderRq	6	3	10	7	False	0	False	0
 CancelOrderRq	4	False
-NewOrderRq	6	7	7	1	True	0	False	1
-NewOrderRq	2	3	4	2	True	0	False	0
-NewOrderRq	5	2	3	7	False	0	False	0
-NewOrderRq	4	3	8	4	False	0	False	0
-ReplaceOrderRq	9	4	3	3	6	False	0	False	0
-NewOrderRq	6	6	2	6	True	0	True	0
-NewOrderRq	1	2	1	4	False	0	False	0
-NewOrderRq	7	3	4	7	True	0	False	0
-NewOrderRq	7	6	5	7	True	2	False	2
-CancelOrderRq	14	True
-NewOrderRq	3	4	10	8	True	8	False	8
-NewOrderRq	4	5	10	7	True	0	True	0
-NewOrderRq	3	3	6	5	False	0	False	0
-NewOrderRq	1	7	2	6	True	0	True	0
-ReplaceOrderRq	19	1	7	8	4	True	0	True	0
+NewOrderRq	3	3	3	7	False	0	False	0
+NewOrderRq	1	4	7	2	True	0	True	0
+NewOrderRq	4	1	2	2	True	1	False	1
+NewOrderRq	6	1	1	8	False	0	False	3
+ReplaceOrderRq	9	6	1	2	3	False	0	True	0
+NewOrderRq	1	5	4	4	True	0	False	4
+NewOrderRq	5	4	10	1	False	0	True	0
+NewOrderRq	7	1	9	3	False	0	False	2
+NewOrderRq	7	5	9	1	False	1	False	1
+CancelOrderRq	14	False
+NewOrderRq	1	5	7	2	False	0	False	0
+NewOrderRq	6	7	9	1	False	1	False	0
+NewOrderRq	3	6	9	3	True	0	False	0
+NewOrderRq	2	4	5	4	False	0	True	0
+ReplaceOrderRq	19	2	4	8	8	False	0	False	0

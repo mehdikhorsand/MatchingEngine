@@ -42,16 +42,16 @@ public class Shareholder {
 
     public void added_new_order(Order order) {
 <span class="fc" id="L44">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        if (order.is_buy)</span>
-<span class="nc" id="L46">            booked_buy_orders_qty += order.quantity;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (order.is_buy)</span>
+<span class="fc" id="L46">            booked_buy_orders_qty += order.quantity;</span>
         else
 <span class="fc" id="L48">            free_ownership -= order.quantity;</span>
 <span class="fc" id="L49">    }</span>
 
     public void deleted_old_order(Order order) {
 <span class="fc" id="L52">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if (order.is_buy)</span>
-<span class="nc" id="L54">            booked_buy_orders_qty -= order.quantity;</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        if (order.is_buy)</span>
+<span class="fc" id="L54">            booked_buy_orders_qty -= order.quantity;</span>
         else
 <span class="fc" id="L56">            free_ownership += order.quantity;</span>
 <span class="fc" id="L57">    }</span>
@@ -73,7 +73,7 @@ public class Shareholder {
 
     public boolean ownership_validation(Order order) {
 <span class="fc" id="L75">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L76" title="1 of 4 branches missed.">        return order.is_buy || free_ownership &gt;= order.quantity;</span>
+<span class="fc bfc" id="L76" title="All 4 branches covered.">        return order.is_buy || free_ownership &gt;= order.quantity;</span>
     }
 
     public void rollback_increase_ownership(Trade trade) {

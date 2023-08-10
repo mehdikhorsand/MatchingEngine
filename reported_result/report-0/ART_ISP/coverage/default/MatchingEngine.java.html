@@ -73,7 +73,7 @@ public class MatchingEngine {
 <span class="fc" id="L73">        TCRunner.method_called(new Throwable());</span>
 <span class="pc bpc" id="L74" title="1 of 4 branches missed.">        if(order.has_valid_attrs() &amp;&amp; environment.validate_order_price_limit(order)</span>
 <span class="fc bfc" id="L75" title="All 2 branches covered.">                &amp;&amp; environment.validate_order_quantity_limit(order)</span>
-<span class="fc bfc" id="L76" title="All 2 branches covered.">                &amp;&amp; order.shareholder_id.ownership_validation(order)){</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">                &amp;&amp; order.shareholder_id.ownership_validation(order)) {</span>
             // trade order
 <span class="fc" id="L78">            match(order);</span>
 <span class="fc" id="L79">            int total_traded_qty = get_total_traded_qty();</span>
@@ -118,12 +118,12 @@ public class MatchingEngine {
 
     public void rollback_by_trades() {
 <span class="fc" id="L120">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        while(trades.size() &gt; 0) {</span>
-<span class="nc" id="L122">            Trade last_trade = trades.get(trades.size()-1);</span>
-<span class="nc" id="L123">            last_trade.rollback_trade();</span>
-<span class="nc" id="L124">            order_book.rollback_order_book(last_trade);</span>
-<span class="nc" id="L125">            trades.remove(last_trade);</span>
-<span class="nc" id="L126">        }</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">        while(trades.size() &gt; 0) {</span>
+<span class="fc" id="L122">            Trade last_trade = trades.get(trades.size()-1);</span>
+<span class="fc" id="L123">            last_trade.rollback_trade();</span>
+<span class="fc" id="L124">            order_book.rollback_order_book(last_trade);</span>
+<span class="fc" id="L125">            trades.remove(last_trade);</span>
+<span class="fc" id="L126">        }</span>
 <span class="fc" id="L127">    }</span>
 
     @Override

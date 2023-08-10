@@ -25,13 +25,13 @@ public class Trade {
 
     @Override
     public String toString() {
-<span class="nc" id="L28">        TCRunner.method_called(new Throwable());</span>
-<span class="nc" id="L29">        return &quot;\n\tTrade\t&quot; + price + &quot;\t&quot; + quantity + &quot;\t&quot; + buy_order_id.id + &quot;\t&quot; + sell_order_id.id;</span>
+<span class="fc" id="L28">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L29">        return &quot;\n\tTrade\t&quot; + price + &quot;\t&quot; + quantity + &quot;\t&quot; + buy_order_id.id + &quot;\t&quot; + sell_order_id.id;</span>
     }
 
     public int get_price() {
 <span class="fc" id="L33">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        return (buy_order_id.is_in_queue)? buy_order_id.price:sell_order_id.price;</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        return (buy_order_id.is_in_queue)? buy_order_id.price:sell_order_id.price;</span>
     }
 
     public void rollback_trade() {
