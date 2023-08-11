@@ -64,7 +64,7 @@ public class Broker {
 
     public boolean credit_validation(Order order) {
 <span class="fc" id="L66">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L67" title="1 of 4 branches missed.">        return !order.is_buy || free_credit &gt;= order.value();</span>
+<span class="pc bpc" id="L67" title="3 of 4 branches missed.">        return !order.is_buy || free_credit &gt;= order.value();</span>
     }
 
     public void rollback_increase_credit(Trade trade) {

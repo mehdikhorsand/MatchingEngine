@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-// total branch in matching engine source code : 178
+// total branch in matching engine source code : 182
 // branches not covered by valid orders : 12
 
 public class TCRunner {
@@ -138,7 +138,7 @@ public class TCRunner {
     }
 
     public static void set_method_invocation_path(Throwable stack) {
-        int path_length = Math.min(Settings.method_invocation_path_length, stack.getStackTrace().length);
+        int path_length = Math.min(2, stack.getStackTrace().length);
         ArrayList<String> new_method_path = new ArrayList<>();
         for(int i=0; i<path_length; i++) {
             String class_name = stack.getStackTrace()[i].getClassName();
@@ -150,7 +150,6 @@ public class TCRunner {
                 }
             }
         }
-//        System.out.println(new_method_path);
         method_invocation_path.add(new_method_path);
     }
 

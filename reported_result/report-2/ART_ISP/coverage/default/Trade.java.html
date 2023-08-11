@@ -8,40 +8,41 @@ public class Trade {
     int price;
     int value;
 <span class="fc" id="L10">    public Trade(int quantity, Order buy_order_id, Order sell_order_id) {</span>
-<span class="fc" id="L11">        this.buy_order_id = buy_order_id;</span>
-<span class="fc" id="L12">        this.sell_order_id = sell_order_id;</span>
-<span class="fc" id="L13">        this.quantity = quantity;</span>
-<span class="fc" id="L14">        this.price = get_price();</span>
-<span class="fc" id="L15">        this.value = quantity * price;</span>
+<span class="fc" id="L11">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L12">        this.buy_order_id = buy_order_id;</span>
+<span class="fc" id="L13">        this.sell_order_id = sell_order_id;</span>
+<span class="fc" id="L14">        this.quantity = quantity;</span>
+<span class="fc" id="L15">        this.price = get_price();</span>
+<span class="fc" id="L16">        this.value = quantity * price;</span>
 //        update order quantities
-<span class="fc" id="L17">        buy_order_id.update_order_quantities(this);</span>
-<span class="fc" id="L18">        sell_order_id.update_order_quantities(this);</span>
+<span class="fc" id="L18">        buy_order_id.update_order_quantities(this);</span>
+<span class="fc" id="L19">        sell_order_id.update_order_quantities(this);</span>
 //        update credits and ownerships
-<span class="fc" id="L20">        buy_order_id.broker_id.decrease_credit(this);</span>
-<span class="fc" id="L21">        sell_order_id.broker_id.increase_credit(this);</span>
-<span class="fc" id="L22">        buy_order_id.shareholder_id.increase_ownership(this);</span>
-<span class="fc" id="L23">        sell_order_id.shareholder_id.decrease_ownership(this);</span>
-<span class="fc" id="L24">    }</span>
+<span class="fc" id="L21">        buy_order_id.broker_id.decrease_credit(this);</span>
+<span class="fc" id="L22">        sell_order_id.broker_id.increase_credit(this);</span>
+<span class="fc" id="L23">        buy_order_id.shareholder_id.increase_ownership(this);</span>
+<span class="fc" id="L24">        sell_order_id.shareholder_id.decrease_ownership(this);</span>
+<span class="fc" id="L25">    }</span>
 
     @Override
     public String toString() {
-<span class="fc" id="L28">        TCRunner.method_called(new Throwable());</span>
-<span class="fc" id="L29">        return &quot;\n\tTrade\t&quot; + price + &quot;\t&quot; + quantity + &quot;\t&quot; + buy_order_id.id + &quot;\t&quot; + sell_order_id.id;</span>
+<span class="fc" id="L29">        TCRunner.method_called(new Throwable());</span>
+<span class="fc" id="L30">        return &quot;\n\tTrade\t&quot; + price + &quot;\t&quot; + quantity + &quot;\t&quot; + buy_order_id.id + &quot;\t&quot; + sell_order_id.id;</span>
     }
 
     public int get_price() {
-<span class="fc" id="L33">        TCRunner.method_called(new Throwable());</span>
-<span class="fc bfc" id="L34" title="All 2 branches covered.">        return (buy_order_id.is_in_queue)? buy_order_id.price:sell_order_id.price;</span>
+<span class="fc" id="L34">        TCRunner.method_called(new Throwable());</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        return (buy_order_id.is_in_queue)? buy_order_id.price:sell_order_id.price;</span>
     }
 
     public void rollback_trade() {
-<span class="fc" id="L38">        TCRunner.method_called(new Throwable());</span>
-<span class="fc" id="L39">        buy_order_id.rollback_update_order_quantities(this);</span>
-<span class="fc" id="L40">        sell_order_id.rollback_update_order_quantities(this);</span>
-<span class="fc" id="L41">        buy_order_id.broker_id.rollback_decrease_credit(this);</span>
-<span class="fc" id="L42">        sell_order_id.broker_id.rollback_increase_credit(this);</span>
-<span class="fc" id="L43">        buy_order_id.shareholder_id.rollback_increase_ownership(this);</span>
-<span class="fc" id="L44">        sell_order_id.shareholder_id.rollback_decrease_ownership(this);</span>
-<span class="fc" id="L45">    }</span>
+<span class="nc" id="L39">        TCRunner.method_called(new Throwable());</span>
+<span class="nc" id="L40">        buy_order_id.rollback_update_order_quantities(this);</span>
+<span class="nc" id="L41">        sell_order_id.rollback_update_order_quantities(this);</span>
+<span class="nc" id="L42">        buy_order_id.broker_id.rollback_decrease_credit(this);</span>
+<span class="nc" id="L43">        sell_order_id.broker_id.rollback_increase_credit(this);</span>
+<span class="nc" id="L44">        buy_order_id.shareholder_id.rollback_increase_ownership(this);</span>
+<span class="nc" id="L45">        sell_order_id.shareholder_id.rollback_decrease_ownership(this);</span>
+<span class="nc" id="L46">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

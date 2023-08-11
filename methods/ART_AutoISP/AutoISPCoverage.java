@@ -48,9 +48,9 @@ public class AutoISPCoverage {
 
     public static void select_testcase(MethodEdgePairCoverage furthestCandidate) {
         System.out.println("**************************\nisp_coverage_situation:\n");
-        System.out.println(get_isp_partitions_in_string(isp_coverage_situation));
-        System.out.println("furthest_candidates characteristics:\n");
-        System.out.println(get_isp_partitions_in_string(furthestCandidate.characteristics));
+//        System.out.println(get_isp_partitions_in_string(isp_coverage_situation));
+//        System.out.println("furthest_candidates characteristics:\n");
+//        System.out.println(get_isp_partitions_in_string(furthestCandidate.characteristics));
         for(AutoCharacteristic tc_ch : furthestCandidate.characteristics) {
             boolean found_characteristic = false;
             for(AutoCharacteristic ch : isp_coverage_situation) {
@@ -76,17 +76,19 @@ public class AutoISPCoverage {
                 isp_coverage_situation.add(tc_ch);
             }
         }
-        System.out.println("isp_coverage_situation after adding selected testcase: \n");
+//        System.out.println("isp_coverage_situation: \n");
         System.out.println(get_isp_partitions_in_string(isp_coverage_situation));
     }
 
     public static String get_isp_partitions_in_string(ArrayList<AutoCharacteristic> characteristics) {
         StringBuilder res = new StringBuilder();
         for (AutoCharacteristic characteristic : characteristics) {
-            res.append(characteristic.starting_method).append("\n");
-            for(AutoPartitions partition : characteristic.partitions) {
-                res.append(" |___ ").append(partition.behavior).append("\n");
-            }
+//            if(characteristic.partitions.size() > 1) {
+                res.append(characteristic.starting_method).append("\n");
+                for (AutoPartitions partition : characteristic.partitions) {
+                    res.append(" |___ ").append(partition.behavior).append("\n");
+                }
+//            }
         }
         return res.toString();
     }

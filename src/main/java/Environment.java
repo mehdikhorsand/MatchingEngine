@@ -1,4 +1,4 @@
-// total branches : 17
+// total branches : 12
 // never covered with valid orders : 0
 
 public class Environment {

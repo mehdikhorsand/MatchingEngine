@@ -73,7 +73,7 @@ public class Shareholder {
 
     public boolean ownership_validation(Order order) {
 <span class="fc" id="L75">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L76" title="1 of 4 branches missed.">        return order.is_buy || free_ownership &gt;= order.quantity;</span>
+<span class="pc bpc" id="L76" title="2 of 4 branches missed.">        return order.is_buy || free_ownership &gt;= order.quantity;</span>
     }
 
     public void rollback_increase_ownership(Trade trade) {

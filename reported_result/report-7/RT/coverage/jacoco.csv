@@ -1,8 +1,8 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-MatchingEngine,default,Order,70,211,16,16,14,47,14,15,3,10
-MatchingEngine,default,Trade,109,0,2,0,25,0,5,0,4,0
-MatchingEngine,default,Broker,100,120,8,10,21,27,10,11,4,8
-MatchingEngine,default,OrderBook,88,261,11,19,17,63,13,21,3,16
+MatchingEngine,default,Order,80,201,16,16,16,45,15,14,4,9
+MatchingEngine,default,Trade,113,0,2,0,26,0,5,0,4,0
+MatchingEngine,default,Broker,106,114,10,8,21,27,11,10,4,8
+MatchingEngine,default,OrderBook,95,254,12,18,19,61,13,21,3,16
 MatchingEngine,default,Shareholder,125,136,12,10,25,30,12,11,4,8
-MatchingEngine,default,Environment,2,168,1,11,1,38,1,16,0,11
-MatchingEngine,default,MatchingEngine,78,344,20,46,14,79,17,27,0,11
+MatchingEngine,default,Environment,0,170,0,12,0,39,0,17,0,11
+MatchingEngine,default,MatchingEngine,88,334,25,41,16,77,20,24,0,11

@@ -9,7 +9,7 @@ public class MatchingEngine {
     ArrayList&lt;Trade&gt; trades;
     String last_request_type;
 
-<span class="fc" id="L12">    public MatchingEngine(Environment environment){</span>
+<span class="fc" id="L12">    public MatchingEngine(Environment environment) {</span>
 <span class="fc" id="L13">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L14">        this.environment = environment;</span>
 <span class="fc" id="L15">        order_book = new OrderBook();</span>
@@ -54,7 +54,7 @@ public class MatchingEngine {
 <span class="fc" id="L54">            TCRunner.print_output(&quot;ReplaceOrderRs\tRejected&quot;);</span>
 <span class="fc" id="L55">    }</span>
 
-    public void new_order_request(Order order){
+    public void new_order_request(Order order) {
 <span class="fc" id="L58">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L59">        new_request(&quot;New&quot;, order);</span>
 <span class="fc" id="L60">        String response = add_order(order);</span>
@@ -69,11 +69,11 @@ public class MatchingEngine {
 <span class="fc" id="L69">        return output;</span>
     }
 
-    public String add_order(Order order){
+    public String add_order(Order order) {
 <span class="fc" id="L73">        TCRunner.method_called(new Throwable());</span>
 <span class="pc bpc" id="L74" title="1 of 4 branches missed.">        if(order.has_valid_attrs() &amp;&amp; environment.validate_order_price_limit(order)</span>
 <span class="fc bfc" id="L75" title="All 2 branches covered.">                &amp;&amp; environment.validate_order_quantity_limit(order)</span>
-<span class="pc bpc" id="L76" title="1 of 2 branches missed.">                &amp;&amp; order.shareholder_id.ownership_validation(order)) {</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">                &amp;&amp; order.shareholder_id.ownership_validation(order)) {</span>
             // trade order
 <span class="fc" id="L78">            match(order);</span>
 <span class="fc" id="L79">            int total_traded_qty = get_total_traded_qty();</span>
@@ -84,7 +84,7 @@ public class MatchingEngine {
             }
 <span class="pc bpc" id="L85" title="1 of 6 branches missed.">            else if(order.broker_id.credit_validation(order)||(order.fill_and_kill &amp;&amp; order.broker_id.free_credit &gt;= 0)) {</span>
                 // accept order
-<span class="pc bpc" id="L87" title="2 of 4 branches missed.">                if (order.quantity &gt; 0 &amp;&amp; !order.fill_and_kill)</span>
+<span class="pc bpc" id="L87" title="1 of 4 branches missed.">                if (order.quantity &gt; 0 &amp;&amp; !order.fill_and_kill)</span>
 <span class="fc" id="L88">                    order_book.add_order(order);</span>
 <span class="fc" id="L89">                order_book.remove_empty_orders();</span>
 <span class="fc" id="L90">                return &quot;Accepted&quot;;</span>

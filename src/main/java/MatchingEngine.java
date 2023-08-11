@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Objects;
-// total branches : 44
+// total branches : 66
 // never covered with valid orders : 5
 
 public class MatchingEngine {
@@ -9,7 +9,7 @@ public class MatchingEngine {
     ArrayList<Trade> trades;
     String last_request_type;
 
-    public MatchingEngine(Environment environment){
+    public MatchingEngine(Environment environment) {
         TCRunner.method_called(new Throwable());
         this.environment = environment;
         order_book = new OrderBook();
@@ -54,7 +54,7 @@ public class MatchingEngine {
             TCRunner.print_output("ReplaceOrderRs\tRejected");
     }
 
-    public void new_order_request(Order order){
+    public void new_order_request(Order order) {
         TCRunner.method_called(new Throwable());
         new_request("New", order);
         String response = add_order(order);
@@ -69,7 +69,7 @@ public class MatchingEngine {
         return output;
     }
 
-    public String add_order(Order order){
+    public String add_order(Order order) {
         TCRunner.method_called(new Throwable());
         if(order.has_valid_attrs() && environment.validate_order_price_limit(order)
                 && environment.validate_order_quantity_limit(order)

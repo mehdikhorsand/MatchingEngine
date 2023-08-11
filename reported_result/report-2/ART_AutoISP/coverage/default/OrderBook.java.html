@@ -24,9 +24,9 @@ import java.util.Comparator;
 
     public void add_order(Order order) {
 <span class="fc" id="L26">        TCRunner.method_called(new Throwable());</span>
-<span class="fc bfc" id="L27" title="All 2 branches covered.">        if(order.is_buy) {</span>
-<span class="fc" id="L28">            buy_order_ids.add(order);</span>
-<span class="fc" id="L29">            sort_buy_orders();</span>
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">        if(order.is_buy) {</span>
+<span class="nc" id="L28">            buy_order_ids.add(order);</span>
+<span class="nc" id="L29">            sort_buy_orders();</span>
         }
         else {
 <span class="fc" id="L32">            sell_order_ids.add(order);</span>
@@ -37,9 +37,9 @@ import java.util.Comparator;
 
     public void remove_order(Order order) {
 <span class="fc" id="L39">        TCRunner.method_called(new Throwable());</span>
-<span class="fc bfc" id="L40" title="All 2 branches covered.">        if(order.is_buy) {</span>
-<span class="fc" id="L41">            buy_order_ids.remove(order);</span>
-<span class="fc" id="L42">            sort_buy_orders();</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if(order.is_buy) {</span>
+<span class="nc" id="L41">            buy_order_ids.remove(order);</span>
+<span class="nc" id="L42">            sort_buy_orders();</span>
         }
         else {
 <span class="fc" id="L45">            sell_order_ids.remove(order);</span>
@@ -49,9 +49,9 @@ import java.util.Comparator;
 <span class="fc" id="L49">    }</span>
 
     public void sort_buy_orders() {
-<span class="fc" id="L52">        TCRunner.method_called(new Throwable());</span>
-<span class="pc" id="L53">        buy_order_ids.sort((o1, o2) -&gt; Integer.compare(o2.price, o1.price));</span>
-<span class="fc" id="L54">    }</span>
+<span class="nc" id="L52">        TCRunner.method_called(new Throwable());</span>
+<span class="nc" id="L53">        buy_order_ids.sort((o1, o2) -&gt; Integer.compare(o2.price, o1.price));</span>
+<span class="nc" id="L54">    }</span>
 
     public void sort_sell_orders() {
 <span class="fc" id="L57">        TCRunner.method_called(new Throwable());</span>
@@ -95,9 +95,9 @@ import java.util.Comparator;
 
     public void rollback_order_book(Trade trade) {
 <span class="fc" id="L97">        TCRunner.method_called(new Throwable());</span>
-<span class="fc bfc" id="L98" title="All 2 branches covered.">        if(trade.buy_order_id.is_in_queue){</span>
-<span class="fc" id="L99">            buy_order_ids.remove(trade.buy_order_id);</span>
-<span class="fc" id="L100">            buy_order_ids.add(0, trade.buy_order_id);</span>
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">        if(trade.buy_order_id.is_in_queue){</span>
+<span class="nc" id="L99">            buy_order_ids.remove(trade.buy_order_id);</span>
+<span class="nc" id="L100">            buy_order_ids.add(0, trade.buy_order_id);</span>
         }
         else{
 <span class="fc" id="L103">            sell_order_ids.remove(trade.sell_order_id);</span>

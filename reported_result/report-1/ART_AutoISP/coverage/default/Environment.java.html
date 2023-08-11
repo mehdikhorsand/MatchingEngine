@@ -59,13 +59,13 @@
 
     public boolean validate_order_price_limit(Order order) {
 <span class="fc" id="L61">        TCRunner.method_called(new Throwable());</span>
-<span class="fc bfc" id="L62" title="All 2 branches covered.">        if(order.price % tick_size == 0) {</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        if(order.price % tick_size == 0) {</span>
 <span class="fc" id="L63">            int lower_price_limit = reference_price - (int)(reference_price * static_price_band_lower_limit);</span>
 <span class="fc" id="L64">            int upper_price_limit = reference_price + (int)(reference_price * static_price_band_upper_limit);</span>
 <span class="fc bfc" id="L65" title="All 4 branches covered.">            return lower_price_limit &lt;= order.price &amp;&amp; order.price &lt;= upper_price_limit;</span>
         }
         else
-<span class="fc" id="L68">            return false;</span>
+<span class="nc" id="L68">            return false;</span>
     }
 
     public boolean validate_order_quantity_limit(Order order) {

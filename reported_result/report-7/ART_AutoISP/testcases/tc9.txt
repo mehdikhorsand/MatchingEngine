@@ -5,37 +5,37 @@ SetStaticPriceBandLowerLimitRq	0.6
 SetStaticPriceBandUpperLimitRq	0.8
 SetTotalSharesRq	100
 SetOwnershipUpperLimitRq	0.2
-SetCreditRq	1	7
-SetCreditRq	2	11
-SetCreditRq	3	12
-SetCreditRq	4	10
-SetCreditRq	5	10
-SetCreditRq	6	12
-SetCreditRq	7	8
-SetOwnershipRq	1	90
-SetOwnershipRq	2	8
-SetOwnershipRq	3	49
-SetOwnershipRq	4	70
-SetOwnershipRq	5	57
-SetOwnershipRq	6	71
-SetOwnershipRq	7	8
-NewOrderRq	6	2	4	3	False	0	False	0
-NewOrderRq	7	6	2	2	False	0	True	0
-NewOrderRq	6	1	8	5	True	1	False	1
-NewOrderRq	6	1	6	2	True	0	False	2
-CancelOrderRq	4	True
-NewOrderRq	5	3	10	1	True	1	False	0
-NewOrderRq	7	3	5	8	False	3	False	4
-NewOrderRq	1	1	5	6	False	0	True	0
-NewOrderRq	2	7	8	6	True	0	False	4
-ReplaceOrderRq	9	2	7	7	6	True	0	True	0
-NewOrderRq	5	2	1	5	False	3	False	4
-NewOrderRq	1	7	10	3	True	0	False	0
-NewOrderRq	1	7	8	5	True	0	True	0
-NewOrderRq	2	4	7	1	True	1	False	1
-CancelOrderRq	14	True
-NewOrderRq	3	4	6	3	False	0	True	0
-NewOrderRq	2	3	3	6	True	0	False	5
-NewOrderRq	5	5	5	4	True	2	False	0
-NewOrderRq	2	6	9	2	False	2	False	0
-ReplaceOrderRq	19	2	6	8	3	False	0	True	0
+SetCreditRq	1	5
+SetCreditRq	2	20
+SetCreditRq	3	4
+SetCreditRq	4	9
+SetCreditRq	5	13
+SetCreditRq	6	18
+SetCreditRq	7	7
+SetOwnershipRq	1	65
+SetOwnershipRq	2	67
+SetOwnershipRq	3	66
+SetOwnershipRq	4	23
+SetOwnershipRq	5	9
+SetOwnershipRq	6	20
+SetOwnershipRq	7	39
+NewOrderRq	5	3	4	5	False	0	False	5
+NewOrderRq	3	1	4	5	False	0	False	2
+NewOrderRq	7	7	5	4	False	0	False	2
+NewOrderRq	1	5	10	1	False	0	False	0
+CancelOrderRq	4	False
+NewOrderRq	2	5	4	6	False	2	False	2
+NewOrderRq	5	2	5	3	False	0	False	2
+NewOrderRq	1	4	7	3	False	0	False	1
+NewOrderRq	5	3	8	7	True	0	False	7
+ReplaceOrderRq	9	5	3	2	2	True	0	False	1
+NewOrderRq	6	6	1	8	True	0	False	0
+NewOrderRq	5	2	6	5	True	0	False	3
+NewOrderRq	4	1	6	2	False	0	False	2
+NewOrderRq	3	2	4	4	False	0	False	2
+CancelOrderRq	14	False
+NewOrderRq	1	5	10	8	True	5	False	0
+NewOrderRq	1	2	8	5	True	0	True	0
+NewOrderRq	3	5	8	1	True	0	False	0
+NewOrderRq	2	5	6	8	True	0	False	2
+ReplaceOrderRq	19	2	5	7	2	True	2	False	0

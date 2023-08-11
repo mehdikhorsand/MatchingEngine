@@ -1,4 +1,4 @@
-// total branches : 5
+// total branches : 2
 // never covered with valid orders : 0
 
 public class Trade {
@@ -8,6 +8,7 @@ public class Trade {
     int price;
     int value;
     public Trade(int quantity, Order buy_order_id, Order sell_order_id) {
+        TCRunner.method_called(new Throwable());
         this.buy_order_id = buy_order_id;
         this.sell_order_id = sell_order_id;
         this.quantity = quantity;
