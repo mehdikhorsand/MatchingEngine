@@ -5,37 +5,37 @@ SetStaticPriceBandLowerLimitRq	0.6
 SetStaticPriceBandUpperLimitRq	0.8
 SetTotalSharesRq	100
 SetOwnershipUpperLimitRq	0.2
-SetCreditRq	1	14
-SetCreditRq	2	11
-SetCreditRq	3	19
-SetCreditRq	4	11
-SetCreditRq	5	20
-SetCreditRq	6	20
-SetCreditRq	7	15
-SetOwnershipRq	1	65
-SetOwnershipRq	2	63
-SetOwnershipRq	3	34
-SetOwnershipRq	4	43
-SetOwnershipRq	5	34
-SetOwnershipRq	6	3
-SetOwnershipRq	7	9
-NewOrderRq	5	6	9	1	False	1	False	1
-NewOrderRq	5	1	7	4	False	0	False	4
-NewOrderRq	7	3	10	1	False	0	False	1
-NewOrderRq	1	5	4	5	False	0	False	0
+SetCreditRq	1	10
+SetCreditRq	2	13
+SetCreditRq	3	10
+SetCreditRq	4	7
+SetCreditRq	5	12
+SetCreditRq	6	11
+SetCreditRq	7	2
+SetOwnershipRq	1	69
+SetOwnershipRq	2	58
+SetOwnershipRq	3	10
+SetOwnershipRq	4	26
+SetOwnershipRq	5	36
+SetOwnershipRq	6	80
+SetOwnershipRq	7	23
+NewOrderRq	7	1	6	2	False	0	False	0
+NewOrderRq	7	5	4	8	True	0	False	1
+NewOrderRq	4	4	10	7	False	0	False	0
+NewOrderRq	5	2	9	1	False	0	False	0
 CancelOrderRq	4	False
-NewOrderRq	3	1	9	6	True	1	False	5
-NewOrderRq	6	1	2	7	True	2	False	0
-NewOrderRq	4	6	5	8	False	0	True	0
-NewOrderRq	3	6	7	3	False	3	False	0
-ReplaceOrderRq	9	3	6	6	4	False	0	True	0
-NewOrderRq	1	4	10	7	True	0	False	0
-NewOrderRq	5	3	2	1	False	0	False	0
-NewOrderRq	6	1	1	2	False	0	False	1
-NewOrderRq	7	4	2	8	True	0	False	0
-CancelOrderRq	14	True
-NewOrderRq	3	2	4	6	True	0	False	0
-NewOrderRq	5	2	2	6	False	0	False	2
-NewOrderRq	3	7	4	4	True	0	False	0
-NewOrderRq	5	7	2	2	True	0	True	0
-ReplaceOrderRq	19	5	7	8	8	True	5	False	0
+NewOrderRq	5	3	4	2	False	0	True	0
+NewOrderRq	1	7	8	6	True	0	True	0
+NewOrderRq	3	7	7	7	True	1	False	1
+NewOrderRq	4	7	3	1	True	0	True	0
+ReplaceOrderRq	9	4	7	3	6	True	0	False	4
+NewOrderRq	1	1	8	5	True	0	False	5
+NewOrderRq	7	2	3	4	True	3	False	0
+NewOrderRq	1	5	4	2	False	0	True	0
+NewOrderRq	3	3	4	1	False	0	True	0
+CancelOrderRq	14	False
+NewOrderRq	5	1	4	1	True	1	False	0
+NewOrderRq	4	2	2	8	True	0	False	1
+NewOrderRq	4	7	3	5	False	0	True	0
+NewOrderRq	2	1	7	7	False	0	False	4
+ReplaceOrderRq	19	2	1	1	1	False	1	False	0

@@ -50,7 +50,7 @@ import java.util.Comparator;
 
     public void sort_buy_orders() {
 <span class="fc" id="L52">        TCRunner.method_called(new Throwable());</span>
-<span class="fc" id="L53">        buy_order_ids.sort((o1, o2) -&gt; Integer.compare(o2.price, o1.price));</span>
+<span class="pc" id="L53">        buy_order_ids.sort((o1, o2) -&gt; Integer.compare(o2.price, o1.price));</span>
 <span class="fc" id="L54">    }</span>
 
     public void sort_sell_orders() {
@@ -116,14 +116,14 @@ import java.util.Comparator;
     public Order get_order(int order_id) {
 <span class="fc" id="L117">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L118">        Order buy_order = get_order(buy_order_ids, order_id);</span>
-<span class="fc bfc" id="L119" title="All 2 branches covered.">        return (buy_order != null)? buy_order : get_order(sell_order_ids, order_id);</span>
+<span class="pc bpc" id="L119" title="1 of 2 branches missed.">        return (buy_order != null)? buy_order : get_order(sell_order_ids, order_id);</span>
     }
 
     public int get_order_index(Order order) {
 <span class="fc" id="L123">        TCRunner.method_called(new Throwable());</span>
 <span class="pc bpc" id="L124" title="1 of 2 branches missed.">        ArrayList&lt;Order&gt; queue = (order.is_buy)? buy_order_ids:sell_order_ids;</span>
 <span class="pc bpc" id="L125" title="1 of 2 branches missed.">        for(int i=0; i&lt;queue.size(); i++)</span>
-<span class="fc bfc" id="L126" title="All 2 branches covered.">            if(queue.get(i).id == order.id)</span>
+<span class="pc bpc" id="L126" title="1 of 2 branches missed.">            if(queue.get(i).id == order.id)</span>
 <span class="fc" id="L127">                return i;</span>
 <span class="nc" id="L128">        return 0;</span>
     }

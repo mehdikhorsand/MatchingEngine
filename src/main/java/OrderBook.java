@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Comparator;
-// total branches : 34
+// total branches : 30
 // never covered with valid orders : 1
 
 public class OrderBook {

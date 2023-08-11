@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-// total branches : 23
+// total branches : 22
 // never covered with valid orders : 1
 
 public class Shareholder {

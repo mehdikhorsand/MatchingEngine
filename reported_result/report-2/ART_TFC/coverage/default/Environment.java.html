@@ -59,18 +59,18 @@
 
     public boolean validate_order_price_limit(Order order) {
 <span class="fc" id="L61">        TCRunner.method_called(new Throwable());</span>
-<span class="fc bfc" id="L62" title="All 2 branches covered.">        if(order.price % tick_size == 0) {</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        if(order.price % tick_size == 0) {</span>
 <span class="fc" id="L63">            int lower_price_limit = reference_price - (int)(reference_price * static_price_band_lower_limit);</span>
 <span class="fc" id="L64">            int upper_price_limit = reference_price + (int)(reference_price * static_price_band_upper_limit);</span>
 <span class="fc bfc" id="L65" title="All 4 branches covered.">            return lower_price_limit &lt;= order.price &amp;&amp; order.price &lt;= upper_price_limit;</span>
         }
         else
-<span class="fc" id="L68">            return false;</span>
+<span class="nc" id="L68">            return false;</span>
     }
 
     public boolean validate_order_quantity_limit(Order order) {
 <span class="fc" id="L72">        TCRunner.method_called(new Throwable());</span>
-<span class="fc bfc" id="L73" title="All 2 branches covered.">        if(order.quantity % lot_size == 0) {</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">        if(order.quantity % lot_size == 0) {</span>
 <span class="fc bfc" id="L74" title="All 2 branches covered.">            if (order.is_buy) {</span>
 <span class="fc" id="L75">                int owned_qty = order.shareholder_id.ownership;</span>
 <span class="fc" id="L76">                int booked_orders_qty = order.shareholder_id.booked_buy_orders_qty;</span>
@@ -81,7 +81,7 @@
 <span class="fc" id="L81">                return true;</span>
         }
         else
-<span class="fc" id="L84">            return false;</span>
+<span class="nc" id="L84">            return false;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

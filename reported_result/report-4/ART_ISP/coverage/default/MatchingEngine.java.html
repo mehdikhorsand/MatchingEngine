@@ -9,7 +9,7 @@ public class MatchingEngine {
     ArrayList&lt;Trade&gt; trades;
     String last_request_type;
 
-<span class="fc" id="L12">    public MatchingEngine(Environment environment){</span>
+<span class="fc" id="L12">    public MatchingEngine(Environment environment) {</span>
 <span class="fc" id="L13">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L14">        this.environment = environment;</span>
 <span class="fc" id="L15">        order_book = new OrderBook();</span>
@@ -28,9 +28,9 @@ public class MatchingEngine {
 <span class="fc" id="L28">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L29">        new_request(&quot;Cancel&quot;, null);</span>
 <span class="fc" id="L30">        Order order = order_book.get_order(order_id);</span>
-<span class="pc bpc" id="L31" title="3 of 4 branches missed.">        if(order != null &amp;&amp; order.is_buy == is_buy_order){</span>
-<span class="nc" id="L32">            order_book.remove_order(order);</span>
-<span class="nc" id="L33">            TCRunner.print_output(&quot;CancelOrderRs\tAccepted&quot;);</span>
+<span class="pc bpc" id="L31" title="1 of 4 branches missed.">        if(order != null &amp;&amp; order.is_buy == is_buy_order){</span>
+<span class="fc" id="L32">            order_book.remove_order(order);</span>
+<span class="fc" id="L33">            TCRunner.print_output(&quot;CancelOrderRs\tAccepted&quot;);</span>
         }
         else
 <span class="fc" id="L36">            TCRunner.print_output(&quot;CancelOrderRs\tRejected&quot;);</span>
@@ -47,14 +47,14 @@ public class MatchingEngine {
 <span class="fc" id="L47">            int old_order_index = order_book.get_order_index(old_order);</span>
 <span class="fc" id="L48">            order_book.remove_order(old_order);</span>
 <span class="fc" id="L49">            String new_order_response = add_order(new_order);</span>
-<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            if (Objects.equals(new_order_response, &quot;Rejected&quot;))</span>
-<span class="nc" id="L51">                order_book.insert_order(old_order, old_order_index);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">            if (Objects.equals(new_order_response, &quot;Rejected&quot;))</span>
+<span class="fc" id="L51">                order_book.insert_order(old_order, old_order_index);</span>
 <span class="fc" id="L52">            TCRunner.print_output(&quot;ReplaceOrderRs\t&quot; + new_order_response);</span>
 <span class="fc" id="L53">        } else</span>
 <span class="fc" id="L54">            TCRunner.print_output(&quot;ReplaceOrderRs\tRejected&quot;);</span>
 <span class="fc" id="L55">    }</span>
 
-    public void new_order_request(Order order){
+    public void new_order_request(Order order) {
 <span class="fc" id="L58">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L59">        new_request(&quot;New&quot;, order);</span>
 <span class="fc" id="L60">        String response = add_order(order);</span>
@@ -69,7 +69,7 @@ public class MatchingEngine {
 <span class="fc" id="L69">        return output;</span>
     }
 
-    public String add_order(Order order){
+    public String add_order(Order order) {
 <span class="fc" id="L73">        TCRunner.method_called(new Throwable());</span>
 <span class="pc bpc" id="L74" title="1 of 4 branches missed.">        if(order.has_valid_attrs() &amp;&amp; environment.validate_order_price_limit(order)</span>
 <span class="fc bfc" id="L75" title="All 2 branches covered.">                &amp;&amp; environment.validate_order_quantity_limit(order)</span>
@@ -82,7 +82,7 @@ public class MatchingEngine {
 <span class="fc" id="L82">                rollback_by_trades();</span>
 <span class="fc" id="L83">                return &quot;Eliminated&quot;;</span>
             }
-<span class="fc bfc" id="L85" title="All 6 branches covered.">            else if(order.broker_id.credit_validation(order)||(order.fill_and_kill &amp;&amp; order.broker_id.free_credit &gt;= 0)) {</span>
+<span class="pc bpc" id="L85" title="1 of 6 branches missed.">            else if(order.broker_id.credit_validation(order)||(order.fill_and_kill &amp;&amp; order.broker_id.free_credit &gt;= 0)) {</span>
                 // accept order
 <span class="fc bfc" id="L87" title="All 4 branches covered.">                if (order.quantity &gt; 0 &amp;&amp; !order.fill_and_kill)</span>
 <span class="fc" id="L88">                    order_book.add_order(order);</span>

@@ -5,37 +5,37 @@ SetStaticPriceBandLowerLimitRq	0.6
 SetStaticPriceBandUpperLimitRq	0.8
 SetTotalSharesRq	100
 SetOwnershipUpperLimitRq	0.2
-SetCreditRq	1	10
-SetCreditRq	2	7
-SetCreditRq	3	7
-SetCreditRq	4	6
-SetCreditRq	5	8
-SetCreditRq	6	18
-SetCreditRq	7	11
-SetOwnershipRq	1	24
-SetOwnershipRq	2	40
-SetOwnershipRq	3	45
-SetOwnershipRq	4	76
-SetOwnershipRq	5	96
-SetOwnershipRq	6	64
-SetOwnershipRq	7	91
-NewOrderRq	3	6	1	7	False	7	False	0
-NewOrderRq	4	4	5	5	True	0	False	4
-NewOrderRq	6	5	5	5	False	0	False	5
-NewOrderRq	7	3	7	5	False	0	False	0
+SetCreditRq	1	16
+SetCreditRq	2	16
+SetCreditRq	3	2
+SetCreditRq	4	18
+SetCreditRq	5	12
+SetCreditRq	6	9
+SetCreditRq	7	12
+SetOwnershipRq	1	35
+SetOwnershipRq	2	39
+SetOwnershipRq	3	37
+SetOwnershipRq	4	21
+SetOwnershipRq	5	38
+SetOwnershipRq	6	54
+SetOwnershipRq	7	42
+NewOrderRq	7	4	8	8	False	1	False	1
+NewOrderRq	5	3	3	7	True	0	True	0
+NewOrderRq	1	1	9	8	False	0	False	0
+NewOrderRq	1	4	8	5	False	0	False	4
 CancelOrderRq	4	False
-NewOrderRq	3	1	1	5	False	0	True	0
-NewOrderRq	5	1	1	5	False	2	False	3
-NewOrderRq	5	6	10	8	True	0	True	0
-NewOrderRq	2	5	2	4	True	0	False	3
-ReplaceOrderRq	9	2	5	6	8	True	0	False	5
-NewOrderRq	5	7	8	4	True	3	False	3
-NewOrderRq	6	7	8	7	False	0	True	0
-NewOrderRq	7	6	7	1	False	1	False	1
-NewOrderRq	6	5	8	8	False	0	False	0
-CancelOrderRq	14	False
-NewOrderRq	6	7	3	8	False	0	False	0
-NewOrderRq	1	2	5	1	False	0	False	0
-NewOrderRq	6	1	2	6	True	1	False	3
-NewOrderRq	7	5	4	7	False	5	False	6
-ReplaceOrderRq	19	7	5	2	6	False	0	True	0
+NewOrderRq	2	1	1	6	False	0	False	4
+NewOrderRq	3	6	10	8	True	4	False	0
+NewOrderRq	6	5	4	4	False	2	False	0
+NewOrderRq	1	5	2	8	False	0	False	2
+ReplaceOrderRq	9	1	5	5	8	False	0	False	0
+NewOrderRq	5	6	3	5	False	0	False	0
+NewOrderRq	5	3	10	7	False	1	False	0
+NewOrderRq	4	6	4	6	True	5	False	0
+NewOrderRq	1	7	2	2	True	0	False	0
+CancelOrderRq	14	True
+NewOrderRq	1	6	4	1	False	0	False	0
+NewOrderRq	2	7	4	8	False	0	False	0
+NewOrderRq	5	7	6	5	True	0	True	0
+NewOrderRq	5	7	5	8	True	2	False	3
+ReplaceOrderRq	19	5	7	5	4	True	0	True	0

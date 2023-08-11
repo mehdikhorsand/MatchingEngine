@@ -60,9 +60,9 @@ import java.util.Comparator;
 
     public Order get_first_with_positive_quantity(ArrayList&lt;Order&gt; orders) {
 <span class="fc" id="L62">        TCRunner.method_called(new Throwable());</span>
-<span class="fc bfc" id="L63" title="All 2 branches covered.">        for(Order order : orders)</span>
-<span class="pc bpc" id="L64" title="1 of 2 branches missed.">            if(order.quantity &gt; 0)</span>
-<span class="fc" id="L65">                return order;</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">        for(Order order : orders)</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">            if(order.quantity &gt; 0)</span>
+<span class="nc" id="L65">                return order;</span>
 <span class="fc" id="L66">        return null;</span>
     }
 
@@ -72,8 +72,8 @@ import java.util.Comparator;
     }
 
     public Order get_first_sell_order() {
-<span class="fc" id="L75">        TCRunner.method_called(new Throwable());</span>
-<span class="fc" id="L76">        return get_first_with_positive_quantity(sell_order_ids);</span>
+<span class="nc" id="L75">        TCRunner.method_called(new Throwable());</span>
+<span class="nc" id="L76">        return get_first_with_positive_quantity(sell_order_ids);</span>
     }
 
     public void remove_empty_orders() {
@@ -120,11 +120,11 @@ import java.util.Comparator;
     }
 
     public int get_order_index(Order order) {
-<span class="fc" id="L123">        TCRunner.method_called(new Throwable());</span>
-<span class="pc bpc" id="L124" title="1 of 2 branches missed.">        ArrayList&lt;Order&gt; queue = (order.is_buy)? buy_order_ids:sell_order_ids;</span>
-<span class="pc bpc" id="L125" title="1 of 2 branches missed.">        for(int i=0; i&lt;queue.size(); i++)</span>
-<span class="fc bfc" id="L126" title="All 2 branches covered.">            if(queue.get(i).id == order.id)</span>
-<span class="fc" id="L127">                return i;</span>
+<span class="nc" id="L123">        TCRunner.method_called(new Throwable());</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">        ArrayList&lt;Order&gt; queue = (order.is_buy)? buy_order_ids:sell_order_ids;</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        for(int i=0; i&lt;queue.size(); i++)</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">            if(queue.get(i).id == order.id)</span>
+<span class="nc" id="L127">                return i;</span>
 <span class="nc" id="L128">        return 0;</span>
     }
 

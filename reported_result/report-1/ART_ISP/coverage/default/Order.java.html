@@ -80,26 +80,26 @@ public class Order {
 
     public int get_maximum_quantity_to_trade() {
 <span class="fc" id="L82">        TCRunner.method_called(new Throwable());</span>
-<span class="fc bfc" id="L83" title="All 2 branches covered.">        return (peak_size == 0)? quantity:disclosed_quantity;</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">        return (peak_size == 0)? quantity:disclosed_quantity;</span>
     }
 
     public void update_order_quantities(Trade trade) {
 <span class="fc" id="L87">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L88">        quantity -= trade.quantity;</span>
-<span class="fc bfc" id="L89" title="All 4 branches covered.">        if(is_in_queue &amp;&amp; peak_size &gt; 0) {</span>
+<span class="pc bpc" id="L89" title="1 of 4 branches missed.">        if(is_in_queue &amp;&amp; peak_size &gt; 0) {</span>
 <span class="fc" id="L90">            traded_qty_after_insertion += trade.quantity;</span>
 <span class="fc" id="L91">            set_disclosed_quantity();</span>
         }
 <span class="fc" id="L93">    }</span>
 
     public void rollback_update_order_quantities(Trade trade) {
-<span class="fc" id="L96">        TCRunner.method_called(new Throwable());</span>
-<span class="fc" id="L97">        quantity += trade.quantity;</span>
-<span class="pc bpc" id="L98" title="1 of 4 branches missed.">        if(is_in_queue &amp;&amp; peak_size &gt; 0) {</span>
+<span class="nc" id="L96">        TCRunner.method_called(new Throwable());</span>
+<span class="nc" id="L97">        quantity += trade.quantity;</span>
+<span class="nc bnc" id="L98" title="All 4 branches missed.">        if(is_in_queue &amp;&amp; peak_size &gt; 0) {</span>
 <span class="nc" id="L99">            traded_qty_after_insertion -= trade.quantity;</span>
 <span class="nc" id="L100">            set_disclosed_quantity();</span>
         }
-<span class="fc" id="L102">    }</span>
+<span class="nc" id="L102">    }</span>
 
     @Override
     public String toString() {

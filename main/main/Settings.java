@@ -9,7 +9,6 @@ public class Settings {
     static final int max_order_price = 10;
     static final int max_order_quantity = 8;
     static final int repetition_number = 10;
-    static final int method_invocation_path_length = 2;
     public static ArrayList<String> get_methods() {
         ArrayList<String> methods = new ArrayList<>();
         methods.add("RT");

@@ -116,7 +116,7 @@ import java.util.Comparator;
     public Order get_order(int order_id) {
 <span class="fc" id="L117">        TCRunner.method_called(new Throwable());</span>
 <span class="fc" id="L118">        Order buy_order = get_order(buy_order_ids, order_id);</span>
-<span class="fc bfc" id="L119" title="All 2 branches covered.">        return (buy_order != null)? buy_order : get_order(sell_order_ids, order_id);</span>
+<span class="pc bpc" id="L119" title="1 of 2 branches missed.">        return (buy_order != null)? buy_order : get_order(sell_order_ids, order_id);</span>
     }
 
     public int get_order_index(Order order) {
