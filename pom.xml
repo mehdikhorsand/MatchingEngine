@@ -33,11 +33,6 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>io.github.leonschreuder</groupId>
-            <artifactId>kotlin-exec</artifactId>
-            <version>1.0.1</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -62,50 +57,19 @@
                 </executions>
                 <configuration>
                     <excludes>
-                        <exclude>**/Main2.*</exclude>
-                        <exclude>**/Main.*</exclude>
-                        <exclude>**/Terminal.*</exclude>
-                        <exclude>**/ArrayOperations.*</exclude>
-                        <exclude>**/AvgCoverage.*</exclude>
-                        <exclude>**/C1_MatchingOrders.*</exclude>
-                        <exclude>**/C2_OrdersPostConditions.*</exclude>
-                        <exclude>**/C3_MinQtyOrdersPostConditions.*</exclude>
-                        <exclude>**/C4_MinQtyOrdersPreConditions.*</exclude>
-                        <exclude>**/C5_IcebergOrdersInOrderBook.*</exclude>
-                        <exclude>**/C5_IcebergOrdersTradesQuantity.*</exclude>
-                        <exclude>**/CancelOrder.*</exclude>
-                        <exclude>**/CandidateSet.*</exclude>
-                        <exclude>**/Characteristic.*</exclude>
-                        <exclude>**/ISPCoverage.*</exclude>
-                        <exclude>**/MyRandom.*</exclude>
-                        <exclude>**/NewOrder.*</exclude>
-                        <exclude>**/OrderInput.*</exclude>
-                        <exclude>**/OrderResult.*</exclude>
-                        <exclude>**/ReplaceOrder.*</exclude>
-                        <exclude>**/Settings.*</exclude>
-                        <exclude>**/TCCreator.*</exclude>
-                        <exclude>**/TCWriter.*</exclude>
-                        <exclude>**/TCRunner.*</exclude>
-                        <exclude>**/TestCase.*</exclude>
-                        <exclude>**/AverageFile.*</exclude>
-                        <exclude>**/SelectionMethod.*</exclude>
-                        <exclude>**/ART_ISP.*</exclude>
-                        <exclude>**/RT.*</exclude>
-                        <exclude>**/AutoISPCoverage.*</exclude>
-                        <exclude>**/TrisectionFrequencyConversion.*</exclude>
-                        <exclude>**/FrequencyTransform.*</exclude>
-                        <exclude>**/MethodEdgePairCoverage.*</exclude>
-                        <exclude>**/ART_WT.*</exclude>
-                        <exclude>**/ART_TFC.*</exclude>
-                        <exclude>**/ART_FT.*</exclude>
-                        <exclude>**/AutoCharacteristic.*</exclude>
-                        <exclude>**/WaveletTransform.*</exclude>
-                        <exclude>**/ART_AutoISP.*</exclude>
-                        <exclude>**/AutoPartitions.*</exclude>
-                        <exclude>**/Distance.*</exclude>
-                        <exclude>**/Node.*</exclude>
+                        <exclude>main/**</exclude>
+                        <exclude>methods/**</exclude>
+                        <exclude>randomOrder/**</exclude>
+                        <exclude>randomTestcase/**</exclude>
+                        <exclude>tools/**</exclude>
+                        <exclude>matchingEngine/TCRunner.*</exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>0.32</version>
             </plugin>
         </plugins>
     </build>
