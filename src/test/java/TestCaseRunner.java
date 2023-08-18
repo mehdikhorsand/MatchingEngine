@@ -1,3 +1,4 @@
+import matchingEngine.TCRunner;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,6 +8,9 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
+
+import main.Settings;
+import tools.ConsoleColors;
 
 
 public class TestCaseRunner{
@@ -32,9 +36,16 @@ public class TestCaseRunner{
         error_msg += evaluate(output, oracle, "Ownership");
         error_msg += evaluate(output, oracle, "Credits");
         error_msg += evaluate(output, oracle, "Credit");
+        error_msg += evaluate(output, oracle, "StaticPriceBandLowerLimit");
+        error_msg += evaluate(output, oracle, "StaticPriceBandUpperLimit");
+        error_msg += evaluate(output, oracle, "TotalShares");
+        error_msg += evaluate(output, oracle, "OwnershipUpperLimit");
+        error_msg += evaluate(output, oracle, "TickSize");
+        error_msg += evaluate(output, oracle, "LotSize");
 
         if (!error_msg.equals(""))
-            throw new Exception("\nerror_messages:\n" + error_msg);
+            throw new Exception("\nerror_messages:\n" + ConsoleColors.RED_BOLD + ConsoleColors.BLACK_BACKGROUND +
+                    error_msg + ConsoleColors.RESET);
     }
 
     public static String read_file(String file_address) {
@@ -49,12 +60,12 @@ public class TestCaseRunner{
     }
 
     @Before
-    public void setup(){
+    public void setup() {
         System.out.println("\n---------------------------------------------");
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         System.out.println("\n---------------------------------------------");
     }
 
