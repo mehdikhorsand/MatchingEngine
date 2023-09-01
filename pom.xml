@@ -58,6 +58,7 @@
                 <configuration>
                     <excludes>
                         <exclude>main/**</exclude>
+                        <exclude>source/**</exclude>
                         <exclude>methods/**</exclude>
                         <exclude>randomOrder/**</exclude>
                         <exclude>randomTestcase/**</exclude>

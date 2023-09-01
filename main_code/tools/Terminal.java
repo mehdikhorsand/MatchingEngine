@@ -118,7 +118,8 @@ public class Terminal {
     }
 
     public static void browse(String file_paths) {
-        Terminal.run_command("google-chrome-stable " + file_paths);
+        if(!(file_paths.trim().equals("")))
+            Terminal.run_command("google-chrome-stable " + file_paths);
     }
 
     public static void change_directory(String path) {

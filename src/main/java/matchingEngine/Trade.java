@@ -1,4 +1,5 @@
-package matchingEngine;// total branches : 2
+package matchingEngine;
+// total branches : 2
 // never covered with valid orders : 0
 
 public class Trade {
@@ -8,7 +9,6 @@ public class Trade {
     int price;
     int value;
     public Trade(int quantity, Order buy_order_id, Order sell_order_id) {
-        TCRunner.method_called();
         this.buy_order_id = buy_order_id;
         this.sell_order_id = sell_order_id;
         this.quantity = quantity;
@@ -26,17 +26,17 @@ public class Trade {
 
     @Override
     public String toString() {
-        TCRunner.method_called();
         return "\n\tTrade\t" + price + "\t" + quantity + "\t" + buy_order_id.id + "\t" + sell_order_id.id;
     }
 
     public int get_price() {
-        TCRunner.method_called();
-        return (buy_order_id.is_in_queue)? buy_order_id.price:sell_order_id.price;
+        if(buy_order_id.is_in_queue)
+            return buy_order_id.price;
+        else
+            return sell_order_id.price;
     }
 
     public void rollback_trade() {
-        TCRunner.method_called();
         buy_order_id.rollback_update_order_quantities(this);
         sell_order_id.rollback_update_order_quantities(this);
         buy_order_id.broker_id.rollback_decrease_credit(this);
@@ -45,45 +45,3 @@ public class Trade {
         sell_order_id.shareholder_id.rollback_decrease_ownership(this);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

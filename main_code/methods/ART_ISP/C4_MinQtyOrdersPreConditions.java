@@ -1,5 +1,6 @@
 package methods.ART_ISP;
 
+import randomOrder.CancelOrder;
 import randomOrder.NewOrder;
 import randomOrder.OrderInput;
 
@@ -29,7 +30,7 @@ public class C4_MinQtyOrdersPreConditions extends Characteristic{
     @Override
     public ArrayList<Integer> get_result(OrderInput order) {
         ArrayList<Integer> res = new ArrayList<>();
-        if(order.getClass() == NewOrder.class && Objects.equals(order.order_result.new_order_status, "Accepted")) {
+        if(order.getClass() != CancelOrder.class && Objects.equals(order.order_result.new_order_status, "Accepted")) {
             res.add(cast_to_int(p1(order)));
             res.add(cast_to_int(p2(order)));
             res.add(cast_to_int(p3(order)));

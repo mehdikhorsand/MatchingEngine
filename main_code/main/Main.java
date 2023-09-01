@@ -1,6 +1,5 @@
 package main;
 
-
 import tools.AverageFile;
 import tools.ConsoleColors;
 import tools.Terminal;
@@ -15,12 +14,16 @@ public class Main {
                 String source = Settings.temp + method;
                 Terminal.mv(source, target);
                 compute_testcases_oracle();
-                print_progress(i, method);
-                Terminal.run_jacoco("test");
-                copy_jacoco_report();
-                print_progress(i, method);
-                Terminal.run_pitest();
-                copy_pitest_report();
+                if(Settings.report_coverage) {
+                    print_progress(i, method);
+                    Terminal.run_jacoco("test");
+                    copy_jacoco_report();
+                }
+                if(Settings.report_mutation_result) {
+                    print_progress(i, method);
+                    Terminal.run_pitest();
+                    copy_pitest_report();
+                }
                 Terminal.mv(target, source);
                 clear_system();
             }
@@ -31,7 +34,8 @@ public class Main {
     }
 
     private static void print_progress(int i, String method) {
-        System.out.println(ConsoleColors.YELLOW_BOLD + "------------ round " + i + " " + method + " ------------" + ConsoleColors.RESET);
+        System.out.println(ConsoleColors.YELLOW_BOLD + "------------ round " + i + " " + method + " ------------" +
+                ConsoleColors.RESET);
     }
 
     private static void copy_pitest_report() {
@@ -42,17 +46,23 @@ public class Main {
     private static void open_coverage_and_pitest_report_files() {
         StringBuilder file_paths = new StringBuilder();
         String coverage_file = "/index.html ";
-        for(int i=0; i<Settings.repetition_number; i++)
-            for(String method : Settings.get_methods()) {
-                file_paths.append(get_destination_location(i, method)).append(Settings.coverage).append(coverage_file);
-                file_paths.append(get_destination_location(i, method)).append(Settings.pitest).append(coverage_file);
+        if(!Settings.just_show_avg_report)
+            for(int i=0; i<Settings.repetition_number; i++) {
+                if(Settings.report_coverage)
+                    for (String method : Settings.get_methods())
+                        file_paths.append(get_destination_location(i, method)).append(Settings.coverage).append(coverage_file);
+                if(Settings.report_mutation_result)
+                    for (String method : Settings.get_methods())
+                        file_paths.append(get_destination_location(i, method)).append(Settings.pitest).append(coverage_file);
             }
-        for(String method : Settings.get_methods()) {
-            file_paths.append(Settings.result_location).append(Settings.average_coverage).append(method)
-                    .append(Settings.coverage).append(coverage_file);
-            file_paths.append(Settings.result_location).append(Settings.average_coverage).append(method)
-                    .append(Settings.pitest).append(coverage_file);
-        }
+        for(String method : Settings.get_methods())
+            if(Settings.report_coverage)
+                file_paths.append(Settings.result_location).append(Settings.average_coverage).append(method)
+                        .append(Settings.coverage).append(coverage_file);
+        for(String method : Settings.get_methods())
+            if(Settings.report_mutation_result)
+                file_paths.append(Settings.result_location).append(Settings.average_coverage).append(method)
+                        .append(Settings.pitest).append(coverage_file);
         Terminal.browse(String.valueOf(file_paths));
     }
 

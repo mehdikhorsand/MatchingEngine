@@ -1,8 +1,8 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-MatchingEngine,matchingEngine,MatchingEngine,3,397,7.6,58.4,0.6,103.4,7.3,36.7,0,11
-MatchingEngine,matchingEngine,Environment,1.2,141.8,1.4,10.6,0.5,41.5,1.4,15.6,0,11
-MatchingEngine,matchingEngine,OrderBook,30.1,277.9,4.4,25.6,6.6,81.4,5.3,28.7,1.2,17.79
-MatchingEngine,matchingEngine,Order,3,245,6.1,25.9,0,64,6.1,22.9,0,13
-MatchingEngine,matchingEngine,Broker,2,190,1.9,16.1,1,52,1.9,19.1,0,12
-MatchingEngine,matchingEngine,Shareholder,16.5,218.5,2.9,19.1,4.6,57.4,2.9,20.1,0,12
-MatchingEngine,matchingEngine,Trade,0.4,100.6,0.1,1.9,0,26,0.1,4.9,0,4
+MatchingEngine,matchingEngine,MatchingEngine,3.8,370.2,7.6,54.4,0.6,85.4,7.4,34.59,0,11
+MatchingEngine,matchingEngine,Environment,2.8,127.2,1.8,10.2,1.4,27.6,1.8,15.2,0,11
+MatchingEngine,matchingEngine,OrderBook,40,244,5.6,24.4,7.8,56.2,6.8,27.2,1.8,17.2
+MatchingEngine,matchingEngine,Order,3,230,6,26,0,49,6,23,0,13
+MatchingEngine,matchingEngine,Broker,6.2,169.8,2.6,15.4,1.6,35.4,2.6,18.4,0,12
+MatchingEngine,matchingEngine,Shareholder,20.8,196.2,3.6,18.4,3.6,40.4,3.6,19.4,0,12
+MatchingEngine,matchingEngine,Trade,0.8,96.2,0.2,1.8,0.2,23.8,0.2,4.8,0,4

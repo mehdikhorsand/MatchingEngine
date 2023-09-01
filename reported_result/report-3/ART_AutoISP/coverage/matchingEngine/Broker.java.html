@@ -10,128 +10,65 @@ public class Broker {
     int credit;
     int free_credit;
 <span class="fc" id="L12">    public Broker(int broker_id, int credit) {</span>
-<span class="fc" id="L13">        TCRunner.method_called();</span>
-<span class="fc" id="L14">        this.id = broker_id;</span>
-<span class="fc" id="L15">        this.credit = credit;</span>
-<span class="fc" id="L16">        this.free_credit = credit;</span>
-<span class="fc" id="L17">        list.add(this);</span>
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L13">        this.id = broker_id;</span>
+<span class="fc" id="L14">        this.credit = credit;</span>
+<span class="fc" id="L15">        this.free_credit = credit;</span>
+<span class="fc" id="L16">        list.add(this);</span>
+<span class="fc" id="L17">    }</span>
 
     @Override
     public String toString() {
-<span class="fc" id="L22">        TCRunner.method_called();</span>
-<span class="fc" id="L23">        return &quot;\tCredit\t&quot; + id + &quot;\t&quot; + credit;</span>
+<span class="fc" id="L21">        return &quot;\tCredit\t&quot; + id + &quot;\t&quot; + credit;</span>
     }
 
     public static Broker get_broker_by_id(int broker_id) {
-<span class="fc" id="L27">        TCRunner.method_called();</span>
-<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        for(Broker broker : list)</span>
-<span class="fc bfc" id="L29" title="All 2 branches covered.">            if(broker.id == broker_id) {</span>
-<span class="fc" id="L30">                TCRunner.condition_covered();</span>
-<span class="fc" id="L31">                return broker;</span>
-            }
-<span class="nc" id="L33">        return null;</span>
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">        for(Broker broker : list)</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">            if (broker.id == broker_id)</span>
+<span class="fc" id="L27">                return broker;</span>
+<span class="nc" id="L28">        return null;</span>
     }
 
     public static String print_credits() {
-<span class="fc" id="L37">        TCRunner.method_called();</span>
-<span class="fc" id="L38">        StringBuilder result = new StringBuilder(&quot;\n\tCredits\t&quot; + list.size());</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">        for(Broker broker : list)</span>
-<span class="fc" id="L40">            result.append(&quot;\n&quot;).append(broker.toString());</span>
-<span class="fc" id="L41">        return result.toString();</span>
+<span class="fc" id="L32">        StringBuilder result = new StringBuilder(&quot;\n\tCredits\t&quot; + list.size());</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        for(Broker broker : list)</span>
+<span class="fc" id="L34">            result.append(&quot;\n&quot;).append(broker.toString());</span>
+<span class="fc" id="L35">        return result.toString();</span>
     }
 
     public void added_new_order(Order order) {
-<span class="fc" id="L45">        TCRunner.method_called();</span>
-<span class="fc bfc" id="L46" title="All 2 branches covered.">        if(order.is_buy) {</span>
-<span class="fc" id="L47">            TCRunner.condition_covered();</span>
-<span class="fc" id="L48">            free_credit -= order.value();</span>
-        }
-<span class="fc" id="L50">    }</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if(order.is_buy)</span>
+<span class="fc" id="L40">            free_credit -= order.value();</span>
+<span class="fc" id="L41">    }</span>
 
     public void deleted_old_order(Order order) {
-<span class="fc" id="L53">        TCRunner.method_called();</span>
-<span class="fc bfc" id="L54" title="All 2 branches covered.">        if(order.is_buy) {</span>
-<span class="fc" id="L55">            TCRunner.condition_covered();</span>
-<span class="fc" id="L56">            free_credit += order.value();</span>
-        }
-<span class="fc" id="L58">    }</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if(order.is_buy)</span>
+<span class="fc" id="L45">            free_credit += order.value();</span>
+<span class="fc" id="L46">    }</span>
 
     public void increase_credit(Trade trade) {
-<span class="fc" id="L61">        TCRunner.method_called();</span>
-<span class="fc" id="L62">        free_credit += trade.value;</span>
-<span class="fc" id="L63">        credit += trade.value;</span>
-<span class="fc" id="L64">    }</span>
+<span class="fc" id="L49">        free_credit += trade.value;</span>
+<span class="fc" id="L50">        credit += trade.value;</span>
+<span class="fc" id="L51">    }</span>
 
     public void decrease_credit(Trade trade) {
-<span class="fc" id="L67">        TCRunner.method_called();</span>
-<span class="fc" id="L68">        credit -= trade.value;</span>
-<span class="fc bfc" id="L69" title="All 2 branches covered.">        if(!trade.buy_order_id.is_in_queue) {</span>
-<span class="fc" id="L70">            TCRunner.condition_covered();</span>
-<span class="fc" id="L71">            free_credit -= trade.value;</span>
-        }
-<span class="fc" id="L73">    }</span>
+<span class="fc" id="L54">        credit -= trade.value;</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if(!trade.buy_order_id.is_in_queue)</span>
+<span class="fc" id="L56">            free_credit -= trade.value;</span>
+<span class="fc" id="L57">    }</span>
 
     public boolean credit_validation(Order order) {
-<span class="fc" id="L76">        TCRunner.method_called();</span>
-<span class="fc bfc" id="L77" title="All 4 branches covered.">        return !order.is_buy || free_credit &gt;= order.value();</span>
+<span class="fc bfc" id="L60" title="All 4 branches covered.">        return !order.is_buy || free_credit &gt;= order.value();</span>
     }
 
     public void rollback_increase_credit(Trade trade) {
-<span class="fc" id="L81">        TCRunner.method_called();</span>
-<span class="fc" id="L82">        free_credit -= trade.value;</span>
-<span class="fc" id="L83">        credit -= trade.value;</span>
-<span class="fc" id="L84">    }</span>
+<span class="fc" id="L64">        free_credit -= trade.value;</span>
+<span class="fc" id="L65">        credit -= trade.value;</span>
+<span class="fc" id="L66">    }</span>
 
     public void rollback_decrease_credit(Trade trade) {
-<span class="fc" id="L87">        TCRunner.method_called();</span>
-<span class="fc" id="L88">        credit += trade.value;</span>
-<span class="pc bpc" id="L89" title="1 of 2 branches missed.">        if(!trade.buy_order_id.is_in_queue) {</span>
-<span class="fc" id="L90">            TCRunner.condition_covered();</span>
-<span class="fc" id="L91">            free_credit += trade.value;</span>
-        }
-<span class="fc" id="L93">    }</span>
+<span class="fc" id="L69">        credit += trade.value;</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if(!trade.buy_order_id.is_in_queue)</span>
+<span class="fc" id="L71">            free_credit += trade.value;</span>
+<span class="fc" id="L72">    }</span>
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

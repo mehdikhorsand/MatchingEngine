@@ -9,19 +9,22 @@ public class Settings {
     public static final int broker_number = 7;
     public static final int max_order_price = 10;
     public static final int max_order_quantity = 8;
-    public static final int repetition_number = 10;
+    public static final int repetition_number = 5;
+    public static final boolean just_show_avg_report = false;
     public static ArrayList<String> get_methods() {
         ArrayList<String> methods = new ArrayList<>();
 //        methods.add("RT");
 //        methods.add("ART_FT");
 //        methods.add("ART_WT");
-        methods.add("ART_TFC");
-//        methods.add("ART_ISP");
+//        methods.add("ART_TFC");
+        methods.add("ART_ISP");
         methods.add("ART_AutoISP");
-//        methods.add("ART_AutoISP_C");
-//        methods.add("ART_AutoISP_MC");
+        methods.add("ART_AutoISP_C");
+        methods.add("ART_AutoISP_MC");
         return methods;
     }
+    public static final boolean report_coverage = true;
+    public static final boolean report_mutation_result = true;
 
 
 //////////////************************************************************************//////////////
@@ -67,29 +70,53 @@ public class Settings {
         return Settings.report_location + index;
     }
 
-    public static String[][] jacoco_report_files_for_avg() {
-        String[][] output = new String[6][2];
-        output[0][0] = "/coverage";
-        output[0][1] = "/index.html";
-        output[1][0] = "/coverage/matchingEngine";
-        output[1][1] = "/index.html";
-        output[2][0] = "/coverage";
-        output[2][1] = "/jacoco.csv";
-        output[3][0] = "/coverage";
-        output[3][1] = "/jacoco.xml";
-        output[4][0] = "/pitest";
-        output[4][1] = "/index.html";
-        output[5][0] = "/pitest/matchingEngine";
-        output[5][1] = "/index.html";
-        return output;
+    public static ArrayList<String[]> report_files_for_avg() {
+        ArrayList<String[]> result = new ArrayList<>();
+        if(report_coverage) {
+            String[] output0 = new String[2];
+            String[] output1 = new String[2];
+            String[] output2 = new String[2];
+            String[] output3 = new String[2];
+            output0[0] = "/coverage";
+            output0[1] = "/index.html";
+            output1[0] = "/coverage/matchingEngine";
+            output1[1] = "/index.html";
+            output2[0] = "/coverage";
+            output2[1] = "/jacoco.csv";
+            output3[0] = "/coverage";
+            output3[1] = "/jacoco.xml";
+            result.add(output0);
+            result.add(output1);
+            result.add(output2);
+            result.add(output3);
+        }
+        if(report_mutation_result) {
+            String[] output0 = new String[2];
+            String[] output1 = new String[2];
+            output0[0] = "/pitest";
+            output0[1] = "/index.html";
+            output1[0] = "/pitest/matchingEngine";
+            output1[1] = "/index.html";
+            result.add(output0);
+            result.add(output1);
+        }
+        return result;
     }
 
-    public static String[][] jacoco_report_files_for_copy_in_avg_result() {
-        String[][] output = new String[2][2];
-        output[0][0] = "/coverage";
-        output[0][1] = "/jacoco-resources";
-        output[1][0] = "/pitest";
-        output[1][1] = "/style.css";
-        return output;
+    public static ArrayList<String[]> report_files_for_copy_in_avg_result() {
+        ArrayList<String[]> result = new ArrayList<>();
+        if(report_coverage){
+            String[] coverage_output = new String[2];
+            coverage_output[0] = "/coverage";
+            coverage_output[1] = "/jacoco-resources";
+            result.add(coverage_output);
+        }
+        if(report_mutation_result) {
+            String[] pitest_output = new String[2];
+            pitest_output[0] = "/pitest";
+            pitest_output[1] = "/style.css";
+            result.add(pitest_output);
+        }
+        return result;
     }
 }
