@@ -1,7 +1,7 @@
 package methods.ART_AutoISP_C;
 
 import main.Settings;
-import matchingEngine.TCRunner;
+import source.TCRunner;
 import methods.ART_AutoISP.MethodEdgePairCoverage;
 import randomTestcase.TestCase;
 import tools.TCWriter;
@@ -24,6 +24,6 @@ public class ConditionEdgePairCoverage extends MethodEdgePairCoverage {
         Terminal.rm(des_path);
 //        for(ArrayList<String> edge : matchingEngine.TCRunner.condition_coverage_edge)
 //            System.out.println(edge);
-        return TCRunner.condition_coverage_edge;
+        return TCRunner.condition_coverage;
     }
 }

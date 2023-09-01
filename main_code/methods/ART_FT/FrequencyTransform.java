@@ -7,7 +7,7 @@ import main.Settings;
 import tools.Terminal;
 import tools.Distance;
 import tools.TCWriter;
-import matchingEngine.TCRunner;
+import source.TCRunner;
 
 public class FrequencyTransform {
     TestCase testcase;

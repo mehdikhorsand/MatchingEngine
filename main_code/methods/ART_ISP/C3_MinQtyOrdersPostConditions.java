@@ -1,5 +1,6 @@
 package methods.ART_ISP;
 
+import randomOrder.CancelOrder;
 import randomOrder.NewOrder;
 import randomOrder.OrderInput;
 
@@ -50,7 +51,7 @@ public class C3_MinQtyOrdersPostConditions extends Characteristic{
     @Override
     public ArrayList<Integer> get_result(OrderInput order) {
         ArrayList<Integer> res = new ArrayList<>();
-        if(order.getClass() == NewOrder.class && ((NewOrder) order).min_qty > 0
+        if(order.getClass() != CancelOrder.class && ((NewOrder) order).min_qty > 0
                 && order.order_result.is_there_x_order_in_previous_order_book(!order.is_buy)) {
             res.add(cast_to_int(p1(order)));
             res.add(cast_to_int(p2(order)));

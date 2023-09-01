@@ -14,6 +14,8 @@ public class Characteristic {
         all.add(new C3_MinQtyOrdersPostConditions());
         all.add(new C4_MinQtyOrdersPreConditions());
         all.add(new C5_IcebergOrdersTradesQuantity());
+        all.add(new C6_CancelOrderResult());
+        all.add(new C7_ReplaceOrderResult());
         return all;
     }
 

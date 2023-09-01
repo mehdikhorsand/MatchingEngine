@@ -16,16 +16,8 @@ public class TCRunner {
     Environment environment;
     MatchingEngine matching_engine;
     static FileWriter writer;
-    public static ArrayList<String> method_invocation_sequence;
-    public static ArrayList<ArrayList<String>> method_invocation_edge;
-    public static ArrayList<ArrayList<String>> method_and_condition_coverage_edge;
-    public static ArrayList<ArrayList<String>> condition_coverage_edge;
 
     public TCRunner(String input_file_path, String output_file_path) {
-        method_invocation_sequence = new ArrayList<>();
-        method_invocation_edge = new ArrayList<>();
-        method_and_condition_coverage_edge = new ArrayList<>();
-        condition_coverage_edge = new ArrayList<>();
         TCRunner.destination_file_path = output_file_path;
         try {
             Scanner scanner = new Scanner(new File(input_file_path));
@@ -95,13 +87,13 @@ public class TCRunner {
     }
 
     public void new_order_rq(String[] args) {
-        Order new_order = get_order(args);
+        Order new_order = create_order(args);
         matching_engine.new_order_request(new_order);
         print_output(matching_engine.toString());
     }
 
     public void replace_order_rq(String[] args) {
-        Order replace_order = get_order(Arrays.copyOfRange(args, 1, args.length));
+        Order replace_order = create_order(Arrays.copyOfRange(args, 1, args.length));
         matching_engine.replace_order_request(Integer.parseInt(args[0]), replace_order);
         print_output(matching_engine.toString());
     }
@@ -125,77 +117,10 @@ public class TCRunner {
         return Objects.equals(input, "True");
     }
 
-    public static Order get_order(String[] args) {
+    public static Order create_order(String[] args) {
         return new Order(
                 Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]),
                 Integer.parseInt(args[3]), get_boolean(args[4]), Integer.parseInt(args[5]),
                 get_boolean(args[6]), Integer.parseInt(args[7]));
-    }
-
-    public static void method_called() {
-        Throwable stack = new Throwable();
-        set_method_invocation_sequence(stack);
-        set_method_invocation_edge(stack);
-    }
-
-    public static void condition_covered() {
-        Throwable stack = new Throwable();
-        String class_name = stack.getStackTrace()[1].getClassName();
-        String method_name = stack.getStackTrace()[1].getMethodName();
-        int line_number = stack.getStackTrace()[1].getLineNumber();
-        ArrayList<String> new_method_path = new ArrayList<>();
-        new_method_path.add(class_name + "." + method_name);
-        new_method_path.add(class_name + ":" + line_number);
-        method_and_condition_coverage_edge.add(new_method_path);
-        condition_coverage_edge.add(new_method_path);
-    }
-
-    public static void set_method_invocation_sequence(Throwable stack) {
-        String class_name = stack.getStackTrace()[1].getClassName();
-        String method_name = stack.getStackTrace()[1].getMethodName();
-        method_invocation_sequence.add(class_name + "." + method_name);
-    }
-
-    public static void set_method_invocation_edge(Throwable stack) {
-        int path_length = Math.min(2, stack.getStackTrace().length-1);
-        ArrayList<String> new_method_path = new ArrayList<>();
-        for(int i=0; i<path_length; i++) {
-            String class_name = stack.getStackTrace()[i+1].getClassName();
-            for(Class src_class : get_src_classes()) {
-                if(src_class.getName().equals(class_name)) {
-                    String method_name = stack.getStackTrace()[i+1].getMethodName();
-                    new_method_path.add(0, class_name + "." + method_name);
-                    break;
-                }
-            }
-        }
-        method_invocation_edge.add(new_method_path);
-        method_and_condition_coverage_edge.add(new_method_path);
-        ArrayList<String> method = new ArrayList<>();
-        method.add(new_method_path.get(new_method_path.size()-1));
-        condition_coverage_edge.add(method);
-    }
-
-    public static ArrayList<String> get_src_methods_name() {
-        ArrayList<String> output = new ArrayList<>();
-        for(Class src_class : get_src_classes()) {
-            Method[] methods = src_class.getDeclaredMethods();
-            for(Method method : methods) {
-                output.add(src_class.getName() + "." + method.getName());
-            }
-        }
-        return output;
-    }
-
-    public static ArrayList<Class> get_src_classes() {
-        ArrayList<Class> src_classes = new ArrayList<>();
-        src_classes.add(Broker.class);
-        src_classes.add(Shareholder.class);
-        src_classes.add(Order.class);
-        src_classes.add(Trade.class);
-        src_classes.add(OrderBook.class);
-        src_classes.add(MatchingEngine.class);
-        src_classes.add(Environment.class);
-        return src_classes;
     }
 }
