@@ -1,6 +1,6 @@
 package randomOrder;
 
-import methods.ART_ISP.OrderResult;
+import methods.ART_ISP_hs.OrderResult;
 import tools.MyRandom;
 import main.Settings;
 

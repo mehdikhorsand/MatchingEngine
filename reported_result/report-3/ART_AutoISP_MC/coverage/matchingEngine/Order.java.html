@@ -67,9 +67,9 @@ public class Order {
 <span class="fc" id="L67">    }</span>
 
     public boolean has_valid_attrs() {
-<span class="pc bpc" id="L70" title="2 of 6 branches missed.">        boolean fak_validated = !fill_and_kill || (peak_size == 0 &amp;&amp; min_qty == 0);</span>
-<span class="pc bpc" id="L71" title="2 of 4 branches missed.">        boolean quantity_validated = peak_size &lt;= quantity &amp;&amp; min_qty &lt;= quantity;</span>
-<span class="pc bpc" id="L72" title="2 of 4 branches missed.">        return fak_validated &amp;&amp; quantity_validated;</span>
+<span class="fc bfc" id="L70" title="All 6 branches covered.">        boolean fak_validated = !fill_and_kill || (peak_size == 0 &amp;&amp; min_qty == 0);</span>
+<span class="fc bfc" id="L71" title="All 4 branches covered.">        boolean quantity_validated = peak_size &lt;= quantity &amp;&amp; min_qty &lt;= quantity;</span>
+<span class="fc bfc" id="L72" title="All 8 branches covered.">        return fak_validated &amp;&amp; quantity_validated &amp;&amp; broker_id != null &amp;&amp; shareholder_id != null;</span>
     }
 
     public int get_maximum_quantity_to_trade() {
@@ -86,7 +86,7 @@ public class Order {
 
     public void rollback_update_order_quantities(Trade trade) {
 <span class="fc" id="L88">        quantity += trade.quantity;</span>
-<span class="fc bfc" id="L89" title="All 4 branches covered.">        if(is_in_queue &amp;&amp; peak_size &gt; 0) {</span>
+<span class="pc bpc" id="L89" title="1 of 4 branches missed.">        if(is_in_queue &amp;&amp; peak_size &gt; 0) {</span>
 <span class="fc" id="L90">            traded_qty_after_insertion -= trade.quantity;</span>
 <span class="fc" id="L91">            set_disclosed_quantity();</span>
         }
@@ -94,8 +94,8 @@ public class Order {
 
     @Override
     public String toString() {
-<span class="fc bfc" id="L97" title="All 2 branches covered.">        return &quot;\n\tOrder\t&quot; + ((peak_size == 0)? &quot;Limit&quot;:&quot;Iceberg&quot;) + &quot;\t&quot; + id + &quot;\t&quot; + broker_id.id +</span>
-<span class="fc bfc" id="L98" title="All 2 branches covered.">                &quot;\t&quot; + shareholder_id.id + &quot;\t&quot; + price + &quot;\t&quot; + quantity + &quot;\t&quot; + ((is_buy)? &quot;BUY &quot;:&quot;SELL&quot;) +</span>
+<span class="fc bfc" id="L97" title="All 4 branches covered.">        return &quot;\n\tOrder\t&quot; + ((peak_size == 0)? &quot;Limit&quot;:&quot;Iceberg&quot;) + &quot;\t&quot; + id + &quot;\t&quot; + ((broker_id == null)? 0:broker_id.id) +</span>
+<span class="fc bfc" id="L98" title="All 4 branches covered.">                &quot;\t&quot; + ((shareholder_id == null)? 0:shareholder_id.id) + &quot;\t&quot; + price + &quot;\t&quot; + quantity + &quot;\t&quot; + ((is_buy)? &quot;BUY &quot;:&quot;SELL&quot;) +</span>
 <span class="fc bfc" id="L99" title="All 2 branches covered.">                &quot;\t&quot; + min_qty + &quot;\t&quot; + ((fill_and_kill)? &quot;FAK&quot;:&quot;---&quot;) + &quot;\t&quot; + disclosed_quantity;</span>
     }
 }

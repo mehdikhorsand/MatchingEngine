@@ -69,7 +69,7 @@ public class Order {
     public boolean has_valid_attrs() {
         boolean fak_validated = !fill_and_kill || (peak_size == 0 && min_qty == 0);
         boolean quantity_validated = peak_size <= quantity && min_qty <= quantity;
-        return fak_validated && quantity_validated;
+        return fak_validated && quantity_validated && broker_id != null && shareholder_id != null;
     }
 
     public int get_maximum_quantity_to_trade() {
@@ -94,8 +94,8 @@ public class Order {
 
     @Override
     public String toString() {
-        return "\n\tOrder\t" + ((peak_size == 0)? "Limit":"Iceberg") + "\t" + id + "\t" + broker_id.id +
-                "\t" + shareholder_id.id + "\t" + price + "\t" + quantity + "\t" + ((is_buy)? "BUY ":"SELL") +
+        return "\n\tOrder\t" + ((peak_size == 0)? "Limit":"Iceberg") + "\t" + id + "\t" + ((broker_id == null)? 0:broker_id.id) +
+                "\t" + ((shareholder_id == null)? 0:shareholder_id.id) + "\t" + price + "\t" + quantity + "\t" + ((is_buy)? "BUY ":"SELL") +
                 "\t" + min_qty + "\t" + ((fill_and_kill)? "FAK":"---") + "\t" + disclosed_quantity;
     }
 }

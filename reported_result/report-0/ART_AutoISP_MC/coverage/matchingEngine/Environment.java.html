@@ -54,7 +54,7 @@
 <span class="fc bfc" id="L54" title="All 2 branches covered.">        if(order.price % tick_size == 0) {</span>
 <span class="fc" id="L55">            int lower_price_limit = reference_price - (int)(reference_price * static_price_band_lower_limit);</span>
 <span class="fc" id="L56">            int upper_price_limit = reference_price + (int)(reference_price * static_price_band_upper_limit);</span>
-<span class="pc bpc" id="L57" title="2 of 4 branches missed.">            return lower_price_limit &lt;= order.price &amp;&amp; order.price &lt;= upper_price_limit;</span>
+<span class="pc bpc" id="L57" title="1 of 4 branches missed.">            return lower_price_limit &lt;= order.price &amp;&amp; order.price &lt;= upper_price_limit;</span>
         }
         else
 <span class="fc" id="L60">            return false;</span>

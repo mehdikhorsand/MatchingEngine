@@ -1,41 +1,41 @@
 SetTickSizeRq	1
-SetLotSizeRq	1
+SetLotSizeRq	2
 SetReferencePriceRq	5
 SetStaticPriceBandLowerLimitRq	0.6
 SetStaticPriceBandUpperLimitRq	0.8
 SetTotalSharesRq	100
 SetOwnershipUpperLimitRq	0.2
-SetCreditRq	1	5
-SetCreditRq	2	7
-SetCreditRq	3	11
-SetCreditRq	4	11
-SetCreditRq	5	13
-SetCreditRq	6	15
-SetCreditRq	7	5
-SetOwnershipRq	1	54
-SetOwnershipRq	2	38
-SetOwnershipRq	3	61
-SetOwnershipRq	4	34
-SetOwnershipRq	5	13
-SetOwnershipRq	6	82
-SetOwnershipRq	7	65
-NewOrderRq	1	6	6	1	True	1	False	1
-NewOrderRq	7	7	8	7	False	0	False	5
-NewOrderRq	2	4	9	2	False	0	True	0
-NewOrderRq	5	2	7	7	True	1	False	0
+SetCreditRq	1	4
+SetCreditRq	2	1
+SetCreditRq	3	10
+SetCreditRq	4	14
+SetCreditRq	5	11
+SetCreditRq	6	2
+SetCreditRq	7	6
+SetOwnershipRq	1	13
+SetOwnershipRq	2	51
+SetOwnershipRq	3	62
+SetOwnershipRq	4	39
+SetOwnershipRq	5	20
+SetOwnershipRq	6	66
+SetOwnershipRq	7	45
+NewOrderRq	6	3	8	1	True	0	True	0
+NewOrderRq	6	1	4	2	False	0	True	0
+NewOrderRq	7	2	6	7	False	0	False	7
+NewOrderRq	6	7	8	6	True	2	False	0
 CancelOrderRq	4	True
-NewOrderRq	4	4	6	8	False	7	False	8
-NewOrderRq	2	6	5	6	False	0	False	2
-NewOrderRq	4	1	2	3	True	1	False	0
-NewOrderRq	7	3	7	2	True	2	False	0
-ReplaceOrderRq	9	7	3	9	5	True	0	False	0
-NewOrderRq	2	3	3	4	False	1	False	0
-NewOrderRq	5	3	2	6	True	0	False	6
-NewOrderRq	1	4	6	2	False	0	False	0
-NewOrderRq	2	4	9	1	True	1	False	1
+NewOrderRq	4	6	8	8	False	0	True	0
+NewOrderRq	5	3	6	8	False	0	True	0
+NewOrderRq	6	4	6	7	True	4	False	7
+NewOrderRq	6	1	5	6	True	2	False	5
+ReplaceOrderRq	9	6	1	8	6	True	1	False	6
+NewOrderRq	6	2	2	5	False	0	True	0
+NewOrderRq	2	4	6	8	False	0	False	1
+NewOrderRq	1	5	8	8	True	0	True	0
+NewOrderRq	2	4	9	3	True	0	True	0
 CancelOrderRq	14	True
-NewOrderRq	7	5	9	7	False	0	False	1
-NewOrderRq	3	4	9	4	False	0	False	0
-NewOrderRq	4	1	4	8	True	7	False	0
-NewOrderRq	2	4	2	4	False	0	False	0
-ReplaceOrderRq	19	2	4	5	5	False	0	True	0
+NewOrderRq	3	4	8	2	False	0	False	1
+NewOrderRq	1	4	4	3	False	0	False	0
+NewOrderRq	5	5	2	4	False	0	True	0
+NewOrderRq	5	6	6	4	True	0	False	0
+ReplaceOrderRq	19	5	6	5	7	True	0	False	6

@@ -42,9 +42,10 @@ public class Shareholder {
         TCRunner.method_called();
         StringBuilder result = new StringBuilder("\n\tOwnerships\t" + list.size());
         for(Shareholder shareholder : list) {
-//            TCRunner.condition_covered();
+            TCRunner.start_loop(10);
             result.append("\n").append(shareholder.toString());
         }
+        TCRunner.end_loop(10);
         return result.toString();
     }
 

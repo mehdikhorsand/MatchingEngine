@@ -79,7 +79,7 @@ public class Order {
         TCRunner.method_called();
         boolean fak_validated = !fill_and_kill || (peak_size == 0 && min_qty == 0);
         boolean quantity_validated = peak_size <= quantity && min_qty <= quantity;
-        return fak_validated && quantity_validated;
+        return fak_validated && quantity_validated && broker_id != null && shareholder_id != null;
     }
 
     public int get_maximum_quantity_to_trade() {
@@ -134,8 +134,8 @@ public class Order {
         }
         else
             fak = "---";
-        return "\n\tOrder\t" + type + "\t" + id + "\t" + broker_id.id +
-                "\t" + shareholder_id.id + "\t" + price + "\t" + quantity + "\t" + side +
+        return "\n\tOrder\t" + type + "\t" + id + "\t" + ((broker_id == null)? 0:broker_id.id) +
+                "\t" + ((shareholder_id == null)? 0:shareholder_id.id) + "\t" + price + "\t" + quantity + "\t" + side +
                 "\t" + min_qty + "\t" + fak + "\t" + disclosed_quantity;
     }
 }

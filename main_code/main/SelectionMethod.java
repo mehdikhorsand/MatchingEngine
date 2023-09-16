@@ -1,10 +1,11 @@
 package main;
+import methods.ART_AutoISP.ART_AutoISP;
+import methods.ART_AutoISP_noPartition.ART_AutoISP_noPartition;
 import methods.ART_AutoISP_C.ART_AutoISP_C;
 import methods.ART_AutoISP_MC.ART_AutoISP_MC;
 import methods.ART_TFC.ART_TFC;
 import methods.ART_WT.ART_WT;
-import methods.ART_ISP.ART_ISP;
-import methods.ART_AutoISP.ART_AutoISP;
+import methods.ART_ISP_hs.ART_ISP_hs;
 import methods.ART_FT.ART_FT;
 import randomTestcase.TestCase;
 
@@ -21,11 +22,12 @@ public class SelectionMethod {
         ArrayList<SelectionMethod> methods = new ArrayList<>();
         ArrayList<SelectionMethod> sub_classes = new ArrayList<>();
         sub_classes.add(new RT());
-        sub_classes.add(new ART_ISP());
+        sub_classes.add(new ART_ISP_hs());
         sub_classes.add(new ART_FT());
         sub_classes.add(new ART_WT());
         sub_classes.add(new ART_TFC());
         sub_classes.add(new ART_AutoISP());
+        sub_classes.add(new ART_AutoISP_noPartition());
         sub_classes.add(new ART_AutoISP_MC());
         sub_classes.add(new ART_AutoISP_C());
 //        sub_classes.add(new ART_G());

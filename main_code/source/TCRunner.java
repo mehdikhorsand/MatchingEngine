@@ -1,5 +1,7 @@
 package source;
 
+import tools.activity.Activity;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,16 +20,18 @@ public class TCRunner {
     static FileWriter writer;
     public static ArrayList<String> method_invocation_sequence;
     public static ArrayList<ArrayList<String>> method_invocation_edge;
+    public static ArrayList<Activity> method_invocation_edge2;
     public static ArrayList<ArrayList<String>> method_and_condition_coverage;
-    public static ArrayList<ArrayList<String>> condition_coverage;
-    public static ArrayList<ArrayList<String>> branch_coverage;
+    public static ArrayList<Activity> method_and_condition_coverage2;
+//    public static ArrayList<ArrayList<String>> branch_coverage;
 
     public TCRunner(String input_file_path, String output_file_path) {
         method_invocation_sequence = new ArrayList<>();
         method_invocation_edge = new ArrayList<>();
+        method_invocation_edge2 = new ArrayList<>();
         method_and_condition_coverage = new ArrayList<>();
-        condition_coverage = new ArrayList<>();
-        branch_coverage = new ArrayList<>();
+        method_and_condition_coverage2 = new ArrayList<>();
+//        branch_coverage = new ArrayList<>();
         TCRunner.destination_file_path = output_file_path;
         try {
             Scanner scanner = new Scanner(new File(input_file_path));
@@ -134,40 +138,73 @@ public class TCRunner {
                 get_boolean(args[6]), Integer.parseInt(args[7]));
     }
 
+    public static void start_loop(int loop_index) {
+        Throwable stack = new Throwable();
+        String class_name = stack.getStackTrace()[1].getClassName().split("\\.")[1];
+        String method_name = stack.getStackTrace()[1].getMethodName();
+        int line_number = stack.getStackTrace()[1].getLineNumber();
+        ArrayList<String> new_method_path = new ArrayList<>();
+        new_method_path.add(class_name + "." + method_name);
+        new_method_path.add(class_name + "." + method_name + ":" + line_number + "@start_loop");
+        method_invocation_edge.add(new_method_path);
+        Activity activity = Activity.start_loop(stack, loop_index);
+        method_invocation_edge2.add(activity);
+        method_and_condition_coverage.add(new_method_path);
+        method_and_condition_coverage2.add(activity);
+    }
+
+    public static void end_loop(int loop_index) {
+        Throwable stack = new Throwable();
+        String class_name = stack.getStackTrace()[1].getClassName().split("\\.")[1];
+        String method_name = stack.getStackTrace()[1].getMethodName();
+        int line_number = stack.getStackTrace()[1].getLineNumber();
+        ArrayList<String> new_method_path = new ArrayList<>();
+        new_method_path.add(class_name + "." + method_name);
+        new_method_path.add(class_name + "." + method_name + ":" + line_number + "@end_loop");
+        method_invocation_edge.add(new_method_path);
+        Activity activity = Activity.end_loop(stack, loop_index);
+        method_invocation_edge2.add(activity);
+        method_and_condition_coverage.add(new_method_path);
+        method_and_condition_coverage2.add(activity);
+    }
+
     public static void method_called() {
         Throwable stack = new Throwable();
         set_method_invocation_sequence(stack);
         set_method_invocation_edge(stack);
     }
 
-    public static void condition_covered() {
+    public static void method_finished() {
         Throwable stack = new Throwable();
-        String class_name = stack.getStackTrace()[1].getClassName();
+        String class_name = stack.getStackTrace()[1].getClassName().split("\\.")[1];
         String method_name = stack.getStackTrace()[1].getMethodName();
         int line_number = stack.getStackTrace()[1].getLineNumber();
-        ArrayList<String> new_method_path = new ArrayList<>();
-        new_method_path.add(class_name + "." + method_name);
-        new_method_path.add(class_name + ":" + line_number);
-        method_and_condition_coverage.add(new_method_path);
-        condition_coverage.add(new_method_path);
+        ArrayList<String> fin_method = new ArrayList<>();
+//        fin_method.add(class_name + "." + method_name);
+        fin_method.add(class_name + "." + method_name + ":" + line_number + "@finished");
+        method_invocation_edge.add(fin_method);
+        Activity activity = Activity.method_finished(stack);
+        method_invocation_edge2.add(activity);
+        method_and_condition_coverage.add(fin_method);
+        method_and_condition_coverage2.add(activity);
     }
 
-    public static void branch_covered(String branches) {
+    public static void condition_covered() {
         Throwable stack = new Throwable();
-        String class_name = stack.getStackTrace()[1].getClassName();
+        String class_name = stack.getStackTrace()[1].getClassName().split("\\.")[1];
         String method_name = stack.getStackTrace()[1].getMethodName();
         int line_number = stack.getStackTrace()[1].getLineNumber();
         ArrayList<String> new_method_path = new ArrayList<>();
         new_method_path.add(class_name + "." + method_name);
         new_method_path.add(class_name + ":" + line_number);
         method_and_condition_coverage.add(new_method_path);
-        condition_coverage.add(new_method_path);
+        method_and_condition_coverage2.add(Activity.condition_covered(stack));
     }
 
     public static void set_method_invocation_sequence(Throwable stack) {
         String class_name = stack.getStackTrace()[1].getClassName();
         String method_name = stack.getStackTrace()[1].getMethodName();
-        method_invocation_sequence.add(class_name + "." + method_name);
+        method_invocation_sequence.add(class_name.split("\\.")[1] + "." + method_name);
     }
 
     public static void set_method_invocation_edge(Throwable stack) {
@@ -178,18 +215,19 @@ public class TCRunner {
             for(Class src_class : get_src_classes()) {
                 if(src_class.getName().equals(class_name)) {
                     String method_name = stack.getStackTrace()[i+1].getMethodName();
-                    new_method_path.add(0, class_name + "." + method_name);
+                    new_method_path.add(0, class_name.split("\\.")[1] + "." + method_name);
                     break;
                 }
             }
         }
         method_invocation_edge.add(new_method_path);
+        Activity activity = Activity.method_called(stack);
+        method_invocation_edge2.add(activity);
         method_and_condition_coverage.add(new_method_path);
-        ArrayList<String> method = new ArrayList<>();
-        method.add(new_method_path.get(new_method_path.size()-1));
-        condition_coverage.add(method);
+        method_and_condition_coverage2.add(activity);
     }
 
+    // todo: move to another class
     public static ArrayList<String> get_src_methods_name() {
         ArrayList<String> output = new ArrayList<>();
         for(Class src_class : get_src_classes()) {
@@ -212,4 +250,16 @@ public class TCRunner {
         src_classes.add(Environment.class);
         return src_classes;
     }
+
+//    public static void branch_covered(String branches) {
+//        Throwable stack = new Throwable();
+//        String class_name = stack.getStackTrace()[1].getClassName();
+//        String method_name = stack.getStackTrace()[1].getMethodName();
+//        int line_number = stack.getStackTrace()[1].getLineNumber();
+//        ArrayList<String> new_method_path = new ArrayList<>();
+//        new_method_path.add(class_name.split("\\.")[1] + "." + method_name);
+//        new_method_path.add(class_name.split("\\.")[1] + ":" + line_number);
+//        method_and_condition_coverage.add(new_method_path);
+//        condition_coverage.add(new_method_path);
+//    }
 }

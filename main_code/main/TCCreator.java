@@ -3,11 +3,20 @@ package main;
 import randomTestcase.CandidateSet;
 import randomTestcase.TestCase;
 import tools.TCWriter;
+import tools.Terminal;
 
 public class TCCreator {
     public static void create_testcase_files() {
-        for (int i = 0; i< Settings.testcase_number; i++)
+        for (int i = 0; i<Settings.testcase_number; i++)
             write_test_files(i);
+        write_invalid_orders_testcase();
+    }
+
+    public static void write_invalid_orders_testcase() {
+        for(String method : Settings.get_methods()) {
+            Terminal.run_command("cp " + Settings.invalid_orders_testcase_file + " " +
+                    get_testcase_file_name(method, Settings.testcase_number));
+        }
     }
 
     private static String get_testcase_file_name(String method, int index) {
