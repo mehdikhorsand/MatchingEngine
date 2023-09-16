@@ -16,7 +16,7 @@ import tools.ConsoleColors;
 public class TestCaseRunner{
     @Test
     public void tester () throws Exception {
-        for(int i=0; i<Settings.testcase_number; i++) {
+        for(int i=0; i<=Settings.testcase_number; i++) {
             new TCRunner(Settings.get_target_testcase_path(i), Settings.get_target_output_path(i));
             evaluation(Settings.get_target_output_path(i), Settings.get_target_oracle_path(i));
         }

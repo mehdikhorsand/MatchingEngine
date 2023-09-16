@@ -41,12 +41,13 @@ public class MatchingEngine{
 
     public void replace_order_request(int old_order_id, Order new_order){
         new_request("Replace", new_order);
-        Order old_order = order_book.get_order(old_order_id);
+        ArrayList<Object> order_and_index = order_book.get_order_and_index(old_order_id);
+        Order old_order = (order_and_index == null)? null:(Order)order_and_index.get(0);
         if (old_order != null &&
                 old_order.broker_id.id == new_order.broker_id.id &&
                 old_order.shareholder_id.id == new_order.shareholder_id.id &&
                 old_order.is_buy == new_order.is_buy && new_order.min_qty == 0) {
-            int old_order_index = order_book.get_order_index(old_order);
+            int old_order_index = (int)order_and_index.get(1);
             order_book.remove_order(old_order);
             String new_order_response = add_order(new_order);
             if (Objects.equals(new_order_response, "Rejected"))

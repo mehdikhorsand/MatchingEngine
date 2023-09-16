@@ -1,18 +1,32 @@
 package methods.ART_AutoISP;
 
+import randomTestcase.TestCase;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class AutoISPCoverage {
+    public static TestCase get_best_candidate(ArrayList<MethodEdgePairCoverage> testcases_mep,
+                                              ArrayList<AutoCharacteristic> isp_coverage_situation) {
+        MethodEdgePairCoverage furthest_candidate = testcases_mep.get(0);
+        double max_score = 0;
+        for (MethodEdgePairCoverage c_mep:testcases_mep) {
+            double score = get_score_based_on_isp_coverage(c_mep, isp_coverage_situation);
+            if (max_score < score) {
+                max_score = score;
+                furthest_candidate = c_mep;
+            }
+        }
+        select_testcase(furthest_candidate, isp_coverage_situation);
+        return furthest_candidate.testcase;
+    }
 
-    static ArrayList<AutoCharacteristic> isp_coverage_situation = new ArrayList<>();
-
-    public static double get_score_based_on_isp_coverage(MethodEdgePairCoverage c_mep) {
+    public static double get_score_based_on_isp_coverage(MethodEdgePairCoverage c_mep, ArrayList<AutoCharacteristic> isp_coverage_situation) {
         double score = 0;
         for(AutoCharacteristic tc_ch : c_mep.characteristics) {
             boolean found_characteristic = false;
             for(AutoCharacteristic ch : isp_coverage_situation) {
-                if(Objects.equals(ch.starting_method, tc_ch.starting_method)) {
+                if(Objects.equals(ch.action, tc_ch.action)) {
                     found_characteristic = true;
                     for(AutoPartitions tc_ch_p : tc_ch.partitions) {
                         boolean found_partition = false;
@@ -48,7 +62,7 @@ public class AutoISPCoverage {
         return score;
     }
 
-    public static void select_testcase(MethodEdgePairCoverage furthestCandidate) {
+    public static void select_testcase(MethodEdgePairCoverage furthestCandidate, ArrayList<AutoCharacteristic> isp_coverage_situation) {
 //        System.out.println("**************************\nisp_coverage_situation:\n");
 //        System.out.println(get_isp_partitions_in_string(isp_coverage_situation));
 //        System.out.println("furthest_candidates characteristics:\n");
@@ -56,7 +70,7 @@ public class AutoISPCoverage {
         for(AutoCharacteristic tc_ch : furthestCandidate.characteristics) {
             boolean found_characteristic = false;
             for(AutoCharacteristic ch : isp_coverage_situation) {
-                if(Objects.equals(ch.starting_method, tc_ch.starting_method)) {
+                if(Objects.equals(ch.action, tc_ch.action)) {
                     found_characteristic = true;
                     for(AutoPartitions tc_ch_p : tc_ch.partitions) {
                         boolean found_partition = false;
@@ -78,8 +92,8 @@ public class AutoISPCoverage {
                 isp_coverage_situation.add(tc_ch);
             }
         }
-//        System.out.println("isp_coverage_situation: \n");
-//        System.out.println(get_isp_partitions_in_string(isp_coverage_situation));
+        System.out.println("isp_coverage_situation: new method \n");
+        System.out.println(get_isp_partitions_in_string(isp_coverage_situation));
     }
 
     public static String get_isp_partitions_in_string(ArrayList<AutoCharacteristic> characteristics) {
@@ -88,7 +102,7 @@ public class AutoISPCoverage {
         for (AutoCharacteristic characteristic : characteristics) {
             i++;
 //            if(characteristic.partitions.size() > 1) {
-                res.append("\nC").append(i).append(".\t").append(characteristic.starting_method).append("\n");
+                res.append("\nC").append(i).append(".\t").append(characteristic).append("\n");
                 int j = 0;
                 for (AutoPartitions partition : characteristic.partitions) {
                     j++;

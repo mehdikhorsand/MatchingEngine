@@ -13,9 +13,10 @@ public class OrderBook {
         TCRunner.method_called();
         StringBuilder output = new StringBuilder();
         for(Order order : orders) {
-//            TCRunner.condition_covered();
+            TCRunner.start_loop(1);
             output.append(order.toString());
         }
+        TCRunner.end_loop(1);
         return output.toString();
     }
 
@@ -67,12 +68,13 @@ public class OrderBook {
     public Order get_first_with_positive_quantity(ArrayList<Order> orders) {
         TCRunner.method_called();
         for(Order order : orders) {
-//            TCRunner.condition_covered();
+            TCRunner.start_loop(2);
             if (order.quantity > 0) {
                 TCRunner.condition_covered();
                 return order;
             }
         }
+        TCRunner.end_loop(2);
         return null;
     }
 
@@ -90,12 +92,14 @@ public class OrderBook {
         TCRunner.method_called();
         remove_empty_orders(buy_order_ids);
         remove_empty_orders(sell_order_ids);
+        TCRunner.method_finished();
     }
 
     public void remove_empty_orders(ArrayList<Order> orders) {
         TCRunner.method_called();
         int i = 0;
         while(i < orders.size()) {
+            TCRunner.start_loop(3);
             if(orders.get(i).quantity == 0) {
                 TCRunner.condition_covered();
                 remove_order(orders.get(i));
@@ -103,6 +107,8 @@ public class OrderBook {
             else
                 i++;
         }
+        TCRunner.end_loop(3);
+        TCRunner.method_finished();
     }
 
     public void rollback_order_book(Trade trade) {
@@ -118,46 +124,53 @@ public class OrderBook {
         }
     }
 
-    public Order get_order(ArrayList<Order> orders, int order_id) {
+    public int get_order_index(ArrayList<Order> orders, int order_id) {
         TCRunner.method_called();
-        for(Order order : orders) {
-//            TCRunner.condition_covered();
-            if (order.id == order_id) {
-                TCRunner.condition_covered();
-                return order;
-            }
-        }
-        return null;
-    }
-
-    public Order get_order(int order_id) {
-        TCRunner.method_called();
-        Order buy_order = get_order(buy_order_ids, order_id);
-        if(buy_order != null) {
-            TCRunner.condition_covered();
-            return buy_order;
-        }
-        else
-            return get_order(sell_order_ids, order_id);
-    }
-
-    public int get_order_index(Order order) {
-        TCRunner.method_called();
-        ArrayList<Order> queue;
-        if(order.is_buy){
-            TCRunner.condition_covered();
-            queue = buy_order_ids;
-        }
-        else
-            queue = sell_order_ids;
-        for(int i=0; i<queue.size(); i++) {
-//            TCRunner.condition_covered();
-            if (queue.get(i).id == order.id) {
+        for(int i=0; i<orders.size(); i++) {
+            TCRunner.start_loop(4);
+            if (orders.get(i).id == order_id) {
                 TCRunner.condition_covered();
                 return i;
             }
         }
-        return 0;
+        TCRunner.end_loop(4);
+        return -1;
+    }
+
+    public ArrayList<Object> get_order_and_index(ArrayList<Order> orders, int order_id) {
+        TCRunner.method_called();
+        int index = get_order_index(orders, order_id);
+        if(index < 0) {
+            TCRunner.condition_covered();
+            TCRunner.method_finished();
+            return null;
+        }
+        ArrayList<Object> output = new ArrayList<>();
+        output.add(orders.get(index));
+        output.add(index);
+        TCRunner.method_finished();
+        return output;
+    }
+
+    public ArrayList<Object> get_order_and_index(int order_id) {
+        TCRunner.method_called();
+        ArrayList<Object> output = get_order_and_index(buy_order_ids, order_id);
+        if(output == null) {
+            TCRunner.condition_covered();
+            output = get_order_and_index(sell_order_ids, order_id);
+        }
+        TCRunner.method_finished();
+        return output;
+    }
+
+    public Order get_order(int order_id){
+        TCRunner.method_called();
+        ArrayList<Object> order_and_index = get_order_and_index(order_id);
+        if(order_and_index == null) {
+            TCRunner.condition_covered();
+            return null;
+        }
+        return (Order)order_and_index.get(0);
     }
 
     public void insert_order(Order order, int index) {

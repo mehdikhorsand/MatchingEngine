@@ -9,7 +9,7 @@ public class Settings {
     public static final int broker_number = 7;
     public static final int max_order_price = 10;
     public static final int max_order_quantity = 8;
-    public static final int repetition_number = 5;
+    public static final int repetition_number = 10;
     public static final boolean just_show_avg_report = false;
     public static ArrayList<String> get_methods() {
         ArrayList<String> methods = new ArrayList<>();
@@ -17,14 +17,15 @@ public class Settings {
 //        methods.add("ART_FT");
 //        methods.add("ART_WT");
 //        methods.add("ART_TFC");
-        methods.add("ART_ISP");
-        methods.add("ART_AutoISP");
-        methods.add("ART_AutoISP_C");
+//        methods.add("ART_ISP_hs");
+//        methods.add("ART_AutoISP");
+//        methods.add("ART_AutoISP_C");
         methods.add("ART_AutoISP_MC");
+        methods.add("ART_AutoISP_noPartition");
         return methods;
     }
     public static final boolean report_coverage = true;
-    public static final boolean report_mutation_result = true;
+    public static final boolean report_mutation_result = false;
 
 
 //////////////************************************************************************//////////////
@@ -45,6 +46,7 @@ public class Settings {
     public static final String testcase_format = ".txt";
     public static final String result_location = project_location + "reported_result/";
     public static final String report_location = result_location + "report-";
+    public static final String invalid_orders_testcase_file = "invalid_orders_testcase.txt";
 
     public static String get_target_testcase_path(int index) {
         return temp + target_method + testcases + test_file_name + index + testcase_format;

@@ -26,12 +26,13 @@ public class Broker {
     public static Broker get_broker_by_id(int broker_id) {
         TCRunner.method_called();
         for(Broker broker : list) {
-//            TCRunner.condition_covered();
+            TCRunner.start_loop(5);
             if (broker.id == broker_id) {
                 TCRunner.condition_covered();
                 return broker;
             }
         }
+        TCRunner.end_loop(5);
         return null;
     }
 
@@ -39,9 +40,10 @@ public class Broker {
         TCRunner.method_called();
         StringBuilder result = new StringBuilder("\n\tCredits\t" + list.size());
         for(Broker broker : list) {
-//            TCRunner.condition_covered();
+            TCRunner.start_loop(6);
             result.append("\n").append(broker.toString());
         }
+        TCRunner.end_loop(6);
         return result.toString();
     }
 

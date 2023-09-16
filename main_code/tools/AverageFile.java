@@ -108,10 +108,12 @@ public class AverageFile {
     }
 
     private static void write_number(float float_number) {
-        float_number = (float) ((int) (float_number * 100)) / 100;
+        if(float_number > 317 && float_number < 318)
+            System.out.println();
+//        float_number = (float) ((int) (float_number * 100)) / 100;
         if(float_number == (int) float_number)
             writer.print((int) float_number);
         else
-            writer.print(float_number);
+            writer.printf("%.1f", float_number);
     }
 }

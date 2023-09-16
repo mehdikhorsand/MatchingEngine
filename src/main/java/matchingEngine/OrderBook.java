@@ -95,24 +95,33 @@ public class OrderBook {
         }
     }
 
-    public Order get_order(ArrayList<Order> orders, int order_id) {
-        for(Order order : orders)
-            if (order.id == order_id)
-                return order;
-        return null;
-    }
-
-    public Order get_order(int order_id) {
-        Order buy_order = get_order(buy_order_ids, order_id);
-        return (buy_order != null)? buy_order : get_order(sell_order_ids, order_id);
-    }
-
-    public int get_order_index(Order order) {
-        ArrayList<Order> queue = (order.is_buy)? buy_order_ids:sell_order_ids;
-        for(int i=0; i<queue.size(); i++)
-            if (queue.get(i).id == order.id)
+    public int get_order_index(ArrayList<Order> orders, int order_id) {
+        for(int i=0; i<orders.size(); i++)
+            if (orders.get(i).id == order_id)
                 return i;
-        return 0;
+        return -1;
+    }
+
+    public ArrayList<Object> get_order_and_index(ArrayList<Order> orders, int order_id) {
+        int index = get_order_index(orders, order_id);
+        if(index < 0)
+            return null;
+        ArrayList<Object> output = new ArrayList<>();
+        output.add(orders.get(index));
+        output.add(index);
+        return output;
+    }
+
+    public ArrayList<Object> get_order_and_index(int order_id) {
+        ArrayList<Object> output = get_order_and_index(buy_order_ids, order_id);
+        if(output == null)
+            output = get_order_and_index(sell_order_ids, order_id);
+        return output;
+    }
+
+    public Order get_order(int order_id){
+        ArrayList<Object> order_and_index = get_order_and_index(order_id);
+        return (order_and_index == null)? null:(Order)order_and_index.get(0);
     }
 
     public void insert_order(Order order, int index) {
