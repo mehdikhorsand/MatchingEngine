@@ -66,10 +66,6 @@ public class Terminal {
     }
 
     public static void run_pitest() {
-//        String[] line_templates = new String[2];
-//        line_templates[0] = "TCRunner.method_called";
-//        line_templates[1] = "TCRunner.condition_covered";
-//        LineCommenter.comment_lines(line_templates);
         System.out.println(ConsoleColors.BLUE_BOLD + "Running PiTest." + ConsoleColors.RESET);
         run_command("/usr/lib/jvm/java-11-openjdk/bin/java " +
                 "-javaagent:/usr/share/idea/lib/idea_rt.jar=44945:/usr/share/idea/bin " +
@@ -98,7 +94,6 @@ public class Terminal {
                 "--targetClasses matchingEngine.Broker,matchingEngine.Shareholder,matchingEngine.MatchingEngine," +
                 "matchingEngine.Environment,matchingEngine.Trade,matchingEngine.Order,matchingEngine.OrderBook " +
                 "--targetTests TestCaseRunner --outputFormats XML,HTML");
-//        LineCommenter.uncomment_lines(line_templates);
     }
 
     public static void mv(String source_address, String destination_address) {

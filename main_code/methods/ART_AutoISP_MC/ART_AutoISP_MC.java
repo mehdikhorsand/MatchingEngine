@@ -1,25 +1,25 @@
 package methods.ART_AutoISP_MC;
 
-import main.SelectionMethod;
-import methods.ART_AutoISP.AutoCharacteristic;
-import methods.ART_AutoISP.AutoISPCoverage;
-import methods.ART_AutoISP.MethodEdgePairCoverage;
+import methods.ART_AutoISP.ART_AutoISP;
+import methods.ART_AutoISP_C.ART_AutoISP_C;
 import randomTestcase.TestCase;
-
+import tools.AutoISP.*;
 import java.util.ArrayList;
 
-public class ART_AutoISP_MC extends SelectionMethod {
+public class ART_AutoISP_MC extends ART_AutoISP {
     static ArrayList<AutoCharacteristic> isp_coverage_situation = new ArrayList<>();
     @Override
-    public TestCase best_candidate(TestCase[] candidate_set) {
-        ArrayList<MethodEdgePairCoverage> testcases_mep = new ArrayList<>();
-        for(TestCase c : candidate_set)
-            testcases_mep.add(new MethodAndConditionEdgePairCoverage(c));
-        return AutoISPCoverage.get_best_candidate(testcases_mep, isp_coverage_situation);
+    public TestCaseRepresentation represent_testcase(TestCase tc) {
+        return new MethodAndConditionEdgePairCoverage(tc);
+    }
+
+    @Override
+    public ArrayList<AutoCharacteristic> get_isp_coverage_situation() {
+        return ART_AutoISP_MC.isp_coverage_situation;
     }
 
     @Override
     public void reset() {
-        isp_coverage_situation = new ArrayList<>();
+        ART_AutoISP_MC.isp_coverage_situation = new ArrayList<>();
     }
 }

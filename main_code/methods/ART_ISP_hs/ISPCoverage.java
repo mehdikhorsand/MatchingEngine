@@ -1,6 +1,7 @@
 package methods.ART_ISP_hs;
 
 import randomTestcase.TestCase;
+import tools.ExecutionAnalysis;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,7 @@ public class ISPCoverage {
     static float get_score_based_on_isp_coverage(TestCase c) {
         ArrayList<ArrayList<Integer>> tc_isp_res = Characteristic.get_testcase_isp_result(c);
         float score = 0;
+//        todo : what is this commented code? is it useful?
 //        int base = ArrayOperations.max(ArrayOperations.sum(tc_isp_res, isp_partitions_situation));
 //        int factor = ArrayOperations.max(isp_partitions_situation);
 //        for (int i=0; i<tc_isp_res.size(); i++) {
@@ -30,10 +32,10 @@ public class ISPCoverage {
                     score += get_score(0, tc_isp_res.get(i).get(j));
             }
         }
-//        System.out.println("**************************************");
-//        System.out.println("isp: " + isp_partitions_situation);
-//        System.out.println("tc: " + tc_isp_res);
-//        System.out.println("score: " + score);
+        ExecutionAnalysis.write("----------------------------------------------------------------");
+        ExecutionAnalysis.write("isp: " + isp_partitions_situation);
+        ExecutionAnalysis.write("tc: " + tc_isp_res);
+        ExecutionAnalysis.write("score: " + score);
         return score;
     }
 
@@ -59,20 +61,5 @@ public class ISPCoverage {
     static void select_testcase(TestCase tc) {
         ArrayList<ArrayList<Integer>> tc_isp_res = Characteristic.get_testcase_isp_result(tc);
         isp_partitions_situation = add_to_isp_partitions_situations(tc_isp_res);
-    }
-
-    public static String get_isp_partitions_in_string() {
-        String res = "";
-        for(int i=0; i<isp_partitions_situation.size(); i++) {
-            res += " C" + (i+1) + "\n";
-            for (int j = 0; j < isp_partitions_situation.get(i).size(); j++) {
-                res += (" |___" + " P" + (j + 1) + " => " + isp_partitions_situation.get(i).get(j)) + "\n";
-            }
-        }
-        return res;
-    }
-
-    public static void reset_covered_partitions() {
-        isp_partitions_situation = new ArrayList<>();
     }
 }

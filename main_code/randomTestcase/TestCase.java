@@ -21,7 +21,6 @@ public class TestCase {
     public int[] credits;
     public int[] ownerShips;
     public ArrayList<OrderInput> orders = new ArrayList<>();
-
     public TestCase() {
         tickSize = get_random_tick_lot_size();
         lotSize = get_random_tick_lot_size();

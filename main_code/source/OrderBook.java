@@ -35,6 +35,7 @@ public class OrderBook {
             sort_buy_orders();
         }
         else {
+            TCRunner.condition_uncovered();
             sell_order_ids.add(order);
             sort_sell_orders();
         }
@@ -49,6 +50,7 @@ public class OrderBook {
             sort_buy_orders();
         }
         else {
+            TCRunner.condition_uncovered();
             sell_order_ids.remove(order);
             sort_sell_orders();
         }
@@ -104,8 +106,10 @@ public class OrderBook {
                 TCRunner.condition_covered();
                 remove_order(orders.get(i));
             }
-            else
+            else {
+                TCRunner.condition_uncovered();
                 i++;
+            }
         }
         TCRunner.end_loop(3);
         TCRunner.method_finished();
@@ -119,6 +123,7 @@ public class OrderBook {
             buy_order_ids.add(0, trade.buy_order_id);
         }
         else{
+            TCRunner.condition_uncovered();
             sell_order_ids.remove(trade.sell_order_id);
             sell_order_ids.add(0, trade.sell_order_id);
         }
@@ -179,8 +184,10 @@ public class OrderBook {
             TCRunner.condition_covered();
             buy_order_ids.add(index, order);
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             sell_order_ids.add(index, order);
+        }
         order.order_added_to_queue();
     }
 }

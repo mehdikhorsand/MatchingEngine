@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import randomTestcase.TestCase;
 import main.Settings;
+import tools.SourceDetector;
 import tools.Terminal;
 import tools.Distance;
 import tools.TCWriter;
@@ -32,7 +33,7 @@ public class FrequencyTransform {
     }
 
     public ArrayList<Integer> get_frequency_vector(ArrayList<String> MIS, int from, int to) {
-        ArrayList<String> src_methods_name = TCRunner.get_src_methods_name();
+        ArrayList<String> src_methods_name = SourceDetector.get_src_methods_name();
         ArrayList<Integer> output = new ArrayList<>();
         for(String ignored : src_methods_name)
             output.add(0);

@@ -3,6 +3,7 @@ package methods.ART_AutoISP_MC;
 import methods.ART_AutoISP.MethodEdgePairCoverage;
 import randomTestcase.TestCase;
 import source.TCRunner;
+import tools.ExecutionAnalysis;
 import tools.activity.Activity;
 
 import java.util.ArrayList;
@@ -14,9 +15,9 @@ public class MethodAndConditionEdgePairCoverage extends MethodEdgePairCoverage {
 
     @Override
     public ArrayList<Activity> get_activities() {
-        run_tc_runner();
-        for(Activity activity : TCRunner.method_and_condition_coverage2)
-            System.out.println(activity);
-        return TCRunner.method_and_condition_coverage2;
+        TCRunner.run(testcase);
+//        for(Activity activity : TCRunner.method_and_condition_coverage)
+//            ExecutionAnalysis.write(activity.toString());
+        return TCRunner.method_and_condition_coverage;
     }
 }

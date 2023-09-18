@@ -88,8 +88,10 @@ public class Order {
             TCRunner.condition_covered();
             return quantity;
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             return disclosed_quantity;
+        }
     }
 
     public void update_order_quantities(Trade trade) {
@@ -120,20 +122,26 @@ public class Order {
             TCRunner.condition_covered();
             type = "Limit";
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             type = "Iceberg";
+        }
         if(is_buy){
             TCRunner.condition_covered();
             side = "BUY ";
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             side = "SELL";
+        }
         if(fill_and_kill){
             TCRunner.condition_covered();
             fak = "FAK";
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             fak = "---";
+        }
         return "\n\tOrder\t" + type + "\t" + id + "\t" + ((broker_id == null)? 0:broker_id.id) +
                 "\t" + ((shareholder_id == null)? 0:shareholder_id.id) + "\t" + price + "\t" + quantity + "\t" + side +
                 "\t" + min_qty + "\t" + fak + "\t" + disclosed_quantity;

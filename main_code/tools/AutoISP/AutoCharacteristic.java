@@ -1,6 +1,9 @@
-package methods.ART_AutoISP;
+package tools.AutoISP;
+
 import tools.activity.Action;
+
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AutoCharacteristic {
     public Action action;
@@ -8,7 +11,6 @@ public class AutoCharacteristic {
     public AutoCharacteristic(Action action) {
         this.action = action;
     }
-
     public void check_behavior(ArrayList<Action> behavior) {
         for(AutoPartitions partition : partitions)
             if(partition.same_behavior(behavior)) {
