@@ -1,29 +1,30 @@
-package methods.ART_AutoISP;
+package tools.AutoISP;
 
 import randomTestcase.TestCase;
+import tools.ExecutionAnalysis;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class AutoISPCoverage {
-    public static TestCase get_best_candidate(ArrayList<MethodEdgePairCoverage> testcases_mep,
+    public static TestCase get_best_candidate(ArrayList<TestCaseRepresentation> testcases_rep,
                                               ArrayList<AutoCharacteristic> isp_coverage_situation) {
-        MethodEdgePairCoverage furthest_candidate = testcases_mep.get(0);
+        TestCaseRepresentation furthest_candidate = testcases_rep.get(0);
         double max_score = 0;
-        for (MethodEdgePairCoverage c_mep:testcases_mep) {
-            double score = get_score_based_on_isp_coverage(c_mep, isp_coverage_situation);
+        for (TestCaseRepresentation tc:testcases_rep) {
+            double score = get_score_based_on_isp_coverage(tc, isp_coverage_situation);
             if (max_score < score) {
                 max_score = score;
-                furthest_candidate = c_mep;
+                furthest_candidate = tc;
             }
         }
         select_testcase(furthest_candidate, isp_coverage_situation);
         return furthest_candidate.testcase;
     }
 
-    public static double get_score_based_on_isp_coverage(MethodEdgePairCoverage c_mep, ArrayList<AutoCharacteristic> isp_coverage_situation) {
+    public static double get_score_based_on_isp_coverage(TestCaseRepresentation c_rep, ArrayList<AutoCharacteristic> isp_coverage_situation) {
         double score = 0;
-        for(AutoCharacteristic tc_ch : c_mep.characteristics) {
+        for(AutoCharacteristic tc_ch : c_rep.characteristics) {
             boolean found_characteristic = false;
             for(AutoCharacteristic ch : isp_coverage_situation) {
                 if(Objects.equals(ch.action, tc_ch.action)) {
@@ -62,11 +63,9 @@ public class AutoISPCoverage {
         return score;
     }
 
-    public static void select_testcase(MethodEdgePairCoverage furthestCandidate, ArrayList<AutoCharacteristic> isp_coverage_situation) {
-//        System.out.println("**************************\nisp_coverage_situation:\n");
-//        System.out.println(get_isp_partitions_in_string(isp_coverage_situation));
-//        System.out.println("furthest_candidates characteristics:\n");
-//        System.out.println(get_isp_partitions_in_string(furthestCandidate.characteristics));
+    public static void select_testcase(TestCaseRepresentation furthestCandidate, ArrayList<AutoCharacteristic> isp_coverage_situation) {
+        ExecutionAnalysis.write("Before:\n" + get_isp_partitions_in_string(isp_coverage_situation));
+        ExecutionAnalysis.write_selected_tc_analysis(get_isp_partitions_in_string(furthestCandidate.characteristics));
         for(AutoCharacteristic tc_ch : furthestCandidate.characteristics) {
             boolean found_characteristic = false;
             for(AutoCharacteristic ch : isp_coverage_situation) {
@@ -92,24 +91,17 @@ public class AutoISPCoverage {
                 isp_coverage_situation.add(tc_ch);
             }
         }
-        System.out.println("isp_coverage_situation: new method \n");
-        System.out.println(get_isp_partitions_in_string(isp_coverage_situation));
+        ExecutionAnalysis.write("After:\n" + get_isp_partitions_in_string(isp_coverage_situation));
     }
 
     public static String get_isp_partitions_in_string(ArrayList<AutoCharacteristic> characteristics) {
         StringBuilder res = new StringBuilder();
-        int i = 0;
-        for (AutoCharacteristic characteristic : characteristics) {
-            i++;
-//            if(characteristic.partitions.size() > 1) {
-                res.append("\nC").append(i).append(".\t").append(characteristic).append("\n");
-                int j = 0;
-                for (AutoPartitions partition : characteristic.partitions) {
-                    j++;
-                    res.append("|__ P").append(j).append(" (").append(partition.covered_qty).append(")\t")
-                            .append(partition.behavior).append("\n");
-                }
-//            }
+        for(int i=0; i<characteristics.size(); i++) {
+            res.append("\nC").append(i+1).append(".\t").append(characteristics.get(i)).append("\n");
+            for(int j=0; j<characteristics.get(i).partitions.size(); j++) {
+                res.append("|__ P").append(j+1).append(" (").append(characteristics.get(i).partitions.get(j).covered_qty).append(")\t")
+                        .append(characteristics.get(i).partitions.get(j).behavior).append("\n");
+            }
         }
         return res.toString();
     }

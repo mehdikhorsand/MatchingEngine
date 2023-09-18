@@ -1,4 +1,4 @@
-package methods.ART_AutoISP_noPartition;
+package methods.ART_AutoISP_1p;
 
 import methods.ART_AutoISP.MethodEdgePairCoverage;
 import randomTestcase.TestCase;
@@ -15,10 +15,10 @@ public class MethodAndConditionEdgePairCoverageNoPartition extends MethodEdgePai
 
     @Override
     public ArrayList<Activity> get_activities() {
-        run_tc_runner();
-        for(Activity activity : TCRunner.method_and_condition_coverage2)
-            System.out.println(activity);
-        return TCRunner.method_and_condition_coverage2;
+        TCRunner.run(testcase);
+//        for(Activity activity : TCRunner.method_and_condition_coverage)
+//            ExecutionAnalysis.write(activity.toString());
+        return TCRunner.method_and_condition_coverage;
     }
 
     @Override

@@ -27,8 +27,10 @@ public class MatchingEngine{
             TCRunner.condition_covered();
             order_info = order.toString().replace("\tOrder\t","");
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             order_info = "";
+        }
         TCRunner.print_output(order_info + "\n");
     }
 
@@ -41,8 +43,10 @@ public class MatchingEngine{
             order_book.remove_order(order);
             TCRunner.print_output("CancelOrderRs\tAccepted");
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             TCRunner.print_output("CancelOrderRs\tRejected");
+        }
     }
 
     public void replace_order_request(int old_order_id, Order new_order){
@@ -67,8 +71,10 @@ public class MatchingEngine{
                 order_book.insert_order(old_order, old_order_index);
             }
             TCRunner.print_output("ReplaceOrderRs\t" + new_order_response);
-        } else
+        } else {
+            TCRunner.condition_uncovered();
             TCRunner.print_output("ReplaceOrderRs\tRejected");
+        }
     }
 
     public void new_order_request(Order order) {
@@ -114,8 +120,10 @@ public class MatchingEngine{
                 order_book.remove_empty_orders();
                 return "Accepted";
             }
-            else
+            else {
+                TCRunner.condition_uncovered();
                 rollback_by_trades();
+            }
         }
         return "Rejected";
     }
@@ -129,6 +137,7 @@ public class MatchingEngine{
             old_order = sell_order = order_book.get_first_sell_order();
         }
         else {
+            TCRunner.condition_uncovered();
             old_order = buy_order = order_book.get_first_buy_order();
             sell_order = new_order;
         }
@@ -173,8 +182,10 @@ public class MatchingEngine{
             TCRunner.condition_covered();
             output = "";
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             output = print_trades();
+        }
         output += "\n" + order_book.toString();
         output += Broker.print_credits();
         output += Shareholder.print_ownerships();

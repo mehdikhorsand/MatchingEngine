@@ -11,17 +11,17 @@ public class Main {
         for(int i=0; i<Settings.repetition_number; i++) {
             TCCreator.create_testcase_files();
             String target = Settings.temp + Settings.target_method;
-            for(String method : Settings.get_methods()) {
-                String source = Settings.temp + method;
+            for(SelectionMethod method : Settings.get_methods2()) {
+                String source = Settings.temp + method.get_name();
                 Terminal.mv(source, target);
                 compute_testcases_oracle();
                 if(Settings.report_coverage) {
-                    print_progress(i, method);
+                    print_progress(i, method.get_name());
                     Terminal.run_jacoco("test");
                     copy_jacoco_report();
                 }
                 if(Settings.report_mutation_result) {
-                    print_progress(i, method);
+                    print_progress(i, method.get_name());
                     Terminal.run_pitest();
                     copy_pitest_report();
                 }
@@ -47,22 +47,22 @@ public class Main {
     private static void open_coverage_and_pitest_report_files() {
         StringBuilder file_paths = new StringBuilder();
         String coverage_file = "/index.html ";
-        for(String method : Settings.get_methods())
+        for(SelectionMethod method : Settings.get_methods2())
             if(Settings.report_coverage)
-                file_paths.append(Settings.result_location).append(Settings.average_coverage).append(method)
+                file_paths.append(Settings.result_location).append(Settings.average_coverage).append(method.get_name())
                         .append(Settings.coverage).append(coverage_file);
-        for(String method : Settings.get_methods())
+        for(SelectionMethod method : Settings.get_methods2())
             if(Settings.report_mutation_result)
-                file_paths.append(Settings.result_location).append(Settings.average_coverage).append(method)
+                file_paths.append(Settings.result_location).append(Settings.average_coverage).append(method.get_name())
                         .append(Settings.pitest).append(coverage_file);
         if(!Settings.just_show_avg_report)
             for(int i=0; i<Settings.repetition_number; i++) {
                 if(Settings.report_coverage)
-                    for (String method : Settings.get_methods())
-                        file_paths.append(get_destination_location(i, method)).append(Settings.coverage).append(coverage_file);
+                    for (SelectionMethod method : Settings.get_methods2())
+                        file_paths.append(get_destination_location(i, method.get_name())).append(Settings.coverage).append(coverage_file);
                 if(Settings.report_mutation_result)
-                    for (String method : Settings.get_methods())
-                        file_paths.append(get_destination_location(i, method)).append(Settings.pitest).append(coverage_file);
+                    for (SelectionMethod method : Settings.get_methods2())
+                        file_paths.append(get_destination_location(i, method.get_name())).append(Settings.pitest).append(coverage_file);
             }
         Terminal.browse(String.valueOf(file_paths));
     }
@@ -98,11 +98,12 @@ public class Main {
         Terminal.rm(Settings.result_location);
         Terminal.rm(Settings.temp);
         Terminal.mkdir(Settings.result_location + Settings.average_coverage);
-        for(String method : Settings.get_methods()) {
-            Terminal.mkdir(Settings.project_location + Settings.temp + method + Settings.testcases);
-            Terminal.mkdir(Settings.project_location + Settings.temp + method + Settings.oracle);
-            Terminal.mkdir(Settings.project_location + Settings.temp + method + Settings.coverage);
-            Terminal.mkdir(Settings.project_location + Settings.temp + method + Settings.output);
+        for(SelectionMethod method : Settings.get_methods2()) {
+            Terminal.mkdir(Settings.project_location + Settings.temp + method.get_name() + Settings.testcases);
+            Terminal.mkdir(Settings.project_location + Settings.temp + method.get_name() + Settings.execution_analysis);
+            Terminal.mkdir(Settings.project_location + Settings.temp + method.get_name() + Settings.oracle);
+            Terminal.mkdir(Settings.project_location + Settings.temp + method.get_name() + Settings.coverage);
+            Terminal.mkdir(Settings.project_location + Settings.temp + method.get_name() + Settings.output);
         }
     }
 }

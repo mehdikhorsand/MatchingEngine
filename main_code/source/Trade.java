@@ -37,8 +37,10 @@ public class Trade {
             TCRunner.condition_covered();
             return buy_order_id.price;
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             return sell_order_id.price;
+        }
     }
 
     public void rollback_trade() {

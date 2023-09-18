@@ -55,8 +55,10 @@ public class Shareholder {
             TCRunner.condition_covered();
             booked_buy_orders_qty += order.quantity;
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             free_ownership -= order.quantity;
+        }
     }
 
     public void deleted_old_order(Order order) {
@@ -65,8 +67,10 @@ public class Shareholder {
             TCRunner.condition_covered();
             booked_buy_orders_qty -= order.quantity;
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             free_ownership += order.quantity;
+        }
     }
 
     public void increase_ownership(Trade trade) {
@@ -94,8 +98,10 @@ public class Shareholder {
             TCRunner.condition_covered();
             return true;
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             return false;
+        }
     }
 
     public void rollback_increase_ownership(Trade trade) {

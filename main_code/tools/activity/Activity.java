@@ -1,6 +1,7 @@
 package tools.activity;
 
 import source.TCRunner;
+import tools.SourceDetector;
 
 public class Activity {
     public ParentMethod parent_method;
@@ -19,7 +20,7 @@ public class Activity {
     public static Activity method_called(Throwable stack) {
         ParentMethod parent_method = new ParentMethod(stack.getStackTrace()[2]);
         Action child_method = new MethodCall(stack.getStackTrace()[1]);
-        for(Class src_class : TCRunner.get_src_classes())
+        for(Class src_class : SourceDetector.get_src_classes())
             if(src_class.getName().equals(parent_method.class_path))
                 return new Activity(parent_method, child_method);
         return new Activity(child_method);

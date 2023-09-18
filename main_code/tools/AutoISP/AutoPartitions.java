@@ -1,4 +1,4 @@
-package methods.ART_AutoISP;
+package tools.AutoISP;
 
 import tools.activity.Action;
 

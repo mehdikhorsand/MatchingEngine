@@ -66,8 +66,10 @@ public class Environment {
             int upper_price_limit = reference_price + (int)(reference_price * static_price_band_upper_limit);
             return lower_price_limit <= order.price && order.price <= upper_price_limit;
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             return false;
+        }
     }
 
     public boolean validate_order_quantity_limit(Order order) {
@@ -81,10 +83,14 @@ public class Environment {
                 int max_ownership = (int) (total_shares * ownership_upper_limit);
                 return owned_qty + order.quantity + booked_orders_qty < max_ownership;
             }
-            else
+            else {
+                TCRunner.condition_uncovered();
                 return true;
+            }
         }
-        else
+        else {
+            TCRunner.condition_uncovered();
             return false;
+        }
     }
 }

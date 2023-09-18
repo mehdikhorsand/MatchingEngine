@@ -3,6 +3,8 @@ package tools;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+
+import main.SelectionMethod;
 import main.Settings;
 
 public class AverageFile {
@@ -11,14 +13,14 @@ public class AverageFile {
     static String[] index;
 
     public static void create_avg_files() {
-        for(String method : Settings.get_methods()) {
+        for(SelectionMethod method : Settings.get_methods2()) {
             for(String[] file_to_copy : Settings.report_files_for_copy_in_avg_result()) {
-                Terminal.copy(Settings.report_location + "0/" + method + file_to_copy[0] + file_to_copy[1],
-                        avg_coverage_location + method + file_to_copy[0]);
+                Terminal.copy(Settings.report_location + "0/" + method.get_name() + file_to_copy[0] + file_to_copy[1],
+                        avg_coverage_location + method.get_name() + file_to_copy[0]);
             }
             for(String[] file_path : Settings.report_files_for_avg()) {
-                Terminal.mkdir(avg_coverage_location + method + file_path[0]);
-                compute_avg_file(file_path[0] + file_path[1], method);
+                Terminal.mkdir(avg_coverage_location + method.get_name() + file_path[0]);
+                compute_avg_file(file_path[0] + file_path[1], method.get_name());
             }
         }
     }
