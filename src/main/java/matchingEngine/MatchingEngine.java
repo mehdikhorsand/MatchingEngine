@@ -5,7 +5,7 @@ import java.util.Objects;
 // total branches : 66
 // never covered with valid orders : 5
 
-public class MatchingEngine{
+public class MatchingEngine {
     Environment environment;
     OrderBook order_book;
     ArrayList<Trade> trades;
@@ -32,7 +32,7 @@ public class MatchingEngine{
         new_request("Cancel", null);
         Order order = order_book.get_order(order_id);
         if(order != null && order.is_buy == is_buy_order){
-            order_book.remove_order(order);
+//            order_book.remove_order(order);
             TCRunner.print_output("CancelOrderRs\tAccepted");
         }
         else
@@ -50,8 +50,8 @@ public class MatchingEngine{
             int old_order_index = (int)order_and_index.get(1);
             order_book.remove_order(old_order);
             String new_order_response = add_order(new_order);
-            if (Objects.equals(new_order_response, "Rejected"))
-                order_book.insert_order(old_order, old_order_index);
+//            if (Objects.equals(new_order_response, "Rejected"))
+//                order_book.insert_order(old_order, old_order_index);
             TCRunner.print_output("ReplaceOrderRs\t" + new_order_response);
         } else
             TCRunner.print_output("ReplaceOrderRs\tRejected");
