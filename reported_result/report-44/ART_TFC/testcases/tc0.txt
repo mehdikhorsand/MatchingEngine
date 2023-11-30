@@ -1,0 +1,31 @@
+SetTickSizeRq	2
+SetLotSizeRq	2
+SetReferencePriceRq	5
+SetStaticPriceBandLowerLimitRq	0.6
+SetStaticPriceBandUpperLimitRq	0.8
+SetTotalSharesRq	100
+SetOwnershipUpperLimitRq	0.2
+SetCreditRq	1	15
+SetCreditRq	2	7
+SetCreditRq	3	11
+SetCreditRq	4	9
+SetCreditRq	5	12
+SetCreditRq	6	12
+SetCreditRq	7	12
+SetOwnershipRq	1	23
+SetOwnershipRq	2	62
+SetOwnershipRq	3	32
+SetOwnershipRq	4	11
+SetOwnershipRq	5	46
+SetOwnershipRq	6	9
+SetOwnershipRq	7	53
+NewOrderRq	3	1	9	8	False	6	False	0
+NewOrderRq	1	5	5	3	True	0	False	0
+NewOrderRq	2	2	3	7	False	5	False	0
+NewOrderRq	2	2	9	7	False	3	False	0
+CancelOrderRq	4	False
+NewOrderRq	7	2	7	8	True	0	False	5
+NewOrderRq	5	3	9	7	True	4	False	6
+NewOrderRq	3	4	4	1	False	0	False	0
+NewOrderRq	7	1	2	4	True	0	False	0
+ReplaceOrderRq	9	7	1	8	3	True	0	False	3
