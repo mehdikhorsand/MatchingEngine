@@ -41,4 +41,4 @@ build/
 ### other ####
 src/main/java/methods/
 temp/
-
+.idea/
