@@ -5,27 +5,27 @@ SetStaticPriceBandLowerLimitRq	0.6
 SetStaticPriceBandUpperLimitRq	0.8
 SetTotalSharesRq	100
 SetOwnershipUpperLimitRq	0.2
-SetCreditRq	1	6
-SetCreditRq	2	14
-SetCreditRq	3	10
-SetCreditRq	4	5
-SetCreditRq	5	11
-SetCreditRq	6	6
-SetCreditRq	7	15
-SetOwnershipRq	1	68
-SetOwnershipRq	2	39
-SetOwnershipRq	3	88
-SetOwnershipRq	4	20
-SetOwnershipRq	5	71
-SetOwnershipRq	6	19
-SetOwnershipRq	7	47
-NewOrderRq	3	6	5	4	False	3	False	0
-NewOrderRq	6	5	8	3	False	2	False	0
-NewOrderRq	7	4	7	5	False	3	False	0
-NewOrderRq	4	4	6	8	True	0	False	0
-CancelOrderRq	4	True
-NewOrderRq	2	1	5	3	True	0	False	1
-NewOrderRq	7	5	2	6	False	0	True	0
-NewOrderRq	4	2	7	3	False	0	True	0
-NewOrderRq	7	4	8	5	True	0	False	4
-ReplaceOrderRq	9	7	4	4	6	True	0	False	4
+SetCreditRq	1	9
+SetCreditRq	2	7
+SetCreditRq	3	15
+SetCreditRq	4	14
+SetCreditRq	5	14
+SetCreditRq	6	14
+SetCreditRq	7	14
+SetOwnershipRq	1	50
+SetOwnershipRq	2	75
+SetOwnershipRq	3	12
+SetOwnershipRq	4	70
+SetOwnershipRq	5	29
+SetOwnershipRq	6	36
+SetOwnershipRq	7	58
+NewOrderRq	6	3	9	2	False	0	False	0
+NewOrderRq	6	5	8	4	False	0	True	0
+NewOrderRq	4	6	9	3	False	0	True	0
+NewOrderRq	7	7	8	6	False	1	False	1
+CancelOrderRq	4	False
+NewOrderRq	1	5	6	1	False	0	False	1
+NewOrderRq	5	6	9	4	True	0	False	0
+NewOrderRq	3	6	7	1	False	1	False	1
+NewOrderRq	7	2	5	8	True	1	False	4
+ReplaceOrderRq	9	7	2	7	3	True	0	False	0
