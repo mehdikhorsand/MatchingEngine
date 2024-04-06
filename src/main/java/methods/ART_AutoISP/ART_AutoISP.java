@@ -16,6 +16,7 @@ public class ART_AutoISP extends SelectionMethod {
         return AutoISPCoverage.get_best_candidate(testcases_rep, get_isp_coverage_situation());
     }
 
+
     public TestCaseRepresentation represent_testcase(TestCase tc) {
         return new MethodEdgePairCoverage(tc);
     }
