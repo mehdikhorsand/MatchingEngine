@@ -39,6 +39,6 @@ build/
 
 
 ### other ####
-src/main/java/methods/*
-temp
+src/main/java/methods/
+temp/
 
