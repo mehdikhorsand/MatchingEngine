@@ -11,7 +11,7 @@ public class SourceDetector {
         for(Class src_class : get_src_classes()) {
             Method[] methods = src_class.getDeclaredMethods();
             for(Method method : methods) {
-                output.add(src_class.getName() + "." + method.getName());
+                output.add(src_class.getName().replace(src_class.getPackageName() + ".", "") + "." + method.getName());
             }
         }
         return output;

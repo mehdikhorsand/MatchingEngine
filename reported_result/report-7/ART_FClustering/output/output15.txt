@@ -1,0 +1,269 @@
+
+Limit	1	1	1	10	6	SELL	0	FAK	0
+NewOrderRs	Rejected
+	Trades	0
+	Orders	0
+	Credits	7
+	Credit	1	12
+	Credit	2	16
+	Credit	3	13
+	Credit	4	16
+	Credit	5	13
+	Credit	6	7
+	Credit	7	17
+	Ownerships	7
+	Ownership	1	39
+	Ownership	2	22
+	Ownership	3	77
+	Ownership	4	79
+	Ownership	5	36
+	Ownership	6	70
+	Ownership	7	80
+	ReferencePrice	5
+	StaticPriceBandLowerLimit	0.6
+	StaticPriceBandUpperLimit	0.8
+	TotalShares	100
+	OwnershipUpperLimit	0.2
+	TickSize	1
+	LotSize	1
+Limit	2	3	7	7	6	BUY 	4	---	0
+NewOrderRs	Rejected
+	Trades	0
+	Orders	0
+	Credits	7
+	Credit	1	12
+	Credit	2	16
+	Credit	3	13
+	Credit	4	16
+	Credit	5	13
+	Credit	6	7
+	Credit	7	17
+	Ownerships	7
+	Ownership	1	39
+	Ownership	2	22
+	Ownership	3	77
+	Ownership	4	79
+	Ownership	5	36
+	Ownership	6	70
+	Ownership	7	80
+	ReferencePrice	5
+	StaticPriceBandLowerLimit	0.6
+	StaticPriceBandUpperLimit	0.8
+	TotalShares	100
+	OwnershipUpperLimit	0.2
+	TickSize	1
+	LotSize	1
+Limit	3	5	1	7	3	BUY 	0	FAK	0
+NewOrderRs	Rejected
+	Trades	0
+	Orders	0
+	Credits	7
+	Credit	1	12
+	Credit	2	16
+	Credit	3	13
+	Credit	4	16
+	Credit	5	13
+	Credit	6	7
+	Credit	7	17
+	Ownerships	7
+	Ownership	1	39
+	Ownership	2	22
+	Ownership	3	77
+	Ownership	4	79
+	Ownership	5	36
+	Ownership	6	70
+	Ownership	7	80
+	ReferencePrice	5
+	StaticPriceBandLowerLimit	0.6
+	StaticPriceBandUpperLimit	0.8
+	TotalShares	100
+	OwnershipUpperLimit	0.2
+	TickSize	1
+	LotSize	1
+Iceberg	4	1	6	4	5	BUY 	0	---	0
+NewOrderRs	Rejected
+	Trades	0
+	Orders	0
+	Credits	7
+	Credit	1	12
+	Credit	2	16
+	Credit	3	13
+	Credit	4	16
+	Credit	5	13
+	Credit	6	7
+	Credit	7	17
+	Ownerships	7
+	Ownership	1	39
+	Ownership	2	22
+	Ownership	3	77
+	Ownership	4	79
+	Ownership	5	36
+	Ownership	6	70
+	Ownership	7	80
+	ReferencePrice	5
+	StaticPriceBandLowerLimit	0.6
+	StaticPriceBandUpperLimit	0.8
+	TotalShares	100
+	OwnershipUpperLimit	0.2
+	TickSize	1
+	LotSize	1
+CancelOrderRs	Rejected
+	Orders	0
+	Credits	7
+	Credit	1	12
+	Credit	2	16
+	Credit	3	13
+	Credit	4	16
+	Credit	5	13
+	Credit	6	7
+	Credit	7	17
+	Ownerships	7
+	Ownership	1	39
+	Ownership	2	22
+	Ownership	3	77
+	Ownership	4	79
+	Ownership	5	36
+	Ownership	6	70
+	Ownership	7	80
+	ReferencePrice	5
+	StaticPriceBandLowerLimit	0.6
+	StaticPriceBandUpperLimit	0.8
+	TotalShares	100
+	OwnershipUpperLimit	0.2
+	TickSize	1
+	LotSize	1
+Limit	6	4	1	9	2	SELL	0	FAK	0
+NewOrderRs	Eliminated
+	Trades	0
+	Orders	0
+	Credits	7
+	Credit	1	12
+	Credit	2	16
+	Credit	3	13
+	Credit	4	16
+	Credit	5	13
+	Credit	6	7
+	Credit	7	17
+	Ownerships	7
+	Ownership	1	39
+	Ownership	2	22
+	Ownership	3	77
+	Ownership	4	79
+	Ownership	5	36
+	Ownership	6	70
+	Ownership	7	80
+	ReferencePrice	5
+	StaticPriceBandLowerLimit	0.6
+	StaticPriceBandUpperLimit	0.8
+	TotalShares	100
+	OwnershipUpperLimit	0.2
+	TickSize	1
+	LotSize	1
+Limit	7	4	5	9	2	BUY 	0	FAK	0
+NewOrderRs	Rejected
+	Trades	0
+	Orders	0
+	Credits	7
+	Credit	1	12
+	Credit	2	16
+	Credit	3	13
+	Credit	4	16
+	Credit	5	13
+	Credit	6	7
+	Credit	7	17
+	Ownerships	7
+	Ownership	1	39
+	Ownership	2	22
+	Ownership	3	77
+	Ownership	4	79
+	Ownership	5	36
+	Ownership	6	70
+	Ownership	7	80
+	ReferencePrice	5
+	StaticPriceBandLowerLimit	0.6
+	StaticPriceBandUpperLimit	0.8
+	TotalShares	100
+	OwnershipUpperLimit	0.2
+	TickSize	1
+	LotSize	1
+Limit	8	6	3	4	3	BUY 	0	---	0
+NewOrderRs	Rejected
+	Trades	0
+	Orders	0
+	Credits	7
+	Credit	1	12
+	Credit	2	16
+	Credit	3	13
+	Credit	4	16
+	Credit	5	13
+	Credit	6	7
+	Credit	7	17
+	Ownerships	7
+	Ownership	1	39
+	Ownership	2	22
+	Ownership	3	77
+	Ownership	4	79
+	Ownership	5	36
+	Ownership	6	70
+	Ownership	7	80
+	ReferencePrice	5
+	StaticPriceBandLowerLimit	0.6
+	StaticPriceBandUpperLimit	0.8
+	TotalShares	100
+	OwnershipUpperLimit	0.2
+	TickSize	1
+	LotSize	1
+Iceberg	9	5	2	5	8	BUY 	1	---	0
+NewOrderRs	Rejected
+	Trades	0
+	Orders	0
+	Credits	7
+	Credit	1	12
+	Credit	2	16
+	Credit	3	13
+	Credit	4	16
+	Credit	5	13
+	Credit	6	7
+	Credit	7	17
+	Ownerships	7
+	Ownership	1	39
+	Ownership	2	22
+	Ownership	3	77
+	Ownership	4	79
+	Ownership	5	36
+	Ownership	6	70
+	Ownership	7	80
+	ReferencePrice	5
+	StaticPriceBandLowerLimit	0.6
+	StaticPriceBandUpperLimit	0.8
+	TotalShares	100
+	OwnershipUpperLimit	0.2
+	TickSize	1
+	LotSize	1
+Limit	10	5	2	7	6	BUY 	0	FAK	0
+ReplaceOrderRs	Rejected
+	Trades	0
+	Orders	0
+	Credits	7
+	Credit	1	12
+	Credit	2	16
+	Credit	3	13
+	Credit	4	16
+	Credit	5	13
+	Credit	6	7
+	Credit	7	17
+	Ownerships	7
+	Ownership	1	39
+	Ownership	2	22
+	Ownership	3	77
+	Ownership	4	79
+	Ownership	5	36
+	Ownership	6	70
+	Ownership	7	80
+	ReferencePrice	5
+	StaticPriceBandLowerLimit	0.6
+	StaticPriceBandUpperLimit	0.8
+	TotalShares	100
+	OwnershipUpperLimit	0.2
+	TickSize	1
+	LotSize	1

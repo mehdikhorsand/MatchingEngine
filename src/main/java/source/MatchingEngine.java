@@ -41,7 +41,7 @@ public class MatchingEngine{
         Order order = order_book.get_order(order_id);
         if(order != null && order.is_buy == is_buy_order){
             TCRunner.condition_covered();
-//            order_book.remove_order(order);
+            order_book.remove_order(order);
             TCRunner.print_output("CancelOrderRs\tAccepted");
         }
         else {
@@ -67,10 +67,10 @@ public class MatchingEngine{
             int old_order_index = (int)order_and_index.get(1);
             order_book.remove_order(old_order);
             String new_order_response = add_order(new_order);
-//            if (Objects.equals(new_order_response, "Rejected")) {
-//                TCRunner.condition_covered();
-//                order_book.insert_order(old_order, old_order_index);
-//            }
+            if (Objects.equals(new_order_response, "Rejected")) {
+                TCRunner.condition_covered();
+                order_book.insert_order(old_order, old_order_index);
+            }
             TCRunner.print_output("ReplaceOrderRs\t" + new_order_response);
         } else {
             TCRunner.condition_uncovered();
@@ -90,7 +90,8 @@ public class MatchingEngine{
         int output = 0;
         for(Trade trade : trades) {
             TCRunner.start_loop(7);
-            output += trade.quantity;
+            // mutant: replace += with = in next line
+            output = trade.quantity;
         }
         TCRunner.end_loop(7);
         return output;
@@ -114,7 +115,8 @@ public class MatchingEngine{
             else if(order.broker_id.credit_validation(order)||(order.fill_and_kill && order.broker_id.free_credit >= 0)) {
                 TCRunner.condition_covered();
                 // accept order
-                if (order.quantity > 0 && !order.fill_and_kill) {
+                // mutant: replaced > with >= in the next line
+                if (order.quantity >= 0 && !order.fill_and_kill) {
                     TCRunner.condition_covered();
                     order_book.add_order(order);
                 }
@@ -144,7 +146,8 @@ public class MatchingEngine{
         }
         if(sell_order != null && buy_order != null) {
             TCRunner.condition_covered();
-            if (sell_order.price <= buy_order.price) {
+            // mutant: replaced <= with < in the next line
+            if (sell_order.price < buy_order.price) {
                 TCRunner.condition_covered();
                 int trade_qty = Math.min(new_order.quantity, old_order.get_maximum_quantity_to_trade());
                 if(trade_qty > 0) {

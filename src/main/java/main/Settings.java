@@ -3,8 +3,14 @@ package main;
 import methods.ART_AutoISP.ART_AutoISP;
 import methods.ART_AutoISP_1p.ART_AutoISP_1p;
 import methods.ART_AutoISP_C.ART_AutoISP_C;
+import methods.ART_AutoISP_MC.ART_AutoISP_MC;
+import methods.ART_FClustering.ART_FClustering;
+import methods.ART_FT.ART_FT;
 import methods.ART_ISP_hs.ART_ISP_hs;
 import methods.ART_TFC.ART_TFC;
+import methods.ART_TFClustering.ART_TFClustering;
+import methods.ART_WClustering.ART_WClustering;
+import methods.ART_WT.ART_WT;
 import methods.RT.RT;
 
 import java.util.ArrayList;
@@ -17,19 +23,26 @@ public class Settings {
     public static final int broker_number = 7;
     public static final int max_order_price = 10;
     public static final int max_order_quantity = 8;
-    public static final int repetition_number = 10;
+    public static final int repetition_number = 20;
     public static final boolean just_show_avg_report = false;
+    public static int k_percentage = 10;
+    public static int minimum_clustering_number = 4;
+    public static int maximum_iteration = 20;
+
     public static ArrayList<SelectionMethod> get_methods() {
         ArrayList<SelectionMethod> methods = new ArrayList<>();
-        methods.add(new RT());
-//        methods.add(new ART_FT());
-//        methods.add(new ART_WT());
+//        methods.add(new RT());
+        methods.add(new ART_FT());
+        methods.add(new ART_FClustering());
+        methods.add(new ART_WT());
+        methods.add(new ART_WClustering());
         methods.add(new ART_TFC());
+        methods.add(new ART_TFClustering());
         methods.add(new ART_AutoISP_1p());
-        methods.add(new ART_ISP_hs());
+//        methods.add(new ART_ISP_hs());
         methods.add(new ART_AutoISP());
-        methods.add(new ART_AutoISP_C());
-//        methods.add(new ART_AutoISP_MC());
+//        methods.add(new ART_AutoISP_C());
+        methods.add(new ART_AutoISP_MC());
 //        methods.add(new ART_AutoISP2());
 //        methods.add(new ART_AutoISP2_C());
 //        methods.add(new ART_AutoISP2_MC());

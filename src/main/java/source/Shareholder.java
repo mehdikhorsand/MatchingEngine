@@ -29,12 +29,13 @@ public class Shareholder {
     public static Shareholder get_shareholder_by_id(int shareholder_id) {
         TCRunner.method_called();
         for (Shareholder shareholder : list) {
-//            TCRunner.condition_covered();
+            TCRunner.start_loop(10);
             if (shareholder.id == shareholder_id) {
                 TCRunner.condition_covered();
                 return shareholder;
             }
         }
+        TCRunner.end_loop(10);
         return null;
     }
 
@@ -42,10 +43,10 @@ public class Shareholder {
         TCRunner.method_called();
         StringBuilder result = new StringBuilder("\n\tOwnerships\t" + list.size());
         for(Shareholder shareholder : list) {
-            TCRunner.start_loop(10);
+            TCRunner.start_loop(11);
             result.append("\n").append(shareholder.toString());
         }
-        TCRunner.end_loop(10);
+        TCRunner.end_loop(11);
         return result.toString();
     }
 
