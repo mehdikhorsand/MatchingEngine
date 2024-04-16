@@ -1,0 +1,317 @@
+After:
+
+C1.	MatchingEngine.<init>
+|__ P1 (23)	[]
+
+C2.	Environment.set_tick_size_rq
+|__ P1 (23)	[]
+
+C3.	Environment.set_lot_size_rq
+|__ P1 (23)	[]
+
+C4.	Environment.set_reference_price_rq
+|__ P1 (23)	[]
+
+C5.	Environment.set_static_price_band_lower_limit_rq
+|__ P1 (23)	[]
+
+C6.	Environment.set_static_price_band_upper_limit_rq
+|__ P1 (23)	[]
+
+C7.	Environment.set_total_shares_rq
+|__ P1 (23)	[]
+
+C8.	Environment.set_ownership_upper_limit_rq
+|__ P1 (23)	[]
+
+C9.	Broker.<init>
+|__ P1 (161)	[]
+
+C10.	Shareholder.<init>
+|__ P1 (161)	[]
+
+C11.	Order.<init>
+|__ P1 (207)	[]
+
+C12.	Broker.get_broker_by_id
+|__ P1 (207)	[@inside_loop(5):30]
+
+C13.	Broker.get_broker_by_id -> @inside_loop(5):30
+|__ P1 (207)	[@condition:32]
+|__ P2 (594)	[]
+
+C14.	Shareholder.get_shareholder_by_id
+|__ P1 (207)	[@inside_loop(10):32]
+
+C15.	Shareholder.get_shareholder_by_id -> @inside_loop(10):32
+|__ P1 (207)	[@condition:34]
+|__ P2 (611)	[]
+
+C16.	MatchingEngine.new_order_request
+|__ P1 (184)	[]
+
+C17.	MatchingEngine.new_request
+|__ P1 (207)	[@condition:28]
+|__ P2 (23)	[]
+
+C18.	Order.toString
+|__ P1 (30)	[@condition:123, @condition:131, @condition:139]
+|__ P2 (24)	[@condition:123, @condition:139]
+|__ P3 (50)	[@condition:123, @condition:131]
+|__ P4 (120)	[]
+|__ P5 (140)	[@condition:123]
+|__ P6 (43)	[@condition:131]
+
+C19.	MatchingEngine.add_order
+|__ P1 (82)	[]
+|__ P2 (54)	[@condition:105, @condition:110]
+|__ P3 (46)	[@condition:105, @condition:116, @condition:120]
+|__ P4 (5)	[@condition:105]
+|__ P5 (2)	[@condition:105, @condition:116]
+
+C20.	Order.has_valid_attrs
+|__ P1 (189)	[]
+
+C21.	Environment.validate_order_price_limit
+|__ P1 (185)	[@condition:64]
+|__ P2 (4)	[]
+
+C22.	Environment.validate_order_quantity_limit
+|__ P1 (88)	[@condition:78, @condition:80]
+|__ P2 (90)	[@condition:78]
+|__ P3 (5)	[]
+
+C23.	MatchingEngine.toString
+|__ P1 (207)	[]
+|__ P2 (23)	[@condition:186]
+
+C24.	MatchingEngine.print_trades
+|__ P1 (201)	[@end_loop(9):207]
+|__ P2 (6)	[@inside_loop(9):204, @end_loop(9):207]
+
+C25.	OrderBook.toString
+|__ P1 (230)	[]
+
+C26.	OrderBook.orders_toString
+|__ P1 (314)	[@end_loop(1):19]
+|__ P2 (146)	[@inside_loop(1):16, @end_loop(1):19]
+
+C27.	Broker.print_credits
+|__ P1 (230)	[@inside_loop(6):44, @end_loop(6):47]
+
+C28.	Broker.print_credits -> @inside_loop(6):44
+|__ P1 (1610)	[]
+
+C29.	Broker.toString
+|__ P1 (1610)	[]
+
+C30.	Shareholder.print_ownerships
+|__ P1 (230)	[@inside_loop(11):46, @end_loop(11):49]
+
+C31.	Shareholder.print_ownerships -> @inside_loop(11):46
+|__ P1 (1610)	[]
+
+C32.	Shareholder.toString
+|__ P1 (1610)	[]
+
+C33.	Environment.toString
+|__ P1 (230)	[]
+
+C34.	Shareholder.ownership_validation
+|__ P1 (107)	[@condition:99]
+|__ P2 (3)	[]
+
+C35.	MatchingEngine.match
+|__ P1 (83)	[@finished:166]
+|__ P2 (13)	[@condition:138, @finished:166]
+|__ P3 (4)	[@condition:138, @condition:148, @condition:151, @condition:154, @finished:166]
+|__ P4 (2)	[@condition:148, @condition:151, @condition:154, @condition:156, @finished:166]
+|__ P5 (5)	[@condition:138, @condition:148, @finished:166]
+|__ P6 (2)	[@condition:138, @condition:148, @condition:151, @finished:166]
+|__ P7 (4)	[@condition:148, @finished:166]
+|__ P8 (3)	[@condition:138, @condition:148, @condition:151, @condition:154, @condition:156, @finished:166]
+
+C36.	OrderBook.get_first_buy_order
+|__ P1 (89)	[]
+
+C37.	OrderBook.get_first_with_positive_quantity
+|__ P1 (90)	[@end_loop(2):79]
+|__ P2 (20)	[@inside_loop(2):73]
+|__ P3 (6)	[@inside_loop(2):73, @end_loop(2):79]
+
+C38.	MatchingEngine.get_total_traded_qty
+|__ P1 (99)	[@end_loop(7):96]
+|__ P2 (8)	[@inside_loop(7):92, @end_loop(7):96]
+
+C39.	MatchingEngine.rollback_by_trades
+|__ P1 (57)	[@end_loop(8):178]
+|__ P2 (2)	[@inside_loop(8):172, @end_loop(8):178]
+
+C40.	Order.new_cancel_order
+|__ P1 (23)	[]
+
+C41.	MatchingEngine.cancel_order_request
+|__ P1 (18)	[]
+|__ P2 (5)	[@condition:43]
+
+C42.	OrderBook.get_order
+|__ P1 (18)	[@condition:175]
+|__ P2 (5)	[]
+
+C43.	OrderBook.get_order_and_index
+|__ P1 (78)	[@condition:149, @finished:150]
+|__ P2 (46)	[@condition:164, @finished:167]
+|__ P3 (14)	[@finished:156]
+|__ P4 (0)	[@finished:167]
+
+C44.	OrderBook.get_order_index
+|__ P1 (56)	[@end_loop(4):141]
+|__ P2 (22)	[@inside_loop(4):135, @end_loop(4):141]
+|__ P3 (14)	[@inside_loop(4):135]
+
+C45.	Broker.credit_validation
+|__ P1 (53)	[]
+
+C46.	OrderBook.add_order
+|__ P1 (44)	[]
+|__ P2 (7)	[@condition:33]
+
+C47.	OrderBook.sort_sell_orders
+|__ P1 (59)	[]
+
+C48.	Order.order_added_to_queue
+|__ P1 (52)	[]
+
+C49.	Order.set_disclosed_quantity
+|__ P1 (35)	[@condition:74]
+|__ P2 (24)	[]
+
+C50.	Broker.added_new_order
+|__ P1 (45)	[]
+|__ P2 (7)	[@condition:54]
+
+C51.	Shareholder.added_new_order
+|__ P1 (45)	[]
+|__ P2 (7)	[@condition:56]
+
+C52.	OrderBook.remove_empty_orders
+|__ P1 (43)	[@end_loop(3):114, @finished:115]
+|__ P2 (53)	[@inside_loop(3):104, @end_loop(3):114, @finished:115]
+|__ P3 (48)	[@finished:97]
+
+C53.	OrderBook.remove_empty_orders -> @inside_loop(3):104
+|__ P1 (73)	[]
+|__ P2 (5)	[@condition:106]
+
+C54.	OrderBook.orders_toString -> @inside_loop(1):16
+|__ P1 (200)	[]
+
+C55.	MatchingEngine.replace_order_request
+|__ P1 (14)	[]
+|__ P2 (4)	[@condition:59]
+|__ P3 (4)	[@condition:59, @condition:66]
+|__ P4 (1)	[@condition:59, @condition:66, @condition:71]
+
+C56.	OrderBook.get_order_index -> @inside_loop(4):135
+|__ P1 (32)	[]
+|__ P2 (14)	[@condition:137]
+
+C57.	Order.reset_order_counter
+|__ P1 (23)	[]
+
+C58.	OrderBook.remove_order
+|__ P1 (15)	[]
+|__ P2 (5)	[@condition:48]
+
+C59.	Order.order_removed_from_queue
+|__ P1 (20)	[]
+
+C60.	Broker.deleted_old_order
+|__ P1 (15)	[]
+|__ P2 (5)	[@condition:62]
+
+C61.	Shareholder.deleted_old_order
+|__ P1 (15)	[]
+|__ P2 (5)	[@condition:68]
+
+C62.	OrderBook.get_first_sell_order
+|__ P1 (27)	[]
+
+C63.	Order.value
+|__ P1 (23)	[]
+
+C64.	OrderBook.get_first_with_positive_quantity -> @inside_loop(2):73
+|__ P1 (20)	[@condition:75]
+|__ P2 (6)	[]
+
+C65.	Order.get_maximum_quantity_to_trade
+|__ P1 (6)	[@condition:89]
+|__ P2 (5)	[]
+
+C66.	Trade.<init>
+|__ P1 (9)	[]
+
+C67.	Trade.get_price
+|__ P1 (7)	[]
+|__ P2 (2)	[@condition:38]
+
+C68.	Order.update_order_quantities
+|__ P1 (13)	[]
+|__ P2 (5)	[@condition:102]
+
+C69.	Broker.decrease_credit
+|__ P1 (7)	[@condition:77]
+|__ P2 (2)	[]
+
+C70.	Broker.increase_credit
+|__ P1 (9)	[]
+
+C71.	Shareholder.increase_ownership
+|__ P1 (7)	[]
+|__ P2 (2)	[@condition:82]
+
+C72.	Shareholder.decrease_ownership
+|__ P1 (7)	[]
+|__ P2 (2)	[@condition:91]
+
+C73.	MatchingEngine.get_total_traded_qty -> @inside_loop(7):92
+|__ P1 (9)	[]
+
+C74.	OrderBook.sort_buy_orders
+|__ P1 (12)	[]
+
+C75.	MatchingEngine.print_trades -> @inside_loop(9):204
+|__ P1 (6)	[]
+
+C76.	Trade.toString
+|__ P1 (6)	[]
+
+C77.	MatchingEngine.rollback_by_trades -> @inside_loop(8):172
+|__ P1 (3)	[]
+
+C78.	Trade.rollback_trade
+|__ P1 (3)	[]
+
+C79.	Order.rollback_update_order_quantities
+|__ P1 (4)	[]
+|__ P2 (2)	[@condition:112]
+
+C80.	Broker.rollback_decrease_credit
+|__ P1 (3)	[@condition:97]
+
+C81.	Broker.rollback_increase_credit
+|__ P1 (3)	[]
+
+C82.	Shareholder.rollback_increase_ownership
+|__ P1 (3)	[]
+
+C83.	Shareholder.rollback_decrease_ownership
+|__ P1 (3)	[]
+
+C84.	OrderBook.rollback_order_book
+|__ P1 (3)	[]
+
+C85.	OrderBook.insert_order
+|__ P1 (1)	[]
+
+

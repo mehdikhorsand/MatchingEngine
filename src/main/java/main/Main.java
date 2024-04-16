@@ -117,7 +117,7 @@ public class Main {
         Terminal.rm(Settings.temp);
         Terminal.mkdir(Settings.result_location + Settings.average);
         if(Settings.f_measure_evaluation)
-            F_measure.create_f_measure_file();
+            F_measure.create_f_measure_files();
         for(SelectionMethod method : Settings.get_methods()) {
             Terminal.mkdir(Settings.temp + method.get_name() + Settings.testcases);
             Terminal.mkdir(Settings.temp + method.get_name() + Settings.execution_analysis);

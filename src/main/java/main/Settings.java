@@ -1,6 +1,9 @@
 package main;
 
 import methods.ART_AutoISP.ART_AutoISP;
+import methods.ART_AutoISP2.ART_AutoISP2;
+import methods.ART_AutoISP2_C.ART_AutoISP2_C;
+import methods.ART_AutoISP2_MC.ART_AutoISP2_MC;
 import methods.ART_AutoISP_1p.ART_AutoISP_1p;
 import methods.ART_AutoISP_C.ART_AutoISP_C;
 import methods.ART_AutoISP_MC.ART_AutoISP_MC;
@@ -23,15 +26,15 @@ public class Settings {
     public static final int broker_number = 7;
     public static final int max_order_price = 10;
     public static final int max_order_quantity = 8;
-    public static final int repetition_number = 20;
+    public static final int repetition_number = 10;
     public static final boolean just_show_avg_report = false;
     public static int k_percentage = 10;
     public static int minimum_clustering_number = 4;
-    public static int maximum_iteration = 20;
+    public static int maximum_iteration = 20; //
 
     public static ArrayList<SelectionMethod> get_methods() {
         ArrayList<SelectionMethod> methods = new ArrayList<>();
-//        methods.add(new RT());
+        methods.add(new RT());
         methods.add(new ART_FT());
         methods.add(new ART_FClustering());
         methods.add(new ART_WT());
@@ -39,13 +42,13 @@ public class Settings {
         methods.add(new ART_TFC());
         methods.add(new ART_TFClustering());
         methods.add(new ART_AutoISP_1p());
-//        methods.add(new ART_ISP_hs());
+        methods.add(new ART_ISP_hs());
         methods.add(new ART_AutoISP());
-//        methods.add(new ART_AutoISP_C());
+        methods.add(new ART_AutoISP_C());
         methods.add(new ART_AutoISP_MC());
-//        methods.add(new ART_AutoISP2());
-//        methods.add(new ART_AutoISP2_C());
-//        methods.add(new ART_AutoISP2_MC());
+        methods.add(new ART_AutoISP2());
+        methods.add(new ART_AutoISP2_C());
+        methods.add(new ART_AutoISP2_MC());
         return methods;
     }
     public static final boolean f_measure_evaluation = true;
@@ -73,7 +76,8 @@ public class Settings {
     public static final String testcase_format = ".txt";
     public static final String result_location = project_location + "reported_result/";
     public static final String f_measure = "F-measure";
-    public static final String f_measure_file_format = ".csv";
+    public static final String f_time = "F-time";
+    public static final String csv_file_format = ".csv";
     public static final String report_location = result_location + "report-";
     public static final String invalid_orders_testcase_file = "invalid_orders_testcase.txt";
 

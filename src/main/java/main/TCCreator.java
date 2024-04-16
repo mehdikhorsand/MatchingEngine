@@ -34,9 +34,12 @@ public class TCCreator {
 
     private static void write_and_check_test_files(int i) {
         System.out.println("testcase" + i);
+        double start_creating_candidates_time = System.currentTimeMillis();
         CandidateSet candidate_set = new CandidateSet();
+        double end_creating_candidates_time = System.currentTimeMillis();
         for(SelectionMethod method : Settings.get_methods()){
             if(!method_is_removed(method)) {
+                double start_testcase_selection_and_running = System.currentTimeMillis();
                 select_testcase(candidate_set, method, i);
                 new TCRunner(Settings.get_testcase_path(method, i), Settings.get_output_path(method, i));
                 Terminal.run_oracle(Settings.get_testcase_path(method, i), Settings.get_oracle_path(method, i));
@@ -44,8 +47,11 @@ public class TCCreator {
                     Evaluation.evaluation(Settings.get_output_path(method, i), Settings.get_oracle_path(method, i));
                 } catch (Exception e) {
                     removed_methods.add(method);
-//                    methods.remove(method);
                 }
+                double end_testcase_selection_and_running = System.currentTimeMillis();
+                double total_time_spend = (end_creating_candidates_time - start_creating_candidates_time) +
+                        (end_testcase_selection_and_running - start_testcase_selection_and_running);
+                method.add_execution_time(total_time_spend);
             }
         }
     }
