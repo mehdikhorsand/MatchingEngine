@@ -26,34 +26,34 @@ public class Settings {
     public static final int broker_number = 7;
     public static final int max_order_price = 10;
     public static final int max_order_quantity = 8;
-    public static final int repetition_number = 10;
+    public static final int repetition_number = 5;
     public static final boolean just_show_avg_report = false;
     public static int k_percentage = 10;
     public static int minimum_clustering_number = 4;
-    public static int maximum_iteration = 20; //
+    public static int maximum_iteration = 20;
 
     public static ArrayList<SelectionMethod> get_methods() {
         ArrayList<SelectionMethod> methods = new ArrayList<>();
         methods.add(new RT());
-        methods.add(new ART_FT());
-        methods.add(new ART_FClustering());
-        methods.add(new ART_WT());
-        methods.add(new ART_WClustering());
-        methods.add(new ART_TFC());
-        methods.add(new ART_TFClustering());
-        methods.add(new ART_AutoISP_1p());
-        methods.add(new ART_ISP_hs());
-        methods.add(new ART_AutoISP());
-        methods.add(new ART_AutoISP_C());
-        methods.add(new ART_AutoISP_MC());
-        methods.add(new ART_AutoISP2());
-        methods.add(new ART_AutoISP2_C());
-        methods.add(new ART_AutoISP2_MC());
+//        methods.add(new ART_FT());
+//        methods.add(new ART_FClustering());
+//        methods.add(new ART_WT());
+//        methods.add(new ART_WClustering());
+//        methods.add(new ART_TFC());
+//        methods.add(new ART_TFClustering());
+//        methods.add(new ART_AutoISP_1p());
+//        methods.add(new ART_ISP_hs());
+//        methods.add(new ART_AutoISP());
+//        methods.add(new ART_AutoISP_C());
+//        methods.add(new ART_AutoISP_MC());
+//        methods.add(new ART_AutoISP2());
+//        methods.add(new ART_AutoISP2_C());
+//        methods.add(new ART_AutoISP2_MC());
         return methods;
     }
-    public static final boolean f_measure_evaluation = true;
-    public static final boolean report_coverage = true;
-    public static final boolean report_mutation_result = false;
+    public static final boolean f_measure_evaluation = false;
+    public static final boolean report_coverage = false;
+    public static final boolean report_mutation_result = true;
     public static final int maximum_path_length = 3;
 
 

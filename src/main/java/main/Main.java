@@ -37,8 +37,8 @@ public class Main {
             report_all_results(i);
         }
         if(!Settings.f_measure_evaluation) {
-            open_coverage_and_pitest_report_files();
             AverageFile.create_avg_files();
+            open_coverage_and_pitest_report_files();
         }
         else{
             F_measure.report_f_measures();

@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="pittest" type="PIT" factoryName="PIT Runner" REPORT_DIR="$PROJECT_DIR$/target/report" SOURCE_DIRS="$PROJECT_DIR$/src/main/java" TARGET_CLASSES="matchingEngine.Broker,matchingEngine.Shareholder,matchingEngine.MatchingEngine, matchingEngine.Environment,matchingEngine.Trade,matchingEngine.Order,matchingEngine.OrderBook" TARGET_TESTS="TestCaseRunner" otherParams="--outputFormats XML,HTML">
+    <module name="MatchingEngine" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
