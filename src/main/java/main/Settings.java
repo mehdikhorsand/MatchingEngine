@@ -19,14 +19,14 @@ import methods.RT.RT;
 import java.util.ArrayList;
 
 public class Settings {
-    public static final int candidate_set_size = 10;
-    public static final int testcase_number = 10;
-    public static final int order_number = 10;
+    public static final int candidate_set_size = 1;
+    public static final int testcase_number = 1;
+    public static final int order_number = 1;
     public static final int shareholder_number = 7;
     public static final int broker_number = 7;
     public static final int max_order_price = 10;
     public static final int max_order_quantity = 8;
-    public static final int repetition_number = 5;
+    public static final int repetition_number = 2;
     public static final boolean just_show_avg_report = false;
     public static int k_percentage = 10;
     public static int minimum_clustering_number = 4;
@@ -52,7 +52,7 @@ public class Settings {
         return methods;
     }
     public static final boolean f_measure_evaluation = false;
-    public static final boolean report_coverage = false;
+    public static final boolean report_coverage = true;
     public static final boolean report_mutation_result = true;
     public static final int maximum_path_length = 3;
 

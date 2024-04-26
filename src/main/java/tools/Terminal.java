@@ -94,8 +94,8 @@ public class Terminal {
                 "org.pitest.mutationtest.commandline.MutationCoverageReport " +
                 "--reportDir /home/mehdi/IdeaProjects/MatchingEngine/target/report " +
                 "--sourceDirs /home/mehdi/IdeaProjects/MatchingEngine/src/main/java " +
-                "--targetClasses \"matchingEngine.Broker,matchingEngine.Shareholder,matchingEngine.MatchingEngine, " +
-                "matchingEngine.Environment,matchingEngine.Trade,matchingEngine.Order,matchingEngine.OrderBook\" " +
+                "--targetClasses matchingEngine.Broker,matchingEngine.Shareholder,matchingEngine.MatchingEngine," +
+                "matchingEngine.Environment,matchingEngine.Trade,matchingEngine.Order,matchingEngine.OrderBook " +
                 "--targetTests TestCaseRunner --outputFormats XML,HTML");
     }
 
